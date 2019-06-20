@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.weisen.www.code.yjf.shopmall",
+      "nativeLanguage": "zh-cn"
+    },
+    "jhipsterVersion": "6.0.1",
+    "applicationType": "microservice",
+    "baseName": "shopmall",
+    "packageName": "com.weisen.www.code.yjf.shopmall",
+    "packageFolder": "com/weisen/www/code/yjf/shopmall",
+    "serverPort": "8082",
+    "authenticationType": "uaa",
+    "uaaBaseName": "login",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YWVjODI2Y2QwM2EzZDEwNDk1YTU4MzJlNWIyMDczNGJhODVjNDRkZmM4OTM0MjZlMmUwMTFjNjJlMTgxNTkxMDY1ODc5Y2Y1OGIwMDkwMjJhNGQzNzkxMzFiOTEyNGIwNmVmZWYwYjE4MmRjMTMzYjYxZmMyNjE2MDg3OTgzM2Q=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "zh-cn",
+    "languages": [
+      "zh-cn"
+    ],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

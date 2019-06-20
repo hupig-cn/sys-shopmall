@@ -1,0 +1,60 @@
+{
+    "name": "Introduce",
+    "fields": [
+        {
+            "fieldName": "commodityid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "introducetype",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "order",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifierdate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifiernum",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "logicdelete",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "other",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190609231512",
+    "entityTableName": "introduce",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}

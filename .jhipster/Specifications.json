@@ -1,0 +1,68 @@
+{
+    "name": "Specifications",
+    "fields": [
+        {
+            "fieldName": "commodityid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "model",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "specifications",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "num",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "discount",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifierdate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifiernum",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "logicdelete",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "other",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190609231511",
+    "entityTableName": "specifications",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}
