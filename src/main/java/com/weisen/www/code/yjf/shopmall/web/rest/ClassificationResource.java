@@ -124,4 +124,22 @@ public class ClassificationResource {
         classificationService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
+    
+	//测试接口(增删改查)
+	@PostMapping("/test")
+    public String createTest(@RequestBody String name) {
+        return "调用了SHOPMMALL的增加接口";
+    }
+    @DeleteMapping("/test/{name}")
+    public String deleteTest(@PathVariable String name) {
+        return "调用了SHOPMMALL的删除接口";
+    }
+    @PutMapping("/test")
+    public String updateTest(@RequestBody String name) {
+        return "调用了SHOPMMALL的修改接口";
+    }
+    @GetMapping("/test/{name}")
+    public String getTest(@PathVariable String name) {
+        return "调用了SHOPMMALL的查询接口";
+    }
 }
