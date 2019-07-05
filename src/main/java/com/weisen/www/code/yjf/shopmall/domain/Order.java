@@ -18,10 +18,13 @@ import java.util.Objects;
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "bigorder")
+    private String bigorder;
 
     @Column(name = "ordernum")
     private String ordernum;
@@ -75,6 +78,19 @@ public class Order implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBigorder() {
+        return bigorder;
+    }
+
+    public Order bigorder(String bigorder) {
+        this.bigorder = bigorder;
+        return this;
+    }
+
+    public void setBigorder(String bigorder) {
+        this.bigorder = bigorder;
     }
 
     public String getOrdernum() {
@@ -278,21 +294,26 @@ public class Order implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Order)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Order) o).id);
+        Order order = (Order) o;
+        if (order.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), order.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
     public String toString() {
         return "Order{" +
             "id=" + getId() +
+            ", bigorder='" + getBigorder() + "'" +
             ", ordernum='" + getOrdernum() + "'" +
             ", state='" + getState() + "'" +
             ", userid='" + getUserid() + "'" +

@@ -3,11 +3,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A DTO for the {@link com.weisen.www.code.yjf.shopmall.domain.Order} entity.
+ * A DTO for the Order entity.
  */
 public class OrderDTO implements Serializable {
 
     private Long id;
+
+    private String bigorder;
 
     private String ordernum;
 
@@ -46,6 +48,14 @@ public class OrderDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getBigorder() {
+        return bigorder;
+    }
+
+    public void setBigorder(String bigorder) {
+        this.bigorder = bigorder;
     }
 
     public String getOrdernum() {
@@ -193,6 +203,7 @@ public class OrderDTO implements Serializable {
     public String toString() {
         return "OrderDTO{" +
             "id=" + getId() +
+            ", bigorder='" + getBigorder() + "'" +
             ", ordernum='" + getOrdernum() + "'" +
             ", state='" + getState() + "'" +
             ", userid='" + getUserid() + "'" +

@@ -18,13 +18,16 @@ import java.util.Objects;
 public class Commodity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "brandid")
+    private String brandid;
 
     @Column(name = "classificationid")
     private String classificationid;
@@ -82,6 +85,19 @@ public class Commodity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getBrandid() {
+        return brandid;
+    }
+
+    public Commodity brandid(String brandid) {
+        this.brandid = brandid;
+        return this;
+    }
+
+    public void setBrandid(String brandid) {
+        this.brandid = brandid;
     }
 
     public String getClassificationid() {
@@ -246,15 +262,19 @@ public class Commodity implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Commodity)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Commodity) o).id);
+        Commodity commodity = (Commodity) o;
+        if (commodity.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), commodity.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
@@ -262,6 +282,7 @@ public class Commodity implements Serializable {
         return "Commodity{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", brandid='" + getBrandid() + "'" +
             ", classificationid='" + getClassificationid() + "'" +
             ", commoditystate='" + getCommoditystate() + "'" +
             ", postage='" + getPostage() + "'" +

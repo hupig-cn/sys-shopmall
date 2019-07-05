@@ -13,6 +13,7 @@ entity Classification {// 分类表
 
 entity Commodity {// 商品表
     name String,// 商品名称
+    brandid String , //品牌Id
     classificationid String,// 分类id
     commoditystate String,// 商品状态
     postage String,// 邮费
@@ -72,6 +73,7 @@ entity Shopping {// 购物车表
 }
 
 entity Order {// 订单表
+    bigorder String,// 大订单号
     ordernum String,// 订单号
     state String,// 订单状态
     userid String,// 下单用户id
@@ -87,6 +89,17 @@ entity Order {// 订单表
     modifiernum Long,// 修改次数
     logicdelete Boolean,// 删除
     other String// 备注
+}
+
+//品牌表
+entity Brand {
+	name String required, //品牌名称
+    logo String, //品牌logo
+    website String, //官网
+    state Integer required, //状态
+    introduction String, //介绍
+    remark String, //备注
+    createTime Instant required//创建时间
 }
 
 // Set pagination options

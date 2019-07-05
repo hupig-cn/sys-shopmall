@@ -1,27 +1,19 @@
 package com.weisen.www.code.yjf.shopmall.service.dto;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * A DTO for the Commodity entity.
- */
-public class CommodityDTO implements Serializable {
+public class Rewrite_ShoppingDTO implements Serializable {
 
     private Long id;
 
-    private String name;
+    private String userid;
 
-    private String brandid;
+    private String commodityid;
 
-    private String classificationid;
+    private String specificationsid;
 
-    private String commoditystate;
-
-    private String postage;
-
-    private String salevalue;
-
-    private String weight;
+    private String num;
 
     private String creator;
 
@@ -46,60 +38,36 @@ public class CommodityDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public String getBrandid() {
-        return brandid;
+    public String getCommodityid() {
+        return commodityid;
     }
 
-    public void setBrandid(String brandid) {
-        this.brandid = brandid;
+    public void setCommodityid(String commodityid) {
+        this.commodityid = commodityid;
     }
 
-    public String getClassificationid() {
-        return classificationid;
+    public String getSpecificationsid() {
+        return specificationsid;
     }
 
-    public void setClassificationid(String classificationid) {
-        this.classificationid = classificationid;
+    public void setSpecificationsid(String specificationsid) {
+        this.specificationsid = specificationsid;
     }
 
-    public String getCommoditystate() {
-        return commoditystate;
+    public String getNum() {
+        return num;
     }
 
-    public void setCommoditystate(String commoditystate) {
-        this.commoditystate = commoditystate;
-    }
-
-    public String getPostage() {
-        return postage;
-    }
-
-    public void setPostage(String postage) {
-        this.postage = postage;
-    }
-
-    public String getSalevalue() {
-        return salevalue;
-    }
-
-    public void setSalevalue(String salevalue) {
-        this.salevalue = salevalue;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setNum(String num) {
+        this.num = num;
     }
 
     public String getCreator() {
@@ -167,11 +135,11 @@ public class CommodityDTO implements Serializable {
             return false;
         }
 
-        CommodityDTO commodityDTO = (CommodityDTO) o;
-        if (commodityDTO.getId() == null || getId() == null) {
+        ShoppingDTO shoppingDTO = (ShoppingDTO) o;
+        if (shoppingDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), commodityDTO.getId());
+        return Objects.equals(getId(), shoppingDTO.getId());
     }
 
     @Override
@@ -181,15 +149,12 @@ public class CommodityDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CommodityDTO{" +
+        return "ShoppingDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", brandid='" + getBrandid() + "'" +
-            ", classificationid='" + getClassificationid() + "'" +
-            ", commoditystate='" + getCommoditystate() + "'" +
-            ", postage='" + getPostage() + "'" +
-            ", salevalue='" + getSalevalue() + "'" +
-            ", weight='" + getWeight() + "'" +
+            ", userid='" + getUserid() + "'" +
+            ", commodityid='" + getCommodityid() + "'" +
+            ", specificationsid='" + getSpecificationsid() + "'" +
+            ", num='" + getNum() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

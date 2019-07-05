@@ -1,6 +1,6 @@
 package com.weisen.www.code.yjf.shopmall.service;
 
-import com.weisen.www.code.yjf.shopmall.service.dto.OrderDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.BrandDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,37 +8,37 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 /**
- * Service Interface for managing Order.
+ * Service Interface for managing Brand.
  */
-public interface OrderService {
+public interface BrandService {
 
     /**
-     * Save a order.
+     * Save a brand.
      *
-     * @param orderDTO the entity to save
+     * @param brandDTO the entity to save
      * @return the persisted entity
      */
-    OrderDTO save(OrderDTO orderDTO);
+    BrandDTO save(BrandDTO brandDTO);
 
     /**
-     * Get all the orders.
+     * Get all the brands.
      *
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<OrderDTO> findAll(Pageable pageable);
+    Page<BrandDTO> findAll(Pageable pageable);
 
 
     /**
-     * Get the "id" order.
+     * Get the "id" brand.
      *
      * @param id the id of the entity
      * @return the entity
      */
-    Optional<OrderDTO> findOne(Long id);
+    Optional<BrandDTO> findOne(Long id);
 
     /**
-     * Delete the "id" order.
+     * Delete the "id" brand.
      *
      * @param id the id of the entity
      */

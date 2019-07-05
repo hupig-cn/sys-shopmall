@@ -6,6 +6,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "brandid",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "classificationid",
             "fieldType": "String"
         },

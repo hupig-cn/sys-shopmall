@@ -2,6 +2,10 @@
     "name": "Order",
     "fields": [
         {
+            "fieldName": "bigorder",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "ordernum",
             "fieldType": "String"
         },

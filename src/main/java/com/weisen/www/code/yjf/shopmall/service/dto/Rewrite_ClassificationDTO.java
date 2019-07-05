@@ -1,27 +1,17 @@
 package com.weisen.www.code.yjf.shopmall.service.dto;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * A DTO for the Commodity entity.
- */
-public class CommodityDTO implements Serializable {
+public class Rewrite_ClassificationDTO implements Serializable {
 
     private Long id;
 
     private String name;
 
-    private String brandid;
+    private String superior;
 
-    private String classificationid;
-
-    private String commoditystate;
-
-    private String postage;
-
-    private String salevalue;
-
-    private String weight;
+    private String order;
 
     private String creator;
 
@@ -54,52 +44,20 @@ public class CommodityDTO implements Serializable {
         this.name = name;
     }
 
-    public String getBrandid() {
-        return brandid;
+    public String getSuperior() {
+        return superior;
     }
 
-    public void setBrandid(String brandid) {
-        this.brandid = brandid;
+    public void setSuperior(String superior) {
+        this.superior = superior;
     }
 
-    public String getClassificationid() {
-        return classificationid;
+    public String getOrder() {
+        return order;
     }
 
-    public void setClassificationid(String classificationid) {
-        this.classificationid = classificationid;
-    }
-
-    public String getCommoditystate() {
-        return commoditystate;
-    }
-
-    public void setCommoditystate(String commoditystate) {
-        this.commoditystate = commoditystate;
-    }
-
-    public String getPostage() {
-        return postage;
-    }
-
-    public void setPostage(String postage) {
-        this.postage = postage;
-    }
-
-    public String getSalevalue() {
-        return salevalue;
-    }
-
-    public void setSalevalue(String salevalue) {
-        this.salevalue = salevalue;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setOrder(String order) {
+        this.order = order;
     }
 
     public String getCreator() {
@@ -167,11 +125,11 @@ public class CommodityDTO implements Serializable {
             return false;
         }
 
-        CommodityDTO commodityDTO = (CommodityDTO) o;
-        if (commodityDTO.getId() == null || getId() == null) {
+        ClassificationDTO classificationDTO = (ClassificationDTO) o;
+        if (classificationDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), commodityDTO.getId());
+        return Objects.equals(getId(), classificationDTO.getId());
     }
 
     @Override
@@ -181,15 +139,11 @@ public class CommodityDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CommodityDTO{" +
+        return "ClassificationDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", brandid='" + getBrandid() + "'" +
-            ", classificationid='" + getClassificationid() + "'" +
-            ", commoditystate='" + getCommoditystate() + "'" +
-            ", postage='" + getPostage() + "'" +
-            ", salevalue='" + getSalevalue() + "'" +
-            ", weight='" + getWeight() + "'" +
+            ", superior='" + getSuperior() + "'" +
+            ", order='" + getOrder() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

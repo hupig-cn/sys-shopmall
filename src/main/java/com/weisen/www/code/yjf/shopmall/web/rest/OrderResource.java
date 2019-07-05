@@ -1,21 +1,16 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
-
 import com.weisen.www.code.yjf.shopmall.service.OrderService;
 import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
+import com.weisen.www.code.yjf.shopmall.web.rest.util.HeaderUtil;
+import com.weisen.www.code.yjf.shopmall.web.rest.util.PaginationUtil;
 import com.weisen.www.code.yjf.shopmall.service.dto.OrderDTO;
-
-import io.github.jhipster.web.util.HeaderUtil;
-import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * REST controller for managing {@link com.weisen.www.code.yjf.shopmall.domain.Order}.
+ * REST controller for managing Order.
  */
 @RestController
 @RequestMapping("/api")
@@ -36,9 +31,6 @@ public class OrderResource {
 
     private static final String ENTITY_NAME = "shopmallOrder";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final OrderService orderService;
 
     public OrderResource(OrderService orderService) {
@@ -46,11 +38,11 @@ public class OrderResource {
     }
 
     /**
-     * {@code POST  /orders} : Create a new order.
+     * POST  /orders : Create a new order.
      *
-     * @param orderDTO the orderDTO to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new orderDTO, or with status {@code 400 (Bad Request)} if the order has already an ID.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @param orderDTO the orderDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new orderDTO, or with status 400 (Bad Request) if the order has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/orders")
     public ResponseEntity<OrderDTO> createOrder(@RequestBody OrderDTO orderDTO) throws URISyntaxException {
@@ -60,18 +52,18 @@ public class OrderResource {
         }
         OrderDTO result = orderService.save(orderDTO);
         return ResponseEntity.created(new URI("/api/orders/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code PUT  /orders} : Updates an existing order.
+     * PUT  /orders : Updates an existing order.
      *
-     * @param orderDTO the orderDTO to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated orderDTO,
-     * or with status {@code 400 (Bad Request)} if the orderDTO is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the orderDTO couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @param orderDTO the orderDTO to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated orderDTO,
+     * or with status 400 (Bad Request) if the orderDTO is not valid,
+     * or with status 500 (Internal Server Error) if the orderDTO couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/orders")
     public ResponseEntity<OrderDTO> updateOrder(@RequestBody OrderDTO orderDTO) throws URISyntaxException {
@@ -81,29 +73,29 @@ public class OrderResource {
         }
         OrderDTO result = orderService.save(orderDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, orderDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, orderDTO.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code GET  /orders} : get all the orders.
+     * GET  /orders : get all the orders.
      *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of orders in body.
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of orders in body
      */
     @GetMapping("/orders")
-    public ResponseEntity<List<OrderDTO>> getAllOrders(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<List<OrderDTO>> getAllOrders(Pageable pageable) {
         log.debug("REST request to get a page of Orders");
         Page<OrderDTO> page = orderService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/orders");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
-     * {@code GET  /orders/:id} : get the "id" order.
+     * GET  /orders/:id : get the "id" order.
      *
-     * @param id the id of the orderDTO to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the orderDTO, or with status {@code 404 (Not Found)}.
+     * @param id the id of the orderDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the orderDTO, or with status 404 (Not Found)
      */
     @GetMapping("/orders/{id}")
     public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
@@ -113,15 +105,15 @@ public class OrderResource {
     }
 
     /**
-     * {@code DELETE  /orders/:id} : delete the "id" order.
+     * DELETE  /orders/:id : delete the "id" order.
      *
-     * @param id the id of the orderDTO to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     * @param id the id of the orderDTO to delete
+     * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/orders/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         log.debug("REST request to delete Order : {}", id);
         orderService.delete(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

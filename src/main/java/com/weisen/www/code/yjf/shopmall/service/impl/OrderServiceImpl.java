@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * Service Implementation for managing {@link Order}.
+ * Service Implementation for managing Order.
  */
 @Service
 @Transactional
@@ -36,8 +36,8 @@ public class OrderServiceImpl implements OrderService {
     /**
      * Save a order.
      *
-     * @param orderDTO the entity to save.
-     * @return the persisted entity.
+     * @param orderDTO the entity to save
+     * @return the persisted entity
      */
     @Override
     public OrderDTO save(OrderDTO orderDTO) {
@@ -50,8 +50,8 @@ public class OrderServiceImpl implements OrderService {
     /**
      * Get all the orders.
      *
-     * @param pageable the pagination information.
-     * @return the list of entities.
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
@@ -65,8 +65,8 @@ public class OrderServiceImpl implements OrderService {
     /**
      * Get one order by id.
      *
-     * @param id the id of the entity.
-     * @return the entity.
+     * @param id the id of the entity
+     * @return the entity
      */
     @Override
     @Transactional(readOnly = true)
@@ -79,11 +79,10 @@ public class OrderServiceImpl implements OrderService {
     /**
      * Delete the order by id.
      *
-     * @param id the id of the entity.
+     * @param id the id of the entity
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Order : {}", id);
-        orderRepository.deleteById(id);
+        log.debug("Request to delete Order : {}", id);        orderRepository.deleteById(id);
     }
 }

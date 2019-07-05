@@ -6,7 +6,7 @@ import com.weisen.www.code.yjf.shopmall.service.dto.OrderDTO;
 import org.mapstruct.*;
 
 /**
- * Mapper for the entity {@link Order} and its DTO {@link OrderDTO}.
+ * Mapper for the entity Order and its DTO OrderDTO.
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface OrderMapper extends EntityMapper<OrderDTO, Order> {

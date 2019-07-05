@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * Service Implementation for managing {@link Commodity}.
+ * Service Implementation for managing Commodity.
  */
 @Service
 @Transactional
@@ -36,8 +36,8 @@ public class CommodityServiceImpl implements CommodityService {
     /**
      * Save a commodity.
      *
-     * @param commodityDTO the entity to save.
-     * @return the persisted entity.
+     * @param commodityDTO the entity to save
+     * @return the persisted entity
      */
     @Override
     public CommodityDTO save(CommodityDTO commodityDTO) {
@@ -50,8 +50,8 @@ public class CommodityServiceImpl implements CommodityService {
     /**
      * Get all the commodities.
      *
-     * @param pageable the pagination information.
-     * @return the list of entities.
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
@@ -65,8 +65,8 @@ public class CommodityServiceImpl implements CommodityService {
     /**
      * Get one commodity by id.
      *
-     * @param id the id of the entity.
-     * @return the entity.
+     * @param id the id of the entity
+     * @return the entity
      */
     @Override
     @Transactional(readOnly = true)
@@ -79,11 +79,10 @@ public class CommodityServiceImpl implements CommodityService {
     /**
      * Delete the commodity by id.
      *
-     * @param id the id of the entity.
+     * @param id the id of the entity
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Commodity : {}", id);
-        commodityRepository.deleteById(id);
+        log.debug("Request to delete Commodity : {}", id);        commodityRepository.deleteById(id);
     }
 }

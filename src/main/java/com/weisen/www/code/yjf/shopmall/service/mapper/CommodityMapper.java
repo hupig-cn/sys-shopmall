@@ -6,7 +6,7 @@ import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
 import org.mapstruct.*;
 
 /**
- * Mapper for the entity {@link Commodity} and its DTO {@link CommodityDTO}.
+ * Mapper for the entity Commodity and its DTO CommodityDTO.
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface CommodityMapper extends EntityMapper<CommodityDTO, Commodity> {

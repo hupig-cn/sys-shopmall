@@ -8,23 +8,23 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 /**
- * Service Interface for managing {@link com.weisen.www.code.yjf.shopmall.domain.Commodity}.
+ * Service Interface for managing Commodity.
  */
 public interface CommodityService {
 
     /**
      * Save a commodity.
      *
-     * @param commodityDTO the entity to save.
-     * @return the persisted entity.
+     * @param commodityDTO the entity to save
+     * @return the persisted entity
      */
     CommodityDTO save(CommodityDTO commodityDTO);
 
     /**
      * Get all the commodities.
      *
-     * @param pageable the pagination information.
-     * @return the list of entities.
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     Page<CommodityDTO> findAll(Pageable pageable);
 
@@ -32,15 +32,15 @@ public interface CommodityService {
     /**
      * Get the "id" commodity.
      *
-     * @param id the id of the entity.
-     * @return the entity.
+     * @param id the id of the entity
+     * @return the entity
      */
     Optional<CommodityDTO> findOne(Long id);
 
     /**
      * Delete the "id" commodity.
      *
-     * @param id the id of the entity.
+     * @param id the id of the entity
      */
     void delete(Long id);
 }
