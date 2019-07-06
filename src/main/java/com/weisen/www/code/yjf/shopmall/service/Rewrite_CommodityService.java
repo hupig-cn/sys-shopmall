@@ -8,7 +8,7 @@ import java.util.List;
 public interface Rewrite_CommodityService {
 
     //获取全部商品列表
-    List<CommodityDTO> getAllCommodity();
+    Result getAllCommodity();
 
     //添加商品
     void createCommodity(CommodityDTO commodityDTO);

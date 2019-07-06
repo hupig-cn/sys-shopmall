@@ -33,10 +33,10 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
 
     //获取全部商品列表
     @Override
-    public List<CommodityDTO> getAllCommodity() {
-//        rewrite_CommodityRepository.findAll();
+    public Result getAllCommodity() {
+        List<Commodity> list = rewrite_CommodityRepository.findAll();
         // 按需求来  如果单纯获取的话就太多了
-        return null;
+        return Result.suc("成功",commodityMapper.toDto(list));
     }
 
     //添加商品

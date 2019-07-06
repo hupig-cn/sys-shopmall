@@ -10,10 +10,10 @@ import java.util.List;
 public interface Rewrite_OrderService {
 
     //查询商城的当日订单量
-    int getTodayNum(Long userId);
+    int getTodayNum();
 
     //查询商城当月订单量
-    int getThisMonthNum(Long userId);
+    int getThisMonthNum();
 
     //查询商城的所订单
     List<Order> selectAllUserOrder(Long userId);

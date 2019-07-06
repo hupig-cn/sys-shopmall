@@ -37,9 +37,9 @@ public class Rewrite_OrderServiceImpl implements Rewrite_OrderService {
         this.orderMapper = orderMapper;
     }
 
-    //查询商户的当日订单量
+    //查询商城的当日订单量
     @Override
-    public int getTodayNum(Long userId) {
+    public int getTodayNum ( ) {
 //        List<Order> order = rewrite_OrderRepository.findAllByUserid(userId.toString());
         String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String startTime =  today + " 00:00:00";
@@ -51,9 +51,9 @@ public class Rewrite_OrderServiceImpl implements Rewrite_OrderService {
 
 
 
-    //查询用户当月订单量
+    //查询商城当月订单量
     @Override
-    public int getThisMonthNum(Long userId) {
+    public int getThisMonthNum( ) {
 //        List<Order> order = rewrite_OrderRepository.findAllByUserid(userId.toString());
         String today = new SimpleDateFormat("yyyy-MM").format(new Date());
         String startTime =  today + "-01 00:00:00";

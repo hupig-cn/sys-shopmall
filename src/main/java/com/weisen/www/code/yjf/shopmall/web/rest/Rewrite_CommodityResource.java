@@ -30,6 +30,15 @@ public class Rewrite_CommodityResource {
         this.rewrite_CommodityService = rewrite_CommodityService;
     }
 
+    @GetMapping ("/getAllCommodity")
+    @ApiOperation(value = "//获取全部商品列表")
+    @Timed
+    public ResponseEntity<Result> getAllCommodity() {
+        log.debug("REST request to save Commodity : {}");
+        Result result = rewrite_CommodityService.getAllCommodity();
+        return  ResponseEntity.ok(Result.suc("成功",result));
+    }
+
     @PostMapping("/createCommodity")
     @ApiOperation(value = "添加商品")
     @Timed
