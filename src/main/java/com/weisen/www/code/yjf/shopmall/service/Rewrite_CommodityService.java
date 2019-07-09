@@ -1,6 +1,7 @@
 package com.weisen.www.code.yjf.shopmall.service;
 
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public interface Rewrite_CommodityService {
 
     //获取全部商品列表
-    Result getAllCommodity();
+    Result getAllCommodity(Rewrite_ForNearShop rewrite_ForNearShop);
 
     //添加商品
     void createCommodity(CommodityDTO commodityDTO);
@@ -30,4 +31,7 @@ public interface Rewrite_CommodityService {
 
     // 查看商品详情
     Result findCommodityInfo(Long commodityId);
+
+    // 根据销量查询商品
+    Result findAllBySales();
 }

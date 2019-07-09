@@ -1,10 +1,15 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
 import com.weisen.www.code.yjf.shopmall.domain.Commodity;
+import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
+import com.weisen.www.code.yjf.shopmall.repository.Rewrite_SpecificationsRepository;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_CommodityService;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
+import com.weisen.www.code.yjf.shopmall.service.dto.showdto.Rewrite_ShowCom;
 import com.weisen.www.code.yjf.shopmall.service.mapper.CommodityMapper;
+import com.weisen.www.code.yjf.shopmall.service.mapper.SpecificationsMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
 import com.weisen.www.code.yjf.shopmall.service.util.UsuallyConstant;
@@ -13,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,17 +32,35 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
 
     private final CommodityMapper commodityMapper;
 
-    public Rewrite_CommodityServiceImpl(Rewrite_CommodityRepository rewrite_CommodityRepository, CommodityMapper commodityMapper) {
+    private final Rewrite_SpecificationsRepository rewrite_SpecificationsRepository;
+
+    private final SpecificationsMapper specificationsMapper;
+
+    public Rewrite_CommodityServiceImpl(Rewrite_CommodityRepository rewrite_CommodityRepository, CommodityMapper commodityMapper
+        ,Rewrite_SpecificationsRepository rewrite_SpecificationsRepository,SpecificationsMapper specificationsMapper) {
         this.rewrite_CommodityRepository = rewrite_CommodityRepository;
         this.commodityMapper = commodityMapper;
+        this.rewrite_SpecificationsRepository = rewrite_SpecificationsRepository;
+        this.specificationsMapper = specificationsMapper;
     }
 
     //获取全部商品列表
     @Override
-    public Result getAllCommodity() {
-        List<Commodity> list = rewrite_CommodityRepository.findAll();
-        // 按需求来  如果单纯获取的话就太多了
-        return Result.suc("成功",commodityMapper.toDto(list));
+    public Result getAllCommodity(Rewrite_ForNearShop rewrite_ForNearShop) {
+        // 校验参数
+        int fromIndex = rewrite_ForNearShop.getStartNum() * rewrite_ForNearShop.getPageSize();
+        List<Commodity> list = rewrite_CommodityRepository.getAllByName(rewrite_ForNearShop.getName(),fromIndex,rewrite_ForNearShop.getPageSize());
+        List<Rewrite_ShowCom> show = new ArrayList<>();
+
+        for (Commodity x:list) {
+            List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
+
+            Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
+            show.add(showcom);
+            showcom = null;
+        }
+
+        return Result.suc("成功",show);
     }
 
     //添加商品
@@ -127,6 +151,13 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
         }
         Commodity commodity = rewrite_CommodityRepository.findById(commodityId).get();
         return Result.suc("成功",commodityMapper.toDto(commodity));
+    }
+
+    // 根据销量查询商品
+    @Override
+    public Result findAllBySales() {
+
+        return null;
     }
 
 

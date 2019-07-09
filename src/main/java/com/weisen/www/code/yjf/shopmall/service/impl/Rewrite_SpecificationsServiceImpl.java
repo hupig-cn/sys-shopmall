@@ -1,5 +1,6 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import com.weisen.www.code.yjf.shopmall.domain.Commodity;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_SpecificationsRepository;
@@ -13,6 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.swing.text.html.Option;
+import java.util.List;
 
 @Service
 @Transactional
@@ -49,8 +53,14 @@ public class Rewrite_SpecificationsServiceImpl implements Rewrite_Specifications
     // 查询商品的订单规格
     @Override
     public Result findAllByCommodity(String commodityid) {
+        List<Specifications> list = rewrite_SpecificationsRepository.findAllByCommodityid(commodityid);
+        return Result.suc("成功",list);
+    }
 
-        return null;
+    @Override
+    public Result findById(Long specificationsId) {
+        Specifications specifications = rewrite_SpecificationsRepository.findById(specificationsId).get();
+        return Result.suc("成功",specifications);
     }
 
 }

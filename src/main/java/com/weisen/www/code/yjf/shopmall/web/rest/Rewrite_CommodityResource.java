@@ -2,6 +2,7 @@ package com.weisen.www.code.yjf.shopmall.web.rest;
 
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_CommodityService;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
@@ -30,13 +31,13 @@ public class Rewrite_CommodityResource {
         this.rewrite_CommodityService = rewrite_CommodityService;
     }
 
-    @GetMapping ("/getAllCommodity")
-    @ApiOperation(value = "//获取全部商品列表")
+    @PostMapping ("/getAllCommodity")
+    @ApiOperation(value = "根据商品名称获取全部商品列表")
     @Timed
-    public ResponseEntity<Result> getAllCommodity() {
+    public ResponseEntity<Result> getAllCommodity(@RequestBody Rewrite_ForNearShop rewrite_ForNearShop) {
         log.debug("REST request to save Commodity : {}");
-        Result result = rewrite_CommodityService.getAllCommodity();
-        return  ResponseEntity.ok(Result.suc("成功",result));
+        Result result = rewrite_CommodityService.getAllCommodity(rewrite_ForNearShop);
+        return  ResponseEntity.ok(result);
     }
 
     @PostMapping("/createCommodity")
@@ -102,7 +103,7 @@ public class Rewrite_CommodityResource {
     public ResponseEntity<Result> findCommodityInfo(@PathVariable Long commodityId) {
         log.debug("REST request to save Commodity : {}", commodityId);
         Result result = rewrite_CommodityService.findCommodityInfo(commodityId);
-        return  ResponseEntity.ok(Result.suc("成功",result));
+        return  ResponseEntity.ok(result);
     }
 
 }
