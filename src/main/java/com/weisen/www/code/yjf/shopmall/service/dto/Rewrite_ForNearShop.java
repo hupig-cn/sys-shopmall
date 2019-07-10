@@ -8,7 +8,7 @@ public class Rewrite_ForNearShop {
 
     private BigDecimal latitude;   // 纬度
 
-    private int startNum;  // 起始条目
+    private int pageNum;  // 起始条目
 
     private int pageSize;  // 一页数量
 
@@ -48,12 +48,12 @@ public class Rewrite_ForNearShop {
         this.latitude = latitude;
     }
 
-    public int getStartNum() {
-        return startNum;
+    public int getPageNum() {
+        return pageNum;
     }
 
-    public void setStartNum(int startNum) {
-        this.startNum = startNum;
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 
     public int getPageSize() {
