@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -36,7 +34,7 @@ public class Rewrite_CommodityResource {
     public ResponseEntity<Result> getAllCommodity() {
         log.debug("REST request to save Commodity : {}");
         Result result = rewrite_CommodityService.getAllCommodity();
-        return  ResponseEntity.ok(Result.suc("成功",result));
+        return  ResponseEntity.ok(result);
     }
 
     @PostMapping("/createCommodity")
