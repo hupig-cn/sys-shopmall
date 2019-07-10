@@ -25,4 +25,8 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
         ",modifiernum,logicdelete,other from commodity where name like '%?1%' limit?3,?4" , nativeQuery = true)
     List<Commodity> getAllByName(String name,int fromIndex,int pageSize);
 
+    // 根据时间查询商品
+    @Query(value = "select id,name,brandid,classificationid,commoditystate,postage,salevalue,weight,creator,createdate,modifier,modifierdate" +
+        ",modifiernum,logicdelete,other from commodity order by createdate desc limit?1,?2" , nativeQuery = true)
+    List<Commodity> getAllByTime(int fromIndex,int pageSize);
 }

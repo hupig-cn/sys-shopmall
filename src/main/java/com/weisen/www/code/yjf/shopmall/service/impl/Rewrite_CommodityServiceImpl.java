@@ -160,5 +160,14 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
         return null;
     }
 
+    // // 根据最新时间查询商品
+    @Override
+    public Result findAllByTime(Rewrite_ForNearShop rewrite_ForNearShop) {
+        int fromIndex = rewrite_ForNearShop.getStartNum() * rewrite_ForNearShop.getPageSize();
+        List<Commodity> com = rewrite_CommodityRepository.getAllByTime(fromIndex,rewrite_ForNearShop.getPageSize());
+
+        return Result.suc("成功",com);
+    }
+
 
 }

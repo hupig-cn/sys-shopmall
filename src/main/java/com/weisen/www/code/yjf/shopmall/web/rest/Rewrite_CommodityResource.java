@@ -35,9 +35,19 @@ public class Rewrite_CommodityResource {
     @ApiOperation(value = "根据商品名称获取全部商品列表")
     @Timed
     public ResponseEntity<Result> getAllCommodity(@RequestBody Rewrite_ForNearShop rewrite_ForNearShop) {
-        log.debug("REST request to save Commodity : {}");
+        log.debug("getAllCommodity : {}");
         Result result = rewrite_CommodityService.getAllCommodity(rewrite_ForNearShop);
         return  ResponseEntity.ok(result);
+    }
+
+    @PostMapping ("/findAllByTime")
+    @ApiOperation(value = "根据最新时间查询商品")
+    @Timed
+    public ResponseEntity<Result> findAllByTime(@RequestBody Rewrite_ForNearShop rewrite_ForNearShop) {
+        log.debug("findAllByTime : {}");
+        Result result = rewrite_CommodityService.findAllByTime(rewrite_ForNearShop);
+        return ResponseEntity.ok(result);
+
     }
 
     @PostMapping("/createCommodity")
