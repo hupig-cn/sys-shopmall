@@ -165,8 +165,16 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
     public Result findAllByTime(Rewrite_ForNearShop rewrite_ForNearShop) {
         int fromIndex = rewrite_ForNearShop.getStartNum() * rewrite_ForNearShop.getPageSize();
         List<Commodity> com = rewrite_CommodityRepository.getAllByTime(fromIndex,rewrite_ForNearShop.getPageSize());
+        List<Rewrite_ShowCom> show = new ArrayList<>();
 
-        return Result.suc("成功",com);
+        for (Commodity x:com) {
+            List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
+
+            Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
+            show.add(showcom);
+            showcom = null;
+        }
+        return Result.suc("成功",show);
     }
 
 
