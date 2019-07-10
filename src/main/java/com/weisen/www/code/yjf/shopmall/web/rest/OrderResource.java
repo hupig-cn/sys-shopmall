@@ -1,22 +1,19 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
+
 import com.weisen.www.code.yjf.shopmall.service.OrderService;
-import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
-import com.weisen.www.code.yjf.shopmall.web.rest.util.HeaderUtil;
-import com.weisen.www.code.yjf.shopmall.web.rest.util.PaginationUtil;
 import com.weisen.www.code.yjf.shopmall.service.dto.OrderDTO;
+import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
+import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +49,7 @@ public class OrderResource {
         }
         OrderDTO result = orderService.save(orderDTO);
         return ResponseEntity.created(new URI("/api/orders/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert("shopmall",true,ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
@@ -73,7 +70,7 @@ public class OrderResource {
         }
         OrderDTO result = orderService.save(orderDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, orderDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert("shopmall",true,ENTITY_NAME, orderDTO.getId().toString()))
             .body(result);
     }
 
@@ -87,8 +84,8 @@ public class OrderResource {
     public ResponseEntity<List<OrderDTO>> getAllOrders(Pageable pageable) {
         log.debug("REST request to get a page of Orders");
         Page<OrderDTO> page = orderService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/orders");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders("/api/orders", page);
+        return ResponseEntity.ok().body(page.getContent());
     }
 
     /**
@@ -114,6 +111,6 @@ public class OrderResource {
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         log.debug("REST request to delete Order : {}", id);
         orderService.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("shopmall",true,ENTITY_NAME, id.toString())).build();
     }
 }

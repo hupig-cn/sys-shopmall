@@ -1,26 +1,22 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
 
 import com.weisen.www.code.yjf.shopmall.ShopmallApp;
-
 import com.weisen.www.code.yjf.shopmall.config.SecurityBeanOverrideConfiguration;
-
 import com.weisen.www.code.yjf.shopmall.domain.Order;
 import com.weisen.www.code.yjf.shopmall.repository.OrderRepository;
 import com.weisen.www.code.yjf.shopmall.service.OrderService;
 import com.weisen.www.code.yjf.shopmall.service.dto.OrderDTO;
 import com.weisen.www.code.yjf.shopmall.service.mapper.OrderMapper;
 import com.weisen.www.code.yjf.shopmall.web.rest.errors.ExceptionTranslator;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +24,6 @@ import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-
 
 import static com.weisen.www.code.yjf.shopmall.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,7 +36,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @see OrderResource
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ShopmallApp.class})
 public class OrderResourceIntTest {
 
@@ -121,7 +115,7 @@ public class OrderResourceIntTest {
 
     private Order order;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         final OrderResource orderResource = new OrderResource(orderService);
@@ -160,7 +154,7 @@ public class OrderResourceIntTest {
         return order;
     }
 
-    @Before
+    @BeforeEach
     public void initTest() {
         order = createEntity(em);
     }
@@ -247,7 +241,7 @@ public class OrderResourceIntTest {
             .andExpect(jsonPath("$.[*].logicdelete").value(hasItem(DEFAULT_LOGICDELETE.booleanValue())))
             .andExpect(jsonPath("$.[*].other").value(hasItem(DEFAULT_OTHER.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getOrder() throws Exception {
