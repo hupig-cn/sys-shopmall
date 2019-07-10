@@ -2,6 +2,7 @@ package com.weisen.www.code.yjf.shopmall.web.rest;
 
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_CommodityService;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
@@ -11,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -28,13 +31,23 @@ public class Rewrite_CommodityResource {
         this.rewrite_CommodityService = rewrite_CommodityService;
     }
 
-    @GetMapping ("/getAllCommodity")
-    @ApiOperation(value = "//获取全部商品列表")
+    @PostMapping ("/getAllCommodity")
+    @ApiOperation(value = "根据商品名称获取全部商品列表")
     @Timed
-    public ResponseEntity<Result> getAllCommodity() {
-        log.debug("REST request to save Commodity : {}");
-        Result result = rewrite_CommodityService.getAllCommodity();
+    public ResponseEntity<Result> getAllCommodity(@RequestBody Rewrite_ForNearShop rewrite_ForNearShop) {
+        log.debug("getAllCommodity : {}");
+        Result result = rewrite_CommodityService.getAllCommodity(rewrite_ForNearShop);
         return  ResponseEntity.ok(result);
+    }
+
+    @PostMapping ("/findAllByTime")
+    @ApiOperation(value = "根据最新时间查询商品")
+    @Timed
+    public ResponseEntity<Result> findAllByTime(@RequestBody Rewrite_ForNearShop rewrite_ForNearShop) {
+        log.debug("findAllByTime : {}");
+        Result result = rewrite_CommodityService.findAllByTime(rewrite_ForNearShop);
+        return ResponseEntity.ok(result);
+
     }
 
     @PostMapping("/createCommodity")
@@ -100,7 +113,7 @@ public class Rewrite_CommodityResource {
     public ResponseEntity<Result> findCommodityInfo(@PathVariable Long commodityId) {
         log.debug("REST request to save Commodity : {}", commodityId);
         Result result = rewrite_CommodityService.findCommodityInfo(commodityId);
-        return  ResponseEntity.ok(Result.suc("成功",result));
+        return  ResponseEntity.ok(result);
     }
 
 }

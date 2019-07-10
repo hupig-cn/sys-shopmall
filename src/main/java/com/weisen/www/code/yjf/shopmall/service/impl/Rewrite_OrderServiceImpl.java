@@ -4,6 +4,7 @@ import com.weisen.www.code.yjf.shopmall.domain.Order;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_OrderRepository;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_OrderService;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_AnOrder;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_OrderSpec;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_PriceDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
 import com.weisen.www.code.yjf.shopmall.service.mapper.OrderMapper;
@@ -17,7 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 订单Impl
@@ -92,28 +95,28 @@ public class Rewrite_OrderServiceImpl implements Rewrite_OrderService {
     public Result createMallOrder(Rewrite_AnOrder rewrite_AnOrder) {
         //校验参数
 
-        if(rewrite_AnOrder.getSpecifications()== null){
+        if(rewrite_AnOrder.getOrderSpec() == null){
 
         }
-        List<SpecificationsDTO> specificationsDTO = rewrite_AnOrder.getSpecifications();
+        List<Rewrite_OrderSpec> orderSpec = rewrite_AnOrder.getOrderSpec();
 
-        for (SpecificationsDTO list : specificationsDTO) {
-
-            Order order = new Order();
-            order.setBigorder(rewrite_AnOrder.getUserId());
-//            order.setCommodityid(rewrite_AnOrder.getCommodityid()); // 商品id
-            order.setCreatedate(TimeUtil.getDate());
-            order.setCreator("");
-            order.setOrdernum(OrderConstant.getOrderCode(rewrite_AnOrder.getUserId()));
-            order.setNum(rewrite_AnOrder.getNum());
-            order.setState(OrderConstant.UN_PAID);
-            order.setUserid(rewrite_AnOrder.getUserId());
-            order.setSpecificationsid(list.getId().toString());  // 规格id
-            order.setPaymethod(rewrite_AnOrder.getPayWay());
-            order.setPayresult(OrderConstant.UN_PAID);
-            order.setLogicdelete(false);
-            order.setOther("");
-
+        for (Rewrite_OrderSpec list : orderSpec) {
+            for (SpecificationsDTO x:list.getSpec()) {
+                Order order = new Order();
+                order.setBigorder(rewrite_AnOrder.getUserId());
+                order.setCommodityid(x.getCommodityid()); // 商品id
+                order.setCreatedate(TimeUtil.getDate());
+                order.setCreator("");
+                order.setOrdernum(OrderConstant.getOrderCode(rewrite_AnOrder.getUserId()));
+                order.setNum(list.getNum());
+                order.setState(OrderConstant.UN_PAID);
+                order.setUserid(rewrite_AnOrder.getUserId());
+                order.setSpecificationsid(x.getId().toString());  // 规格id
+                order.setPaymethod(rewrite_AnOrder.getPayWay());
+                order.setPayresult(OrderConstant.UN_PAID);
+                order.setLogicdelete(false);
+                order.setOther("");
+            }
         }
 
         return Result.suc("成功");

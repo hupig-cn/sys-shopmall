@@ -15,9 +15,17 @@ public class Rewrite_AnOrder {
 
     private String commodityid; // 商品id
 
-    private List<SpecificationsDTO> specifications; // 规格id
+    private List<Rewrite_OrderSpec> orderSpec;  // 产品跟数量
 
     private String num;
+
+    public List<Rewrite_OrderSpec> getOrderSpec() {
+        return orderSpec;
+    }
+
+    public void setOrderSpec(List<Rewrite_OrderSpec> orderSpec) {
+        this.orderSpec = orderSpec;
+    }
 
     public String getNum() {
         return num;
@@ -33,14 +41,6 @@ public class Rewrite_AnOrder {
 
     public void setCommodityid(String commodityid) {
         this.commodityid = commodityid;
-    }
-
-    public List<SpecificationsDTO> getSpecifications() {
-        return specifications;
-    }
-
-    public void setSpecifications(List<SpecificationsDTO> specifications) {
-        this.specifications = specifications;
     }
 
     public String getBigOrder() {
