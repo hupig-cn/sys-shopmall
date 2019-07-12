@@ -11,9 +11,8 @@ import com.weisen.www.code.yjf.shopmall.service.dto.ProdcutimageDTO;
 import com.weisen.www.code.yjf.shopmall.service.mapper.ProdcutimageMapper;
 import com.weisen.www.code.yjf.shopmall.web.rest.errors.ExceptionTranslator;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,7 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @see ProdcutimageResource
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ShopmallApp.class})
 public class ProdcutimageResourceIntTest {
 
@@ -106,7 +104,7 @@ public class ProdcutimageResourceIntTest {
 
     private Prodcutimage prodcutimage;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         final ProdcutimageResource prodcutimageResource = new ProdcutimageResource(prodcutimageService);
@@ -140,7 +138,7 @@ public class ProdcutimageResourceIntTest {
         return prodcutimage;
     }
 
-    @Before
+    @BeforeEach
     public void initTest() {
         prodcutimage = createEntity(em);
     }
