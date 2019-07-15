@@ -26,6 +26,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "titleimage",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "creator",
             "fieldType": "String"
         },

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Specifications implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,6 +40,9 @@ public class Specifications implements Serializable {
 
     @Column(name = "discount")
     private String discount;
+
+    @Column(name = "titleimage")
+    private String titleimage;
 
     @Column(name = "creator")
     private String creator;
@@ -149,6 +152,19 @@ public class Specifications implements Serializable {
         this.discount = discount;
     }
 
+    public String getTitleimage() {
+        return titleimage;
+    }
+
+    public Specifications titleimage(String titleimage) {
+        this.titleimage = titleimage;
+        return this;
+    }
+
+    public void setTitleimage(String titleimage) {
+        this.titleimage = titleimage;
+    }
+
     public String getCreator() {
         return creator;
     }
@@ -246,15 +262,19 @@ public class Specifications implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Specifications)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Specifications) o).id);
+        Specifications specifications = (Specifications) o;
+        if (specifications.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), specifications.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
@@ -267,6 +287,7 @@ public class Specifications implements Serializable {
             ", num='" + getNum() + "'" +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +
+            ", titleimage='" + getTitleimage() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

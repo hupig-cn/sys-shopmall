@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A DTO for the {@link com.weisen.www.code.yjf.shopmall.domain.Specifications} entity.
+ * A DTO for the Specifications entity.
  */
 public class SpecificationsDTO implements Serializable {
 
@@ -20,6 +20,8 @@ public class SpecificationsDTO implements Serializable {
     private String price;
 
     private String discount;
+
+    private String titleimage;
 
     private String creator;
 
@@ -90,6 +92,14 @@ public class SpecificationsDTO implements Serializable {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public String getTitleimage() {
+        return titleimage;
+    }
+
+    public void setTitleimage(String titleimage) {
+        this.titleimage = titleimage;
     }
 
     public String getCreator() {
@@ -179,6 +189,7 @@ public class SpecificationsDTO implements Serializable {
             ", num='" + getNum() + "'" +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +
+            ", titleimage='" + getTitleimage() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

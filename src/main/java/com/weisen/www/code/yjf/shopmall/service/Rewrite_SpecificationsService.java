@@ -14,4 +14,7 @@ public interface Rewrite_SpecificationsService {
     //查询规格的详细信息
     Result findById(Long specificationsId);
 
+    Result getProductDetail(Long id);
+    //获取支付价格
+    Result getAmout(Long id, Integer number);
 }

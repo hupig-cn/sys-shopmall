@@ -6,7 +6,7 @@ import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
 import org.mapstruct.*;
 
 /**
- * Mapper for the entity {@link Specifications} and its DTO {@link SpecificationsDTO}.
+ * Mapper for the entity Specifications and its DTO SpecificationsDTO.
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface SpecificationsMapper extends EntityMapper<SpecificationsDTO, Specifications> {
