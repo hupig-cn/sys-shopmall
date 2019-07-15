@@ -44,6 +44,23 @@ entity Specifications {// 商品规格表
     other String// 备注
 }
 
+//商品图片
+entity Prodcutimage{
+    specificationsid String,//商品规格id
+    url String,//商品图片
+    other String,//排序
+    type String,//图片类型
+    state Boolean,//图片启用情况
+    creator String,// 创建者
+    createdate String,// 创建日期
+    modifier String,// 修改者
+    modifierdate String,// 修改日期
+    modifiernum Long,// 修改次数
+    logicdelete Boolean,// 删除
+    state String, // 状态
+    other String// 备注
+}
+
 entity Introduce {// 商品介绍表
     commodityid String,// 商品id
     introducetype String,// 介绍类型

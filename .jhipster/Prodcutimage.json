@@ -1,0 +1,60 @@
+{
+    "name": "Prodcutimage",
+    "fields": [
+        {
+            "fieldName": "specificationsid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "other",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creator",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifierdate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "modifiernum",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "logicdelete",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190711084601",
+    "entityTableName": "prodcutimage",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}

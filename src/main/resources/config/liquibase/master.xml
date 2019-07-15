@@ -18,6 +18,7 @@
     <include file="config/liquibase/changelog/20190609231513_added_entity_Shopping.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190609231514_added_entity_Order.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190703112115_added_entity_Brand.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190711084601_added_entity_Prodcutimage.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
