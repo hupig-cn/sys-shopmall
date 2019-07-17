@@ -15,13 +15,11 @@ public class SpecificationsDTO implements Serializable {
 
     private String specifications;
 
-    private String num;
+    private Integer num;
 
     private String price;
 
     private String discount;
-
-    private String titleimage;
 
     private String creator;
 
@@ -70,11 +68,11 @@ public class SpecificationsDTO implements Serializable {
         this.specifications = specifications;
     }
 
-    public String getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(String num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
@@ -92,14 +90,6 @@ public class SpecificationsDTO implements Serializable {
 
     public void setDiscount(String discount) {
         this.discount = discount;
-    }
-
-    public String getTitleimage() {
-        return titleimage;
-    }
-
-    public void setTitleimage(String titleimage) {
-        this.titleimage = titleimage;
     }
 
     public String getCreator() {
@@ -186,10 +176,9 @@ public class SpecificationsDTO implements Serializable {
             ", commodityid='" + getCommodityid() + "'" +
             ", model='" + getModel() + "'" +
             ", specifications='" + getSpecifications() + "'" +
-            ", num='" + getNum() + "'" +
+            ", num=" + getNum() +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +
-            ", titleimage='" + getTitleimage() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

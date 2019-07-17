@@ -34,7 +34,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="num" type="varchar(255)">
+            <column name="num" type="integer">
                 <constraints nullable="true" />
             </column>
 
@@ -43,10 +43,6 @@
             </column>
 
             <column name="discount" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="titleimage" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

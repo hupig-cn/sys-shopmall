@@ -15,7 +15,7 @@
         },
         {
             "fieldName": "num",
-            "fieldType": "String"
+            "fieldType": "Integer"
         },
         {
             "fieldName": "price",
@@ -23,10 +23,6 @@
         },
         {
             "fieldName": "discount",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "titleimage",
             "fieldType": "String"
         },
         {

@@ -3,7 +3,7 @@
     "fields": [
         {
             "fieldName": "userid",
-            "fieldType": "String"
+            "fieldType": "Long"
         },
         {
             "fieldName": "commodityid",
@@ -15,7 +15,7 @@
         },
         {
             "fieldName": "num",
-            "fieldType": "String"
+            "fieldType": "Integer"
         },
         {
             "fieldName": "creator",

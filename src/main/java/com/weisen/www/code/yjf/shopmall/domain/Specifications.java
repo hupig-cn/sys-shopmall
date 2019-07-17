@@ -33,16 +33,13 @@ public class Specifications implements Serializable {
     private String specifications;
 
     @Column(name = "num")
-    private String num;
+    private Integer num;
 
     @Column(name = "price")
     private String price;
 
     @Column(name = "discount")
     private String discount;
-
-    @Column(name = "titleimage")
-    private String titleimage;
 
     @Column(name = "creator")
     private String creator;
@@ -113,16 +110,16 @@ public class Specifications implements Serializable {
         this.specifications = specifications;
     }
 
-    public String getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public Specifications num(String num) {
+    public Specifications num(Integer num) {
         this.num = num;
         return this;
     }
 
-    public void setNum(String num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
@@ -150,19 +147,6 @@ public class Specifications implements Serializable {
 
     public void setDiscount(String discount) {
         this.discount = discount;
-    }
-
-    public String getTitleimage() {
-        return titleimage;
-    }
-
-    public Specifications titleimage(String titleimage) {
-        this.titleimage = titleimage;
-        return this;
-    }
-
-    public void setTitleimage(String titleimage) {
-        this.titleimage = titleimage;
     }
 
     public String getCreator() {
@@ -284,10 +268,9 @@ public class Specifications implements Serializable {
             ", commodityid='" + getCommodityid() + "'" +
             ", model='" + getModel() + "'" +
             ", specifications='" + getSpecifications() + "'" +
-            ", num='" + getNum() + "'" +
+            ", num=" + getNum() +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +
-            ", titleimage='" + getTitleimage() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

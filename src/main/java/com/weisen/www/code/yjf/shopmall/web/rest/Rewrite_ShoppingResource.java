@@ -1,8 +1,7 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
 
-import com.weisen.www.code.yjf.shopmall.service.Rewrite_OrderService;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_ShoppingService;
-import com.weisen.www.code.yjf.shopmall.service.dto.ShoppingDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_SubShopCartDTO;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
@@ -28,16 +27,16 @@ public class Rewrite_ShoppingResource {
     @PostMapping("/createUserShopping")
     @ApiOperation(value = "商品加入购物车")
     @Timed
-    public ResponseEntity<Result> createUserShopping(@RequestBody ShoppingDTO shoppingDTO) {
+    public ResponseEntity<Result> createUserShopping(@RequestBody Rewrite_SubShopCartDTO subShopCartDTO) {
         log.debug("createUserShopping : {}");
-        Result result = rewrite_ShoppingService.createUserShopping(shoppingDTO);
+        Result result = rewrite_ShoppingService.createUserShopping(subShopCartDTO);
         return  ResponseEntity.ok(result);
     }
 
     @GetMapping("/getAllShoppingByUser/{userid}")
     @ApiOperation(value = "获取购物车列表")
     @Timed
-    public ResponseEntity<Result> getAllShoppingByUser(@PathVariable String userid) {
+    public ResponseEntity<Result> getAllShoppingByUser(@PathVariable Long userid) {
         log.debug("getAllShoppingByUser : {}");
         Result result = rewrite_ShoppingService.getAllShoppingByUser(userid);
         return  ResponseEntity.ok(result);

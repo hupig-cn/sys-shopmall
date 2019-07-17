@@ -32,7 +32,7 @@ entity Specifications {// 商品规格表
     commodityid String,// 商品id
     model String,// 型号
     specifications String,// 规格
-    num String,// 数量
+    num Integer,// 数量
     price String,// 价格
     discount String,// 优惠价
     creator String,// 创建者
@@ -76,10 +76,10 @@ entity Introduce {// 商品介绍表
 }
 
 entity Shopping {// 购物车表
-    userid String,// 用户id
+    userid Long,// 用户id
     commodityid String,// 商品id
     specificationsid String,// 规格id
-    num String,// 购买数量
+    num Integer,// 购买数量
     creator String,// 创建者
     createdate String,// 创建日期
     modifier String,// 修改者
