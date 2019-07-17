@@ -37,8 +37,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ShopmallApp.class})
 public class ShoppingResourceIT {
 
-    private static final String DEFAULT_USERID = "AAAAAAAAAA";
-    private static final String UPDATED_USERID = "BBBBBBBBBB";
+    private static final Long DEFAULT_USERID = 1L;
+    private static final Long UPDATED_USERID = 2L;
 
     private static final String DEFAULT_COMMODITYID = "AAAAAAAAAA";
     private static final String UPDATED_COMMODITYID = "BBBBBBBBBB";
@@ -46,8 +46,8 @@ public class ShoppingResourceIT {
     private static final String DEFAULT_SPECIFICATIONSID = "AAAAAAAAAA";
     private static final String UPDATED_SPECIFICATIONSID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NUM = "AAAAAAAAAA";
-    private static final String UPDATED_NUM = "BBBBBBBBBB";
+    private static final Integer DEFAULT_NUM = 1;
+    private static final Integer UPDATED_NUM = 2;
 
     private static final String DEFAULT_CREATOR = "AAAAAAAAAA";
     private static final String UPDATED_CREATOR = "BBBBBBBBBB";
