@@ -3,19 +3,19 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A DTO for the {@link com.weisen.www.code.yjf.shopmall.domain.Shopping} entity.
+ * A DTO for the Shopping entity.
  */
 public class ShoppingDTO implements Serializable {
 
     private Long id;
 
-    private String userid;
+    private Long userid;
 
     private String commodityid;
 
     private String specificationsid;
 
-    private String num;
+    private Integer num;
 
     private String creator;
 
@@ -40,11 +40,11 @@ public class ShoppingDTO implements Serializable {
         this.id = id;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 
@@ -64,11 +64,11 @@ public class ShoppingDTO implements Serializable {
         this.specificationsid = specificationsid;
     }
 
-    public String getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(String num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
@@ -153,10 +153,10 @@ public class ShoppingDTO implements Serializable {
     public String toString() {
         return "ShoppingDTO{" +
             "id=" + getId() +
-            ", userid='" + getUserid() + "'" +
+            ", userid=" + getUserid() +
             ", commodityid='" + getCommodityid() + "'" +
             ", specificationsid='" + getSpecificationsid() + "'" +
-            ", num='" + getNum() + "'" +
+            ", num=" + getNum() +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

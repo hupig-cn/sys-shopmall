@@ -1,21 +1,16 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
-
 import com.weisen.www.code.yjf.shopmall.service.ShoppingService;
 import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
+import com.weisen.www.code.yjf.shopmall.web.rest.util.HeaderUtil;
+import com.weisen.www.code.yjf.shopmall.web.rest.util.PaginationUtil;
 import com.weisen.www.code.yjf.shopmall.service.dto.ShoppingDTO;
-
-import io.github.jhipster.web.util.HeaderUtil;
-import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * REST controller for managing {@link com.weisen.www.code.yjf.shopmall.domain.Shopping}.
+ * REST controller for managing Shopping.
  */
 @RestController
 @RequestMapping("/api")
@@ -36,9 +31,6 @@ public class ShoppingResource {
 
     private static final String ENTITY_NAME = "shopmallShopping";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final ShoppingService shoppingService;
 
     public ShoppingResource(ShoppingService shoppingService) {
@@ -46,11 +38,11 @@ public class ShoppingResource {
     }
 
     /**
-     * {@code POST  /shoppings} : Create a new shopping.
+     * POST  /shoppings : Create a new shopping.
      *
-     * @param shoppingDTO the shoppingDTO to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new shoppingDTO, or with status {@code 400 (Bad Request)} if the shopping has already an ID.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @param shoppingDTO the shoppingDTO to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new shoppingDTO, or with status 400 (Bad Request) if the shopping has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/shoppings")
     public ResponseEntity<ShoppingDTO> createShopping(@RequestBody ShoppingDTO shoppingDTO) throws URISyntaxException {
@@ -60,18 +52,18 @@ public class ShoppingResource {
         }
         ShoppingDTO result = shoppingService.save(shoppingDTO);
         return ResponseEntity.created(new URI("/api/shoppings/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code PUT  /shoppings} : Updates an existing shopping.
+     * PUT  /shoppings : Updates an existing shopping.
      *
-     * @param shoppingDTO the shoppingDTO to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated shoppingDTO,
-     * or with status {@code 400 (Bad Request)} if the shoppingDTO is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the shoppingDTO couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     * @param shoppingDTO the shoppingDTO to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated shoppingDTO,
+     * or with status 400 (Bad Request) if the shoppingDTO is not valid,
+     * or with status 500 (Internal Server Error) if the shoppingDTO couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/shoppings")
     public ResponseEntity<ShoppingDTO> updateShopping(@RequestBody ShoppingDTO shoppingDTO) throws URISyntaxException {
@@ -81,29 +73,29 @@ public class ShoppingResource {
         }
         ShoppingDTO result = shoppingService.save(shoppingDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, shoppingDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, shoppingDTO.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code GET  /shoppings} : get all the shoppings.
+     * GET  /shoppings : get all the shoppings.
      *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of shoppings in body.
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of shoppings in body
      */
     @GetMapping("/shoppings")
-    public ResponseEntity<List<ShoppingDTO>> getAllShoppings(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<List<ShoppingDTO>> getAllShoppings(Pageable pageable) {
         log.debug("REST request to get a page of Shoppings");
         Page<ShoppingDTO> page = shoppingService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/shoppings");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
-     * {@code GET  /shoppings/:id} : get the "id" shopping.
+     * GET  /shoppings/:id : get the "id" shopping.
      *
-     * @param id the id of the shoppingDTO to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the shoppingDTO, or with status {@code 404 (Not Found)}.
+     * @param id the id of the shoppingDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the shoppingDTO, or with status 404 (Not Found)
      */
     @GetMapping("/shoppings/{id}")
     public ResponseEntity<ShoppingDTO> getShopping(@PathVariable Long id) {
@@ -113,15 +105,15 @@ public class ShoppingResource {
     }
 
     /**
-     * {@code DELETE  /shoppings/:id} : delete the "id" shopping.
+     * DELETE  /shoppings/:id : delete the "id" shopping.
      *
-     * @param id the id of the shoppingDTO to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     * @param id the id of the shoppingDTO to delete
+     * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/shoppings/{id}")
     public ResponseEntity<Void> deleteShopping(@PathVariable Long id) {
         log.debug("REST request to delete Shopping : {}", id);
         shoppingService.delete(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

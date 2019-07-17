@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Specifications implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +33,7 @@ public class Specifications implements Serializable {
     private String specifications;
 
     @Column(name = "num")
-    private String num;
+    private Integer num;
 
     @Column(name = "price")
     private String price;
@@ -110,16 +110,16 @@ public class Specifications implements Serializable {
         this.specifications = specifications;
     }
 
-    public String getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public Specifications num(String num) {
+    public Specifications num(Integer num) {
         this.num = num;
         return this;
     }
 
-    public void setNum(String num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
@@ -246,15 +246,19 @@ public class Specifications implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Specifications)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Specifications) o).id);
+        Specifications specifications = (Specifications) o;
+        if (specifications.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), specifications.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
@@ -264,7 +268,7 @@ public class Specifications implements Serializable {
             ", commodityid='" + getCommodityid() + "'" +
             ", model='" + getModel() + "'" +
             ", specifications='" + getSpecifications() + "'" +
-            ", num='" + getNum() + "'" +
+            ", num=" + getNum() +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +
             ", creator='" + getCreator() + "'" +

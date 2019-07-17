@@ -6,7 +6,7 @@ import com.weisen.www.code.yjf.shopmall.service.dto.ShoppingDTO;
 import org.mapstruct.*;
 
 /**
- * Mapper for the entity {@link Shopping} and its DTO {@link ShoppingDTO}.
+ * Mapper for the entity Shopping and its DTO ShoppingDTO.
  */
 @Mapper(componentModel = "spring", uses = {})
 public interface ShoppingMapper extends EntityMapper<ShoppingDTO, Shopping> {

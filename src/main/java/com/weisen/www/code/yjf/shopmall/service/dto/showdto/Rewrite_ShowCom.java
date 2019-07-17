@@ -1,7 +1,6 @@
 package com.weisen.www.code.yjf.shopmall.service.dto.showdto;
 
 import com.weisen.www.code.yjf.shopmall.domain.Commodity;
-import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
 
@@ -40,6 +39,10 @@ public class Rewrite_ShowCom {
 
     private String other;
 
+    private String price;
+
+    private Long specificationsId;
+
     private List<SpecificationsDTO> specificationsDTO;
 
     public  Rewrite_ShowCom(Commodity com,List<SpecificationsDTO> list){
@@ -59,6 +62,24 @@ public class Rewrite_ShowCom {
         this.logicdelete = com.isLogicdelete();
         this.other = com.getOther();
         this.specificationsDTO = list;
+        this.price = list.get(0).getPrice();
+        this.specificationsId = list.get(0).getId();
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public Long getSpecificationsId() {
+        return specificationsId;
+    }
+
+    public void setSpecificationsId(Long specificationsId) {
+        this.specificationsId = specificationsId;
     }
 
     public List<SpecificationsDTO> getSpecificationsDTO() {

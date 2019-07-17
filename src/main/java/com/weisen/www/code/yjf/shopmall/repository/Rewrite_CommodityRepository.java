@@ -1,6 +1,7 @@
 package com.weisen.www.code.yjf.shopmall.repository;
 
 import com.weisen.www.code.yjf.shopmall.domain.Commodity;
+import com.weisen.www.code.yjf.shopmall.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -29,4 +30,21 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
     @Query(value = "select id,name,brandid,classificationid,commoditystate,postage,salevalue,weight,creator,createdate,modifier,modifierdate" +
         ",modifiernum,logicdelete,other from commodity order by createdate desc limit?1,?2" , nativeQuery = true)
     List<Commodity> getAllByTime(int fromIndex,int pageSize);
+
+
+    @Query(value = "SELECT c.id as commodityid,s.id as id,s.model as model,s.specifications as specifications ,s.price as price,c.salevalue as salevalue, i.content as content,s.discount as discount from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid where s.id = ?1 and c.commoditystate = 1 ORDER BY i.other , c.createdate DESC", nativeQuery = true)
+    Product findAllProductById(Long id);
+
+    @Query(value = "SELECT c.id as commodityid,s.id as id,s.model as model,s.specifications as specifications ,s.price as price,c.salevalue as salevalue, i.content as content,s.discount as discount from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid where i.content like CONCAT('%',?1,'%') and c.commoditystate = 1 ORDER BY i.other , c.createdate DESC LIMIT ?2,?3", nativeQuery = true)
+    List<Product> findAllProductByName(String keyWord, Integer pageNum, Integer pageSize);
+
+    @Query(value = "SELECT c.id as commodityid,s.id as id,s.model as model,s.specifications as specifications ,s.price as price,c.salevalue as salevalue, i.content as content,s.discount as discount from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid wherec.commoditystate = 1 ORDER BY i.other , c.createdate DESC LIMIT ?1,?2", nativeQuery = true)
+    List<Product> findAllProduct(int pageNum, Integer pageSize);
+
+    @Query(value = "SELECT count(*) from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid where i.content like CONCAT('%',?1,'%') and c.commoditystate = 1 ", nativeQuery = true)
+    Integer findAllProductByNameCount(String name);
+
+    @Query(value = "SELECT count(*) from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid where  and c.commoditystate = 1 ", nativeQuery = true)
+    Integer findAllProductCount();
+
 }

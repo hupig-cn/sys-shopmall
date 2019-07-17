@@ -18,13 +18,13 @@ import java.util.Objects;
 public class Shopping implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")
-    private String userid;
+    private Long userid;
 
     @Column(name = "commodityid")
     private String commodityid;
@@ -33,7 +33,7 @@ public class Shopping implements Serializable {
     private String specificationsid;
 
     @Column(name = "num")
-    private String num;
+    private Integer num;
 
     @Column(name = "creator")
     private String creator;
@@ -65,16 +65,16 @@ public class Shopping implements Serializable {
         this.id = id;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public Shopping userid(String userid) {
+    public Shopping userid(Long userid) {
         this.userid = userid;
         return this;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 
@@ -104,16 +104,16 @@ public class Shopping implements Serializable {
         this.specificationsid = specificationsid;
     }
 
-    public String getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public Shopping num(String num) {
+    public Shopping num(Integer num) {
         this.num = num;
         return this;
     }
 
-    public void setNum(String num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
@@ -214,25 +214,29 @@ public class Shopping implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Shopping)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Shopping) o).id);
+        Shopping shopping = (Shopping) o;
+        if (shopping.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), shopping.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
     public String toString() {
         return "Shopping{" +
             "id=" + getId() +
-            ", userid='" + getUserid() + "'" +
+            ", userid=" + getUserid() +
             ", commodityid='" + getCommodityid() + "'" +
             ", specificationsid='" + getSpecificationsid() + "'" +
-            ", num='" + getNum() + "'" +
+            ", num=" + getNum() +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +

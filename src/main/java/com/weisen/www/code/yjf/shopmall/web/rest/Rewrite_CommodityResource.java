@@ -1,20 +1,22 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
 
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_CommodityService;
+import com.weisen.www.code.yjf.shopmall.service.Rewrite_SpecificationsService;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
+import io.github.jhipster.web.util.ResponseUtil;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.checkerframework.checker.units.qual.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/weisen/commodity")
@@ -27,8 +29,11 @@ public class Rewrite_CommodityResource {
 
     private final Rewrite_CommodityService rewrite_CommodityService;
 
-    public Rewrite_CommodityResource(Rewrite_CommodityService rewrite_CommodityService) {
+    private final Rewrite_SpecificationsService rewrite_specificationsService;
+
+    public Rewrite_CommodityResource(Rewrite_CommodityService rewrite_CommodityService,Rewrite_SpecificationsService rewrite_specificationsService) {
         this.rewrite_CommodityService = rewrite_CommodityService;
+        this.rewrite_specificationsService = rewrite_specificationsService;
     }
 
     @PostMapping ("/getAllCommodity")
@@ -107,7 +112,7 @@ public class Rewrite_CommodityResource {
         return  ResponseEntity.ok(Result.suc("成功"));
     }
 
-    @GetMapping ("/deleteListCommodity/{commodityId}")
+    @GetMapping ("/findCommodityInfo/{commodityId}")
     @ApiOperation(value = "查看商品详情")
     @Timed
     public ResponseEntity<Result> findCommodityInfo(@PathVariable Long commodityId) {
@@ -115,5 +120,21 @@ public class Rewrite_CommodityResource {
         Result result = rewrite_CommodityService.findCommodityInfo(commodityId);
         return  ResponseEntity.ok(result);
     }
-
+    //商品详情接口
+    @GetMapping("/get-productDetail/{id}")
+    @ApiOperation(value = "获取商品详情")
+    @Time
+    public ResponseEntity<?> getProductDetail(@PathVariable Long id){
+        Result result = rewrite_specificationsService.getProductDetail(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
+    //商品图片接口
+    //算价接口
+    @PostMapping("/get-amount")
+    @ApiOperation(value = "获取支付价格")
+    @Time
+    public ResponseEntity<?> getAmount(@RequestBody Integer number,@RequestBody Long id){
+        Result result = rewrite_specificationsService.getAmout(id, number);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
 }

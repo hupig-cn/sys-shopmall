@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * Service Implementation for managing {@link Specifications}.
+ * Service Implementation for managing Specifications.
  */
 @Service
 @Transactional
@@ -36,8 +36,8 @@ public class SpecificationsServiceImpl implements SpecificationsService {
     /**
      * Save a specifications.
      *
-     * @param specificationsDTO the entity to save.
-     * @return the persisted entity.
+     * @param specificationsDTO the entity to save
+     * @return the persisted entity
      */
     @Override
     public SpecificationsDTO save(SpecificationsDTO specificationsDTO) {
@@ -50,8 +50,8 @@ public class SpecificationsServiceImpl implements SpecificationsService {
     /**
      * Get all the specifications.
      *
-     * @param pageable the pagination information.
-     * @return the list of entities.
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
@@ -65,8 +65,8 @@ public class SpecificationsServiceImpl implements SpecificationsService {
     /**
      * Get one specifications by id.
      *
-     * @param id the id of the entity.
-     * @return the entity.
+     * @param id the id of the entity
+     * @return the entity
      */
     @Override
     @Transactional(readOnly = true)
@@ -79,7 +79,7 @@ public class SpecificationsServiceImpl implements SpecificationsService {
     /**
      * Delete the specifications by id.
      *
-     * @param id the id of the entity.
+     * @param id the id of the entity
      */
     @Override
     public void delete(Long id) {

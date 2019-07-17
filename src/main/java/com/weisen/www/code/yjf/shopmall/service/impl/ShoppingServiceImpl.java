@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * Service Implementation for managing {@link Shopping}.
+ * Service Implementation for managing Shopping.
  */
 @Service
 @Transactional
@@ -36,8 +36,8 @@ public class ShoppingServiceImpl implements ShoppingService {
     /**
      * Save a shopping.
      *
-     * @param shoppingDTO the entity to save.
-     * @return the persisted entity.
+     * @param shoppingDTO the entity to save
+     * @return the persisted entity
      */
     @Override
     public ShoppingDTO save(ShoppingDTO shoppingDTO) {
@@ -50,8 +50,8 @@ public class ShoppingServiceImpl implements ShoppingService {
     /**
      * Get all the shoppings.
      *
-     * @param pageable the pagination information.
-     * @return the list of entities.
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
@@ -65,8 +65,8 @@ public class ShoppingServiceImpl implements ShoppingService {
     /**
      * Get one shopping by id.
      *
-     * @param id the id of the entity.
-     * @return the entity.
+     * @param id the id of the entity
+     * @return the entity
      */
     @Override
     @Transactional(readOnly = true)
@@ -79,7 +79,7 @@ public class ShoppingServiceImpl implements ShoppingService {
     /**
      * Delete the shopping by id.
      *
-     * @param id the id of the entity.
+     * @param id the id of the entity
      */
     @Override
     public void delete(Long id) {
