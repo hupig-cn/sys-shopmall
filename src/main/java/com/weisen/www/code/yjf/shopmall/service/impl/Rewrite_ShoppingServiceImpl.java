@@ -36,14 +36,24 @@ public class Rewrite_ShoppingServiceImpl implements Rewrite_ShoppingService {
     //商品加入购物车
     @Override
     public Result createUserShopping(ShoppingDTO shoppingDTO) {
-        Shopping shopping = new Shopping();
-        shopping.setUserid(shoppingDTO.getUserid());
-        shopping.setCommodityid(shoppingDTO.getCommodityid());
-        shopping.setSpecificationsid(shoppingDTO.getSpecificationsid());
-        shopping.setCreator("");
-        shopping.setCreatedate(TimeUtil.getDate());
-        shopping.setNum(shoppingDTO.getNum());
-        rewrite_ShoppingRepository.save(shopping);
+        
+        Long count = rewrite_ShoppingRepository.countByUseridAndSpecificationsid(shoppingDTO.getUserid(),shoppingDTO.getSpecificationsid());
+        if(count > 0){
+            Shopping shop = rewrite_ShoppingRepository.findByUseridAndSpecificationsid(shoppingDTO.getUserid(),shoppingDTO.getSpecificationsid());
+            int sum = Integer.valueOf(shop.getNum());
+            sum = sum++;
+            shop.setNum(String.valueOf(sum));
+            rewrite_ShoppingRepository.saveAndFlush(shop);
+        }else{
+            Shopping shopping = new Shopping();
+            shopping.setUserid(shoppingDTO.getUserid());
+            shopping.setCommodityid(shoppingDTO.getCommodityid());
+            shopping.setSpecificationsid(shoppingDTO.getSpecificationsid());
+            shopping.setCreator("");
+            shopping.setCreatedate(TimeUtil.getDate());
+            shopping.setNum(shoppingDTO.getNum());
+            rewrite_ShoppingRepository.save(shopping);
+        }
 
         return Result.suc("成功");
     }
@@ -60,6 +70,13 @@ public class Rewrite_ShoppingServiceImpl implements Rewrite_ShoppingService {
     @Override
     public Result deleteShopping(Long shoppingid) {
         rewrite_ShoppingRepository.deleteById(shoppingid);
+        return Result.suc("成功");
+    }
+
+    // 批量删除商品
+    @Override
+    public Result deleteShoppingList(List<Long> shoppingid) {
+        shoppingid.forEach(x -> rewrite_ShoppingRepository.deleteById(x));
         return Result.suc("成功");
     }
 }

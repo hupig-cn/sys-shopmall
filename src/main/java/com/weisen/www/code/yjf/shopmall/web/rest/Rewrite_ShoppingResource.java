@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/weisen/shopping")
 @Api(tags = "购物车")
@@ -51,5 +53,15 @@ public class Rewrite_ShoppingResource {
         Result result = rewrite_ShoppingService.deleteShopping(shoppingid);
         return  ResponseEntity.ok(result);
     }
+
+    @DeleteMapping("/deleteShoppingList/{shoppingid}")
+    @ApiOperation(value = "批量删除商品")
+    @Timed
+    public ResponseEntity<Result> deleteShoppingList(@PathVariable List<Long> shoppingid) {
+        log.debug("deleteShoppingList : {}");
+        Result result = rewrite_ShoppingService.deleteShoppingList(shoppingid);
+        return  ResponseEntity.ok(result);
+    }
+
 
 }
