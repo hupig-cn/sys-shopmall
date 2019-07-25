@@ -83,6 +83,7 @@ public class ProdcutimageServiceImpl implements ProdcutimageService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Prodcutimage : {}", id);        prodcutimageRepository.deleteById(id);
+        log.debug("Request to delete Prodcutimage : {}", id);
+        prodcutimageRepository.deleteById(id);
     }
 }

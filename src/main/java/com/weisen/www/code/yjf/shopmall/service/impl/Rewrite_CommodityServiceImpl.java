@@ -51,15 +51,12 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
         int fromIndex = rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize();
         List<Commodity> list = rewrite_CommodityRepository.getAllByName(rewrite_ForNearShop.getName(),fromIndex,rewrite_ForNearShop.getPageSize());
         List<Rewrite_ShowCom> show = new ArrayList<>();
-
         for (Commodity x:list) {
             List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
-
             Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
             show.add(showcom);
             showcom = null;
         }
-
         return Result.suc("成功",show);
     }
 
@@ -169,7 +166,6 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
 
         for (Commodity x:com) {
             List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
-
             Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
             show.add(showcom);
             showcom = null;

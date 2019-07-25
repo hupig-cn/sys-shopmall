@@ -1,5 +1,6 @@
 package com.weisen.www.code.yjf.shopmall.service.dto;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -13,7 +14,11 @@ public class SpecificationsDTO implements Serializable {
 
     private String model;
 
+    private Long fileid;
+
     private String specifications;
+
+    private BigDecimal integral;
 
     private Integer num;
 
@@ -60,12 +65,28 @@ public class SpecificationsDTO implements Serializable {
         this.model = model;
     }
 
+    public Long getFileid() {
+        return fileid;
+    }
+
+    public void setFileid(Long fileid) {
+        this.fileid = fileid;
+    }
+
     public String getSpecifications() {
         return specifications;
     }
 
     public void setSpecifications(String specifications) {
         this.specifications = specifications;
+    }
+
+    public BigDecimal getIntegral() {
+        return integral;
+    }
+
+    public void setIntegral(BigDecimal integral) {
+        this.integral = integral;
     }
 
     public Integer getNum() {
@@ -175,7 +196,9 @@ public class SpecificationsDTO implements Serializable {
             "id=" + getId() +
             ", commodityid='" + getCommodityid() + "'" +
             ", model='" + getModel() + "'" +
+            ", fileid=" + getFileid() +
             ", specifications='" + getSpecifications() + "'" +
+            ", integral=" + getIntegral() +
             ", num=" + getNum() +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +

@@ -23,7 +23,7 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
 
     // 根据商品名称查询商品列表
     @Query(value = "select id,name,brandid,classificationid,commoditystate,postage,salevalue,weight,creator,createdate,modifier,modifierdate" +
-        ",modifiernum,logicdelete,other from commodity where name like '%?1%' limit?3,?4" , nativeQuery = true)
+        ",modifiernum,logicdelete,other from commodity where name like concat('%',?1,'%') limit?2,?3" , nativeQuery = true)
     List<Commodity> getAllByName(String name,int fromIndex,int pageSize);
 
     // 根据时间查询商品
@@ -46,5 +46,7 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
 
     @Query(value = "SELECT count(*) from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid where  and c.commoditystate = 1 ", nativeQuery = true)
     Integer findAllProductCount();
+
+
 
 }

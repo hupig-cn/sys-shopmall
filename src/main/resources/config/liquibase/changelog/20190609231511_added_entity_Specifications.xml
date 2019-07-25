@@ -30,7 +30,15 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="fileid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="specifications" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="integral" type="decimal(10,2)">
                 <constraints nullable="true" />
             </column>
 

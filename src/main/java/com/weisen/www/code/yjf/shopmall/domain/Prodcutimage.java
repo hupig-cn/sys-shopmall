@@ -26,8 +26,8 @@ public class Prodcutimage implements Serializable {
     @Column(name = "specificationsid")
     private String specificationsid;
 
-    @Column(name = "url")
-    private String url;
+    @Column(name = "fileid")
+    private String fileid;
 
     @Column(name = "other")
     private String other;
@@ -78,17 +78,17 @@ public class Prodcutimage implements Serializable {
         this.specificationsid = specificationsid;
     }
 
-    public String getUrl() {
-        return url;
+    public String getFileid() {
+        return fileid;
     }
 
-    public Prodcutimage url(String url) {
-        this.url = url;
+    public Prodcutimage fileid(String fileid) {
+        this.fileid = fileid;
         return this;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setFileid(String fileid) {
+        this.fileid = fileid;
     }
 
     public String getOther() {
@@ -234,7 +234,7 @@ public class Prodcutimage implements Serializable {
         return "Prodcutimage{" +
             "id=" + getId() +
             ", specificationsid='" + getSpecificationsid() + "'" +
-            ", url='" + getUrl() + "'" +
+            ", fileid='" + getFileid() + "'" +
             ", other='" + getOther() + "'" +
             ", type='" + getType() + "'" +
             ", state='" + getState() + "'" +

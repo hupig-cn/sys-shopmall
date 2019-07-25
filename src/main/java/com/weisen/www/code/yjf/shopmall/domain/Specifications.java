@@ -7,6 +7,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -29,8 +30,14 @@ public class Specifications implements Serializable {
     @Column(name = "model")
     private String model;
 
+    @Column(name = "fileid")
+    private Long fileid;
+
     @Column(name = "specifications")
     private String specifications;
+
+    @Column(name = "integral", precision = 10, scale = 2)
+    private BigDecimal integral;
 
     @Column(name = "num")
     private Integer num;
@@ -97,6 +104,19 @@ public class Specifications implements Serializable {
         this.model = model;
     }
 
+    public Long getFileid() {
+        return fileid;
+    }
+
+    public Specifications fileid(Long fileid) {
+        this.fileid = fileid;
+        return this;
+    }
+
+    public void setFileid(Long fileid) {
+        this.fileid = fileid;
+    }
+
     public String getSpecifications() {
         return specifications;
     }
@@ -108,6 +128,19 @@ public class Specifications implements Serializable {
 
     public void setSpecifications(String specifications) {
         this.specifications = specifications;
+    }
+
+    public BigDecimal getIntegral() {
+        return integral;
+    }
+
+    public Specifications integral(BigDecimal integral) {
+        this.integral = integral;
+        return this;
+    }
+
+    public void setIntegral(BigDecimal integral) {
+        this.integral = integral;
     }
 
     public Integer getNum() {
@@ -267,7 +300,9 @@ public class Specifications implements Serializable {
             "id=" + getId() +
             ", commodityid='" + getCommodityid() + "'" +
             ", model='" + getModel() + "'" +
+            ", fileid=" + getFileid() +
             ", specifications='" + getSpecifications() + "'" +
+            ", integral=" + getIntegral() +
             ", num=" + getNum() +
             ", price='" + getPrice() + "'" +
             ", discount='" + getDiscount() + "'" +

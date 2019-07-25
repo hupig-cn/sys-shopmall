@@ -1,77 +1,81 @@
 package com.weisen.www.code.yjf.shopmall.service.dto;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 public class Rewrite_AnOrder {
 
-    private BigDecimal price;
+    private Long userId;
 
-    private String userId;
+    private Long bigOrder;
 
-    private String payWay;
+    private Long id;
 
-    private String bigOrder;
+    private Integer number;
 
-    private String commodityid; // 商品id
+    private Long [] ids;
+    private String mobile;
+    private String address;
+    private String consignee;
 
-    private List<Rewrite_OrderSpec> orderSpec;  // 产品跟数量
-
-    private String num;
-
-    public List<Rewrite_OrderSpec> getOrderSpec() {
-        return orderSpec;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setOrderSpec(List<Rewrite_OrderSpec> orderSpec) {
-        this.orderSpec = orderSpec;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getNum() {
-        return num;
+    public String getAddress() {
+        return address;
     }
 
-    public void setNum(String num) {
-        this.num = num;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCommodityid() {
-        return commodityid;
+    public String getConsignee() {
+        return consignee;
     }
 
-    public void setCommodityid(String commodityid) {
-        this.commodityid = commodityid;
+    public void setConsignee(String consignee) {
+        this.consignee = consignee;
     }
 
-    public String getBigOrder() {
-        return bigOrder;
-    }
-
-    public void setBigOrder(String bigOrder) {
-        this.bigOrder = bigOrder;
-    }
-
-    public String getPayWay() {
-        return payWay;
-    }
-
-    public void setPayWay(String payWay) {
-        this.payWay = payWay;
-    }
-
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Long getBigOrder() {
+        return bigOrder;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setBigOrder(Long bigOrder) {
+        this.bigOrder = bigOrder;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public Long[] getIds() {
+        return ids;
+    }
+
+    public void setIds(Long[] ids) {
+        this.ids = ids;
     }
 }

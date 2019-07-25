@@ -31,7 +31,9 @@ entity Commodity {// 商品表
 entity Specifications {// 商品规格表
     commodityid String,// 商品id
     model String,// 型号
+    fileid Long,//封面图文件id
     specifications String,// 规格
+    integral BigDecimal,//积分价格
     num Integer,// 数量
     price String,// 价格
     discount String,// 优惠价
@@ -47,7 +49,7 @@ entity Specifications {// 商品规格表
 //商品图片
 entity Prodcutimage{
     specificationsid String,//商品规格id
-    url String,//商品图片
+    fileid String,//商品图片
     other String,//排序
     type String,//图片类型
     state Boolean,//图片启用情况
@@ -96,6 +98,9 @@ entity Order {// 订单表
     userid String,// 下单用户id
     commodityid String,// 下单商品id
     specificationsid String,// 下单规格id
+    consignee String,//收货人
+    mobile String,//电话号码
+    address String,//收货地址
     num String,// 购买数量
     paymethod String,// 支付方式
     payresult String,// 支付结果

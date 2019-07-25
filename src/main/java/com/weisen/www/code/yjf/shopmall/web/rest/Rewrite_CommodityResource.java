@@ -4,6 +4,7 @@ import com.weisen.www.code.yjf.shopmall.service.Rewrite_CommodityService;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_SpecificationsService;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_submitPaySumDTO;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import io.github.jhipster.web.util.ResponseUtil;
 import io.micrometer.core.annotation.Timed;
@@ -133,8 +134,21 @@ public class Rewrite_CommodityResource {
     @PostMapping("/get-amount")
     @ApiOperation(value = "获取支付价格")
     @Time
-    public ResponseEntity<?> getAmount(@RequestBody Integer number,@RequestBody Long id){
-        Result result = rewrite_specificationsService.getAmout(id, number);
+    public ResponseEntity<?> getAmount(@RequestBody Rewrite_submitPaySumDTO rewrite_submitPaySumDTO){
+        Result result = rewrite_specificationsService.getAmout(rewrite_submitPaySumDTO.getId(), rewrite_submitPaySumDTO.getNumber());
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
+
+    @PostMapping("/get-order-info")
+    @ApiOperation(value = "确认商品信息")
+    @Time
+    public ResponseEntity<?> getProductInfo(@RequestBody Rewrite_submitPaySumDTO rewrite_submitPaySumDTO){
+            //同时接收一个数组和id,intger 类型的数量,存在数组则查询购物车不查询id
+            //根据数组查询购物车,获取每件商品的信息,判断相应的库存,根据商品数量和价格进行乘算,计算出总价
+            //根据id查询出商品并且根据商品的价格进行乘算计算出总价.
+            //统一返回一个map封装数据
+        Result result = rewrite_specificationsService.getOrderInfo(rewrite_submitPaySumDTO);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
+
 }

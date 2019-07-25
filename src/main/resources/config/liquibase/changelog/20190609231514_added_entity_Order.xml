@@ -46,6 +46,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="consignee" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mobile" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="num" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

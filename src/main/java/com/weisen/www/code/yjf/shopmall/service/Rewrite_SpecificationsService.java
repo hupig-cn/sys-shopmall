@@ -1,5 +1,6 @@
 package com.weisen.www.code.yjf.shopmall.service;
 
+import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_submitPaySumDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 
@@ -17,4 +18,6 @@ public interface Rewrite_SpecificationsService {
     Result getProductDetail(Long id);
     //获取支付价格
     Result getAmout(Long id, Integer number);
+
+    Result getOrderInfo(Rewrite_submitPaySumDTO rewrite_submitPaySumDTO);
 }

@@ -6,7 +6,7 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "url",
+            "fieldName": "fileid",
             "fieldType": "String"
         },
         {

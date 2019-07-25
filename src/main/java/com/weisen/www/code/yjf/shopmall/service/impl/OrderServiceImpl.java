@@ -83,6 +83,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Order : {}", id);        orderRepository.deleteById(id);
+        log.debug("Request to delete Order : {}", id);
+        orderRepository.deleteById(id);
     }
 }

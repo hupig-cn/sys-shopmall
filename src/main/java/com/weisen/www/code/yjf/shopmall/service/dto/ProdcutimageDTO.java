@@ -11,7 +11,7 @@ public class ProdcutimageDTO implements Serializable {
 
     private String specificationsid;
 
-    private String url;
+    private String fileid;
 
     private String other;
 
@@ -48,12 +48,12 @@ public class ProdcutimageDTO implements Serializable {
         this.specificationsid = specificationsid;
     }
 
-    public String getUrl() {
-        return url;
+    public String getFileid() {
+        return fileid;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setFileid(String fileid) {
+        this.fileid = fileid;
     }
 
     public String getOther() {
@@ -154,7 +154,7 @@ public class ProdcutimageDTO implements Serializable {
         return "ProdcutimageDTO{" +
             "id=" + getId() +
             ", specificationsid='" + getSpecificationsid() + "'" +
-            ", url='" + getUrl() + "'" +
+            ", fileid='" + getFileid() + "'" +
             ", other='" + getOther() + "'" +
             ", type='" + getType() + "'" +
             ", state='" + getState() + "'" +

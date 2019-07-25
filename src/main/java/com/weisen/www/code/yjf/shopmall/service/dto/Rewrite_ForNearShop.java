@@ -1,6 +1,7 @@
 package com.weisen.www.code.yjf.shopmall.service.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Rewrite_ForNearShop {
 
@@ -14,7 +15,28 @@ public class Rewrite_ForNearShop {
 
     private int distance;  // 距离
 
+    public String toString() {
+        return "Rewrite_ForNearShop{" +
+            "longitude=" + longitude +
+            ", latitude=" + latitude +
+            ", pageNum=" + pageNum +
+            ", pageSize=" + pageSize +
+            ", distance=" + distance +
+            ", name='" + name + '\'' +
+            ", list=" + list +
+            '}';
+    }
+
     private String name;
+    private List list;
+
+    public List getList() {
+        return list;
+    }
+
+    public void setList(List list) {
+        this.list = list;
+    }
 
     public String getName() {
         return name;

@@ -1,12 +1,9 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
 import com.weisen.www.code.yjf.shopmall.domain.Prodcutimage;
-import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Reweite_ProdcutimageRepository;
-import com.weisen.www.code.yjf.shopmall.repository.Rewrite_OrderRepository;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_ProdcutimageService;
 import com.weisen.www.code.yjf.shopmall.service.dto.ProdcutimageDTO;
-import com.weisen.www.code.yjf.shopmall.service.mapper.OrderMapper;
 import com.weisen.www.code.yjf.shopmall.service.mapper.ProdcutimageMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
@@ -37,7 +34,7 @@ public class Rewrite_ProdcutimageServiceImpl implements Rewrite_ProdcutimageServ
     public Result createImage(ProdcutimageDTO prodcutimageDTO) {
         Prodcutimage prodcutimage = new Prodcutimage();
         prodcutimage.setSpecificationsid(prodcutimageDTO.getSpecificationsid());
-        prodcutimage.setUrl(prodcutimageDTO.getUrl());
+        prodcutimage.setFileid(prodcutimageDTO.getFileid());
         prodcutimage.setOther(prodcutimageDTO.getOther());
         prodcutimage.setType(prodcutimageDTO.getType());
         prodcutimage.setState(prodcutimageDTO.getState());
@@ -51,8 +48,9 @@ public class Rewrite_ProdcutimageServiceImpl implements Rewrite_ProdcutimageServ
     // 查询商品规格的图片
     @Override
     public Result findAllBySpecifications(Long specificationsid) {
-        List<Prodcutimage> list = reweite_ProdcutimageRepository.findAllBySpecificationsid(specificationsid.toString());
-
+        System.out.println(specificationsid);
+        List<Prodcutimage> list = reweite_ProdcutimageRepository.findAllBySpecificationsid(specificationsid);
+        System.out.println(list);
         return Result.suc("成功",prodcutimageMapper.toDto(list));
     }
 
@@ -62,7 +60,7 @@ public class Rewrite_ProdcutimageServiceImpl implements Rewrite_ProdcutimageServ
         Prodcutimage prodcutimage = new Prodcutimage();
         prodcutimage.setId(prodcutimageDTO.getId());
         prodcutimage.setSpecificationsid(prodcutimageDTO.getSpecificationsid());
-        prodcutimage.setUrl(prodcutimageDTO.getUrl());
+        prodcutimage.setFileid(prodcutimageDTO.getFileid());
         prodcutimage.setOther(prodcutimageDTO.getOther());
         prodcutimage.setType(prodcutimageDTO.getType());
         prodcutimage.setState(prodcutimageDTO.getState());

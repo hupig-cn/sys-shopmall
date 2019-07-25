@@ -10,8 +10,16 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "fileid",
+            "fieldType": "Long"
+        },
+        {
             "fieldName": "specifications",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "integral",
+            "fieldType": "BigDecimal"
         },
         {
             "fieldName": "num",

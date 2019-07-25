@@ -41,6 +41,15 @@ public class Order implements Serializable {
     @Column(name = "specificationsid")
     private String specificationsid;
 
+    @Column(name = "consignee")
+    private String consignee;
+
+    @Column(name = "mobile")
+    private String mobile;
+
+    @Column(name = "address")
+    private String address;
+
     @Column(name = "num")
     private String num;
 
@@ -156,6 +165,45 @@ public class Order implements Serializable {
 
     public void setSpecificationsid(String specificationsid) {
         this.specificationsid = specificationsid;
+    }
+
+    public String getConsignee() {
+        return consignee;
+    }
+
+    public Order consignee(String consignee) {
+        this.consignee = consignee;
+        return this;
+    }
+
+    public void setConsignee(String consignee) {
+        this.consignee = consignee;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public Order mobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Order address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNum() {
@@ -319,6 +367,9 @@ public class Order implements Serializable {
             ", userid='" + getUserid() + "'" +
             ", commodityid='" + getCommodityid() + "'" +
             ", specificationsid='" + getSpecificationsid() + "'" +
+            ", consignee='" + getConsignee() + "'" +
+            ", mobile='" + getMobile() + "'" +
+            ", address='" + getAddress() + "'" +
             ", num='" + getNum() + "'" +
             ", paymethod='" + getPaymethod() + "'" +
             ", payresult='" + getPayresult() + "'" +

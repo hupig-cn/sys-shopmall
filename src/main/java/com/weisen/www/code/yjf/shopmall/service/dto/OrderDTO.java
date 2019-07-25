@@ -21,6 +21,12 @@ public class OrderDTO implements Serializable {
 
     private String specificationsid;
 
+    private String consignee;
+
+    private String mobile;
+
+    private String address;
+
     private String num;
 
     private String paymethod;
@@ -96,6 +102,30 @@ public class OrderDTO implements Serializable {
 
     public void setSpecificationsid(String specificationsid) {
         this.specificationsid = specificationsid;
+    }
+
+    public String getConsignee() {
+        return consignee;
+    }
+
+    public void setConsignee(String consignee) {
+        this.consignee = consignee;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getNum() {
@@ -209,6 +239,9 @@ public class OrderDTO implements Serializable {
             ", userid='" + getUserid() + "'" +
             ", commodityid='" + getCommodityid() + "'" +
             ", specificationsid='" + getSpecificationsid() + "'" +
+            ", consignee='" + getConsignee() + "'" +
+            ", mobile='" + getMobile() + "'" +
+            ", address='" + getAddress() + "'" +
             ", num='" + getNum() + "'" +
             ", paymethod='" + getPaymethod() + "'" +
             ", payresult='" + getPayresult() + "'" +

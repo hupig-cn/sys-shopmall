@@ -1,9 +1,7 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
 
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_ProdcutimageService;
-import com.weisen.www.code.yjf.shopmall.service.Rewrite_ShoppingService;
 import com.weisen.www.code.yjf.shopmall.service.dto.ProdcutimageDTO;
-import com.weisen.www.code.yjf.shopmall.service.dto.ShoppingDTO;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
@@ -14,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/weisen/prodcutimage")
+@RequestMapping("/api")
 @Api(tags = "商城图片")
 public class Reweite_ProdcutimageResource {
 
@@ -35,7 +33,7 @@ public class Reweite_ProdcutimageResource {
         return  ResponseEntity.ok(result);
     }
 
-    @GetMapping("/findAllBySpecifications/{specificationsid}")
+    @GetMapping("/public/findAllBySpecifications/{specificationsid}")
     @ApiOperation(value = "查询商品规格的图片")
     @Timed
     public ResponseEntity<Result> findAllBySpecifications(@PathVariable Long specificationsid) {
