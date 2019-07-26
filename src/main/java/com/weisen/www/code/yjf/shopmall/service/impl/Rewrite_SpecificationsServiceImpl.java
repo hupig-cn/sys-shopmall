@@ -102,7 +102,7 @@ public class Rewrite_SpecificationsServiceImpl implements Rewrite_Specifications
         else {
             Optional<Specifications> byId = rewrite_SpecificationsRepository.findById(id);
             Specifications specifications = byId.get();
-            return Result.suc("获取成功",Integer.valueOf(specifications.getPrice()) * number);
+            return Result.suc("获取成功",Double.valueOf(specifications.getPrice()) * number);
         }
     }
 
