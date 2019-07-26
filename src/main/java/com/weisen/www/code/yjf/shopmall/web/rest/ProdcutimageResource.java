@@ -1,42 +1,42 @@
-//package com.weisen.www.code.yjf.shopmall.web.rest;
-//import com.weisen.www.code.yjf.shopmall.service.ProdcutimageService;
-//import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
+package com.weisen.www.code.yjf.shopmall.web.rest;
+import com.weisen.www.code.yjf.shopmall.service.ProdcutimageService;
+import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
 //import com.weisen.www.code.yjf.shopmall.web.rest.util.HeaderUtil;
 //import com.weisen.www.code.yjf.shopmall.web.rest.util.PaginationUtil;
-//import com.weisen.www.code.yjf.shopmall.service.dto.ProdcutimageDTO;
-//import io.github.jhipster.web.util.ResponseUtil;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.http.HttpHeaders;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.net.URI;
-//import java.net.URISyntaxException;
-//
-//import java.util.List;
-//import java.util.Optional;
-//
-///**
-// * REST controller for managing Prodcutimage.
-// */
-//@RestController
-//@RequestMapping("/api")
-//public class ProdcutimageResource {
-//
-//    private final Logger log = LoggerFactory.getLogger(ProdcutimageResource.class);
-//
-//    private static final String ENTITY_NAME = "shopmallProdcutimage";
-//
-//    private final ProdcutimageService prodcutimageService;
-//
-//    public ProdcutimageResource(ProdcutimageService prodcutimageService) {
-//        this.prodcutimageService = prodcutimageService;
-//    }
-//
+import com.weisen.www.code.yjf.shopmall.service.dto.ProdcutimageDTO;
+import io.github.jhipster.web.util.ResponseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * REST controller for managing Prodcutimage.
+ */
+@RestController
+@RequestMapping("/api")
+public class ProdcutimageResource {
+
+    private final Logger log = LoggerFactory.getLogger(ProdcutimageResource.class);
+
+    private static final String ENTITY_NAME = "shopmallProdcutimage";
+
+    private final ProdcutimageService prodcutimageService;
+
+    public ProdcutimageResource(ProdcutimageService prodcutimageService) {
+        this.prodcutimageService = prodcutimageService;
+    }
+
 //    /**
 //     * POST  /prodcutimages : Create a new prodcutimage.
 //     *
@@ -116,4 +116,4 @@
 //        prodcutimageService.delete(id);
 //        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
 //    }
-//}
+}
