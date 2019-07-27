@@ -113,7 +113,7 @@ public class Rewrite_CommodityResource {
         return  ResponseEntity.ok(Result.suc("成功"));
     }
 
-    @GetMapping ("/findCommodityInfo/{commodityId}")
+    @GetMapping("/findCommodityInfo/{commodityId}")
     @ApiOperation(value = "查看商品详情")
     @Timed
     public ResponseEntity<Result> findCommodityInfo(@PathVariable Long commodityId) {

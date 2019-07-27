@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -47,6 +48,7 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
     @Query(value = "SELECT count(*) from commodity c LEFT JOIN introduce i ON c.id = i.commodityid LEFT JOIN specifications s ON i.commodityid = s.commodityid where  and c.commoditystate = 1 ", nativeQuery = true)
     Integer findAllProductCount();
 
-
-
+    @Query(value = "select c.postage as postage,c.salevalue as salevalue ,c.name as name , spe.price as price ,spe.fileid as fileid,spe.model as model ,spe.num as num " +
+        ", spe.integral as integral,spe.specifications as json from commodity c LEFT JOIN specifications spe on c.id = spe.id where spe.id = ?1",nativeQuery = true)
+    Map<String,Object> findProdcutDetailBySpecificationsId(Long speId);
 }

@@ -29,6 +29,6 @@ public interface Rewrite_ShoppingRepository extends JpaRepository<Shopping, Long
     @Query(value = "select spe.id as id ,s.num as num , spe.commodityid as commodityid from shopping s JOIN specifications spe ON s.specificationsid = spe.id JOIN Commodity c ON spe.commodityid = c.id where s.in in ?1",nativeQuery = true)
     List<Specifications> findInfoByIds(Long[] ids);
 
-    @Query(value = "select spe.price as price,car.num as number,spe.specifications as attr,spe.num as number,c.name as name from shopping as car JOIN specifications spe ON car.specificationsid = spe.id JOIN commodity c ON c.id = spe.commodityid where car.userid = :userId AND car.id in :ids",nativeQuery = true)
+    @Query(value = "select spe.price as price,car.num as number,spe.specifications as attr,spe.num as number,c.name as name , spe.fileid as fileid from shopping as car JOIN specifications spe ON car.specificationsid = spe.id JOIN commodity c ON c.id = spe.commodityid where car.userid = :userId AND car.id in :ids",nativeQuery = true)
     List<Map<String,String>> getOrderInfoByUserIdAndId(@Param("userId") Long userId,@Param("ids") Long[] ids);
 }

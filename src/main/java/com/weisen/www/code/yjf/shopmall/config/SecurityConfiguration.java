@@ -44,6 +44,7 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
         .and()
             .authorizeRequests()
             .antMatchers("/api/weisen/commodity/getAllCommodity").permitAll()
+            .antMatchers("/api/weisen/commodity/findCommodityInfo/**").permitAll()
             .antMatchers("/api/weisen/commodity/findAllByTime").permitAll()
             .antMatchers("/api/public/**").permitAll()
             .antMatchers("/api/**").authenticated()

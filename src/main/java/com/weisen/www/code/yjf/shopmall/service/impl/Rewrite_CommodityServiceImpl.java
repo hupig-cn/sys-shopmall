@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -141,13 +142,11 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
 
     // 查看商品详情
     @Override
-    public Result findCommodityInfo(Long commodityId) {
-        Optional p = rewrite_CommodityRepository.findById(commodityId);
-        if(!p.isPresent()){
-            return Result.fail("商品不存在");
-        }
-        Commodity commodity = rewrite_CommodityRepository.findById(commodityId).get();
-        return Result.suc("成功",commodityMapper.toDto(commodity));
+    public Result findCommodityInfo(Long speId) {
+        Map<String, Object> data = rewrite_CommodityRepository.findProdcutDetailBySpecificationsId(speId);
+        if(0 == data.size())
+            return Result.fail("");
+        return Result.suc("成功",data);
     }
 
     // 根据销量查询商品
@@ -163,7 +162,6 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
         int fromIndex = rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize();
         List<Commodity> com = rewrite_CommodityRepository.getAllByTime(fromIndex,rewrite_ForNearShop.getPageSize());
         List<Rewrite_ShowCom> show = new ArrayList<>();
-
         for (Commodity x:com) {
             List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
             Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
