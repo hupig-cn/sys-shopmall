@@ -20,4 +20,6 @@ public interface Rewrite_SpecificationsService {
     Result getAmout(Long id, Integer number);
 
     Result getOrderInfo(Rewrite_submitPaySumDTO rewrite_submitPaySumDTO);
+
+    Result getOrderInfoByOrderId(String ordreId);
 }

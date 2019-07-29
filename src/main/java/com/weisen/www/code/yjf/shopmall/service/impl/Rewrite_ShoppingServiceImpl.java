@@ -63,12 +63,16 @@ public class Rewrite_ShoppingServiceImpl implements Rewrite_ShoppingService {
                 shopping.setCreatedate(DateUtils.getDateForNow());
                 shopping.setNum(subShopCartDTO.getNumber());
                 shopping.setUserid(subShopCartDTO.getUserId());
+                shopping.setSpecificationsid(subShopCartDTO.getGoodsId().toString());
+                shopping.setModifiernum(0L);
                 Shopping save = rewrite_ShoppingRepository.save(shopping);
                 if(!CheckUtils.checkObj(save))
                     return Result.fail("网络繁忙请稍后重试");
             } else {
                 //查询当前用户的购物车是否存在该商品如果存在的话就只进行数量增减
                 oldCard.setNum(oldCard.getNum() + subShopCartDTO.getNumber());
+                oldCard.setModifierdate(DateUtils.getDateForNow());
+                oldCard.setModifiernum(oldCard.getModifiernum() + 1);
                 Shopping shopping = rewrite_ShoppingRepository.saveAndFlush(oldCard);
                 if (!CheckUtils.checkObj(shopping))
                     return Result.fail("网络繁忙请稍后重试");

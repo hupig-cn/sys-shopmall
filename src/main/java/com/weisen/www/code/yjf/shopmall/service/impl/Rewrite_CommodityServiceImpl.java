@@ -10,6 +10,7 @@ import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
 import com.weisen.www.code.yjf.shopmall.service.dto.showdto.Rewrite_ShowCom;
 import com.weisen.www.code.yjf.shopmall.service.mapper.CommodityMapper;
 import com.weisen.www.code.yjf.shopmall.service.mapper.SpecificationsMapper;
+import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
 import com.weisen.www.code.yjf.shopmall.service.util.UsuallyConstant;
@@ -159,16 +160,24 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
     // // 根据最新时间查询商品
     @Override
     public Result findAllByTime(Rewrite_ForNearShop rewrite_ForNearShop) {
-        int fromIndex = rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize();
-        List<Commodity> com = rewrite_CommodityRepository.getAllByTime(fromIndex,rewrite_ForNearShop.getPageSize());
-        List<Rewrite_ShowCom> show = new ArrayList<>();
-        for (Commodity x:com) {
-            List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
-            Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
-            show.add(showcom);
-            showcom = null;
+        if(!CheckUtils.checkPageInfo(rewrite_ForNearShop.getPageNum(),rewrite_ForNearShop.getPageSize()))
+            return Result.fail("分页信息错误");
+        else {
+            List<Map<String, Object>> allProduct = rewrite_CommodityRepository.findAllProduct(rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize(), rewrite_ForNearShop.getPageSize());
+            if(null ==  allProduct || 0 == allProduct.size())
+                return Result.fail("网络繁忙请稍后重试");
+            return Result.suc("获取成功",allProduct);
         }
-        return Result.suc("成功",show);
+//        int fromIndex = rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize();
+//        List<Commodity> com = rewrite_CommodityRepository.getAllByTime(fromIndex,rewrite_ForNearShop.getPageSize());
+//        List<Rewrite_ShowCom> show = new ArrayList<>();
+//        for (Commodity x:com) {
+//            List<Specifications> specifications = rewrite_SpecificationsRepository.findAllByCommodityid(x.getId().toString());
+//            Rewrite_ShowCom showcom = new Rewrite_ShowCom(x,specificationsMapper.toDto(specifications));
+//            show.add(showcom);
+//            showcom = null;
+//        }
+//        return Result.suc("成功",show);
     }
 
 

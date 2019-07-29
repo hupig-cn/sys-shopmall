@@ -150,5 +150,11 @@ public class Rewrite_CommodityResource {
         Result result = rewrite_specificationsService.getOrderInfo(rewrite_submitPaySumDTO);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
-
+    @GetMapping("/get-order-info-byorderId/{orderid}")
+    @ApiOperation(value = "根据大订单号获取订单信息")
+    @Time
+    public ResponseEntity<?> getOrderInfoByOrderId(@PathVariable("orderid")String ordreId){
+        Result result = rewrite_specificationsService.getOrderInfoByOrderId(ordreId);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
 }

@@ -155,4 +155,23 @@ public class Rewrite_SpecificationsServiceImpl implements Rewrite_Specifications
             return Result.suc("获取成功",data);
         }
     }
+
+    public Result getOrderInfoByOrderId(String ordreId) {
+        if(!CheckUtils.checkString(ordreId))
+            return Result.fail();
+        else {
+            Map<String, Object> data = new HashMap<>();
+            BigDecimal totalAmout = new BigDecimal(0);
+            List<Map<String, Object>> orderInfos = rewrite_SpecificationsRepository.findOrderInfoByOrderId(ordreId);
+            System.out.println(orderInfos.size());
+            for(int i = 0 ;i < orderInfos.size() ; i ++){
+                totalAmout = new BigDecimal(Double.valueOf(orderInfos.get(i).get("price").toString()) * Double.valueOf(orderInfos.get(i).get("num").toString())).add(totalAmout);
+                totalAmout = new BigDecimal(Double.valueOf(orderInfos.get(i).get("num").toString()) * Double.valueOf(orderInfos.get(i).get("postage").toString())).add(totalAmout);
+
+            }
+            data.put("orderInfo",orderInfos);
+            data.put("totalAmout",totalAmout);
+            return Result.suc("",data);
+        }
+    }
 }
