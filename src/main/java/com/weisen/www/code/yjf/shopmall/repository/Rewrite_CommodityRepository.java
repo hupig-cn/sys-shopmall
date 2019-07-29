@@ -49,6 +49,6 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
     Integer findAllProductCount();
 
     @Query(value = "select c.postage as postage,c.salevalue as salevalue ,c.name as name , spe.price as price ,spe.fileid as fileid,spe.model as model ,spe.num as num " +
-        ", spe.integral as integral,spe.specifications as json from commodity c LEFT JOIN specifications spe on c.id = spe.id where spe.id = ?1",nativeQuery = true)
+        ", spe.integral as integral,spe.specifications as json from commodity c LEFT JOIN specifications spe on c.id = spe.commodityid where spe.id = ?1",nativeQuery = true)
     Map<String,Object> findProdcutDetailBySpecificationsId(Long speId);
 }

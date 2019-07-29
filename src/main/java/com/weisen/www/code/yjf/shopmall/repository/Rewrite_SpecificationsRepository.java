@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public interface Rewrite_SpecificationsRepository extends JpaRepository<Specifications, Long> {
@@ -17,4 +18,6 @@ public interface Rewrite_SpecificationsRepository extends JpaRepository<Specific
     Map<String,Object> findByIdToMap(Long id);
     @Query(value = "SELECT c.name as name , c.postage as postage , o.num as num , spe.price as price ,spe.model as model , spe.fileid as fileid  from jhi_order o JOIN specifications spe ON  o.specificationsid = spe.id JOIN commodity c ON c.id = spe.id where o.bigorder = ?1",nativeQuery = true)
     List<Map<String,Object>> findOrderInfoByOrderId(String ordreId);
+    @Query(value = "select * from specifications where id = ?1",nativeQuery = true)
+    Optional<Specifications> findAmoutById(Long id);
 }

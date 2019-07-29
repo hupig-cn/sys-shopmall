@@ -100,7 +100,7 @@ public class Rewrite_SpecificationsServiceImpl implements Rewrite_Specifications
         else if (!CheckUtils.checkIntegerByZero(number))
             return Result.fail("购买数量异常");
         else {
-            Optional<Specifications> byId = rewrite_SpecificationsRepository.findById(id);
+            Optional<Specifications> byId = rewrite_SpecificationsRepository.findAmoutById(id);
             Specifications specifications = byId.get();
             return Result.suc("获取成功",Double.valueOf(specifications.getPrice()) * number);
         }
