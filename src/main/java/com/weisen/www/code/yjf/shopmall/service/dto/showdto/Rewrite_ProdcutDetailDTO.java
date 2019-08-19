@@ -3,6 +3,7 @@ package com.weisen.www.code.yjf.shopmall.service.dto.showdto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@SuppressWarnings("serial")
 public class Rewrite_ProdcutDetailDTO implements Serializable {
     private Long id;
     private BigDecimal price;

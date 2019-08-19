@@ -18,8 +18,6 @@ public class Rewrite_OrderResource {
 
     private final Logger log = LoggerFactory.getLogger(Rewrite_OrderResource.class);
 
-    private static final String ENTITY_NAME = "shopmallOrder";
-
     private final Rewrite_OrderService rewrite_orderService;
 
     public Rewrite_OrderResource(Rewrite_OrderService rewrite_orderService) {

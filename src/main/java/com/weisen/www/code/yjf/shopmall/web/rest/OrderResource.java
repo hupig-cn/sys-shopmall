@@ -1,24 +1,10 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
-import com.weisen.www.code.yjf.shopmall.service.OrderService;
-import com.weisen.www.code.yjf.shopmall.web.rest.errors.BadRequestAlertException;
-//import com.weisen.www.code.yjf.shopmall.web.rest.util.HeaderUtil;
-//import com.weisen.www.code.yjf.shopmall.web.rest.util.PaginationUtil;
-import com.weisen.www.code.yjf.shopmall.service.dto.OrderDTO;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import java.util.List;
-import java.util.Optional;
+import com.weisen.www.code.yjf.shopmall.service.OrderService;
 
 /**
  * REST controller for managing Order.

@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * A DTO for the Prodcutimage entity.
  */
+@SuppressWarnings("serial")
 public class ProdcutimageDTO implements Serializable {
 
     private Long id;

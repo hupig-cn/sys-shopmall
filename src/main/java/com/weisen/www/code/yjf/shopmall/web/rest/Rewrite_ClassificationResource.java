@@ -24,8 +24,6 @@ public class Rewrite_ClassificationResource {
 
     private final Logger log = LoggerFactory.getLogger(Rewrite_ClassificationResource.class);
 
-    private static final String ENTITY_NAME = "shopmallClassification";
-
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 

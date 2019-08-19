@@ -1,5 +1,10 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.weisen.www.code.yjf.shopmall.domain.Prodcutimage;
 import com.weisen.www.code.yjf.shopmall.repository.Reweite_ProdcutimageRepository;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_ProdcutimageService;
@@ -7,18 +12,10 @@ import com.weisen.www.code.yjf.shopmall.service.dto.ProdcutimageDTO;
 import com.weisen.www.code.yjf.shopmall.service.mapper.ProdcutimageMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional
 public class Rewrite_ProdcutimageServiceImpl implements Rewrite_ProdcutimageService {
-
-    private final Logger log = LoggerFactory.getLogger(Rewrite_ProdcutimageServiceImpl.class);
 
     private final Reweite_ProdcutimageRepository reweite_ProdcutimageRepository;
 

@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * A DTO for the {@link com.weisen.www.code.yjf.shopmall.domain.Introduce} entity.
  */
+@SuppressWarnings("serial")
 public class IntroduceDTO implements Serializable {
 
     private Long id;

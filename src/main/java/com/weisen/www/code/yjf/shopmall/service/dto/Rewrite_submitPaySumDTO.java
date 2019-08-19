@@ -3,6 +3,7 @@ package com.weisen.www.code.yjf.shopmall.service.dto;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Rewrite_submitPaySumDTO implements Serializable {
     private Long id;
     private Integer number;

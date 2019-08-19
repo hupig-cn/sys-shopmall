@@ -7,6 +7,7 @@ import java.util.Objects;
 /**
  * A DTO for the Brand entity.
  */
+@SuppressWarnings("serial")
 public class BrandDTO implements Serializable {
 
     private Long id;

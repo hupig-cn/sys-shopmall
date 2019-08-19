@@ -26,8 +26,6 @@ public class Rewrite_CommodityResource {
 
     private final Logger log = LoggerFactory.getLogger(Rewrite_CommodityResource.class);
 
-    private static final String ENTITY_NAME = "shopmallCommodity";
-
     private final Rewrite_CommodityService rewrite_CommodityService;
 
     private final Rewrite_SpecificationsService rewrite_specificationsService;

@@ -1,18 +1,18 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.weisen.www.code.yjf.shopmall.domain.Classification;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_ClassificationRepository;
 import com.weisen.www.code.yjf.shopmall.security.SecurityUtils;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_ClassificationService;
 import com.weisen.www.code.yjf.shopmall.service.dto.ClassificationDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_submitClassification;
-import com.weisen.www.code.yjf.shopmall.service.mapper.Rewrite_ClassificationMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.DateUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -20,12 +20,8 @@ public class Rewrite_ClassificationServiceImpl implements Rewrite_Classification
 
     private final Rewrite_ClassificationRepository rewrite_classificationRepository;
 
-    private final Rewrite_ClassificationMapper rewrite_classificationMapper;
-
-    public Rewrite_ClassificationServiceImpl(Rewrite_ClassificationRepository rewrite_classificationRepository
-        , Rewrite_ClassificationMapper rewrite_classificationMapper) {
+    public Rewrite_ClassificationServiceImpl(Rewrite_ClassificationRepository rewrite_classificationRepository ) {
         this.rewrite_classificationRepository = rewrite_classificationRepository;
-        this.rewrite_classificationMapper = rewrite_classificationMapper;
     }
 
     public Result insertClassification(Rewrite_submitClassification rewrite_submitClassification) {

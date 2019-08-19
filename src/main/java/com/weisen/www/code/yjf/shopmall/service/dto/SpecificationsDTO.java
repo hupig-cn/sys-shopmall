@@ -6,6 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the Specifications entity.
  */
+@SuppressWarnings("serial")
 public class SpecificationsDTO implements Serializable {
 
     private Long id;

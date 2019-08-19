@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * A DTO for the Commodity entity.
  */
+@SuppressWarnings("serial")
 public class CommodityDTO implements Serializable {
 
     private Long id;

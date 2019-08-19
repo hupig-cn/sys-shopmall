@@ -1,5 +1,13 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.weisen.www.code.yjf.shopmall.domain.Commodity;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
@@ -8,40 +16,25 @@ import com.weisen.www.code.yjf.shopmall.service.Rewrite_CommodityService;
 import com.weisen.www.code.yjf.shopmall.service.dto.CommodityDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_ForNearShop;
 import com.weisen.www.code.yjf.shopmall.service.dto.showdto.Rewrite_ShowCom;
-import com.weisen.www.code.yjf.shopmall.service.mapper.CommodityMapper;
 import com.weisen.www.code.yjf.shopmall.service.mapper.SpecificationsMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
 import com.weisen.www.code.yjf.shopmall.service.util.UsuallyConstant;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 @Transactional
 public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
 
-    private final Logger log = LoggerFactory.getLogger(Rewrite_ShoppingServiceImpl.class);
-
     private final Rewrite_CommodityRepository rewrite_CommodityRepository;
-
-    private final CommodityMapper commodityMapper;
 
     private final Rewrite_SpecificationsRepository rewrite_SpecificationsRepository;
 
     private final SpecificationsMapper specificationsMapper;
 
-    public Rewrite_CommodityServiceImpl(Rewrite_CommodityRepository rewrite_CommodityRepository, CommodityMapper commodityMapper
+    public Rewrite_CommodityServiceImpl(Rewrite_CommodityRepository rewrite_CommodityRepository
         ,Rewrite_SpecificationsRepository rewrite_SpecificationsRepository,SpecificationsMapper specificationsMapper) {
         this.rewrite_CommodityRepository = rewrite_CommodityRepository;
-        this.commodityMapper = commodityMapper;
         this.rewrite_SpecificationsRepository = rewrite_SpecificationsRepository;
         this.specificationsMapper = specificationsMapper;
     }

@@ -2,6 +2,7 @@ package com.weisen.www.code.yjf.shopmall.service.dto;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Rewrite_submitClassification implements Serializable {
     private String name;
     private String superior;

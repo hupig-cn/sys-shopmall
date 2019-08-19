@@ -1,5 +1,14 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.weisen.www.code.yjf.shopmall.domain.Product;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
@@ -8,38 +17,22 @@ import com.weisen.www.code.yjf.shopmall.repository.Rewrite_SpecificationsReposit
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_SpecificationsService;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_submitPaySumDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
-import com.weisen.www.code.yjf.shopmall.service.mapper.SpecificationsMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 @Transactional
 public class Rewrite_SpecificationsServiceImpl implements Rewrite_SpecificationsService {
 
-    private final Logger log = LoggerFactory.getLogger(Rewrite_ShoppingServiceImpl.class);
-
     private final Rewrite_SpecificationsRepository rewrite_SpecificationsRepository;
-
-    private final SpecificationsMapper specificationsMapper;
 
     private final Rewrite_CommodityRepository rewrite_commodityRepository;
 
     private final Rewrite_ShoppingRepository rewrite_ShoppingRepository;
 
-    public Rewrite_SpecificationsServiceImpl(Rewrite_SpecificationsRepository rewrite_SpecificationsRepository, SpecificationsMapper specificationsMapper, Rewrite_CommodityRepository rewrite_commodityRepository, Rewrite_ShoppingRepository rewrite_ShoppingRepository) {
+    public Rewrite_SpecificationsServiceImpl(Rewrite_SpecificationsRepository rewrite_SpecificationsRepository, Rewrite_CommodityRepository rewrite_commodityRepository, Rewrite_ShoppingRepository rewrite_ShoppingRepository) {
         this.rewrite_SpecificationsRepository = rewrite_SpecificationsRepository;
-        this.specificationsMapper = specificationsMapper;
         this.rewrite_commodityRepository = rewrite_commodityRepository;
         this.rewrite_ShoppingRepository = rewrite_ShoppingRepository;
     }

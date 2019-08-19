@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * A DTO for the Shopping entity.
  */
+@SuppressWarnings("serial")
 public class ShoppingDTO implements Serializable {
 
     private Long id;

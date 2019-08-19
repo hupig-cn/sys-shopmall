@@ -1,5 +1,13 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.weisen.www.code.yjf.shopmall.domain.Order;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_OrderRepository;
@@ -8,17 +16,11 @@ import com.weisen.www.code.yjf.shopmall.repository.Rewrite_SpecificationsReposit
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_OrderService;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_AnOrder;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_PriceDTO;
-import com.weisen.www.code.yjf.shopmall.service.mapper.OrderMapper;
-import com.weisen.www.code.yjf.shopmall.service.util.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
+import com.weisen.www.code.yjf.shopmall.service.util.DateUtils;
+import com.weisen.www.code.yjf.shopmall.service.util.OrderConstant;
+import com.weisen.www.code.yjf.shopmall.service.util.Result;
+import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
 
 /**
  * 订单Impl
@@ -27,21 +29,16 @@ import java.util.Optional;
 @Transactional
 public class Rewrite_OrderServiceImpl implements Rewrite_OrderService {
 
-    private final Logger log = LoggerFactory.getLogger(Rewrite_OrderServiceImpl.class);
-
     private final Rewrite_OrderRepository rewrite_OrderRepository;
 
     private final Rewrite_ShoppingRepository rewrite_shoppingRepository;
 
     private final Rewrite_SpecificationsRepository rewrite_specificationsRepository;
 
-    private final OrderMapper orderMapper;
-
-    public Rewrite_OrderServiceImpl(Rewrite_OrderRepository rewrite_OrderRepository, Rewrite_ShoppingRepository rewrite_shoppingRepository, Rewrite_SpecificationsRepository rewrite_specificationsRepository, OrderMapper orderMapper) {
+    public Rewrite_OrderServiceImpl(Rewrite_OrderRepository rewrite_OrderRepository, Rewrite_ShoppingRepository rewrite_shoppingRepository, Rewrite_SpecificationsRepository rewrite_specificationsRepository ) {
         this.rewrite_OrderRepository = rewrite_OrderRepository;
         this.rewrite_shoppingRepository = rewrite_shoppingRepository;
         this.rewrite_specificationsRepository = rewrite_specificationsRepository;
-        this.orderMapper = orderMapper;
     }
 
     //查询商城的当日订单量
@@ -51,7 +48,6 @@ public class Rewrite_OrderServiceImpl implements Rewrite_OrderService {
         String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String startTime =  today + " 00:00:00";
         String endTime = today + " 23:59:59";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         int count = rewrite_OrderRepository.getAllOrderCount(startTime,endTime,OrderConstant.PAID);
         return count;
     }

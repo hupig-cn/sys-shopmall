@@ -3,6 +3,7 @@ package com.weisen.www.code.yjf.shopmall.service.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+@SuppressWarnings("serial")
 public class Rewrite_ClassificationDTO implements Serializable {
 
     private Long id;

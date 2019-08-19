@@ -1,5 +1,11 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.weisen.www.code.yjf.shopmall.domain.Shopping;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_ShoppingRepository;
@@ -10,13 +16,6 @@ import com.weisen.www.code.yjf.shopmall.service.mapper.ShoppingMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.DateUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Service Implementation for managing {@link Shopping}.
@@ -24,8 +23,6 @@ import java.util.Optional;
 @Service
 @Transactional
 public class Rewrite_ShoppingServiceImpl implements Rewrite_ShoppingService {
-
-    private final Logger log = LoggerFactory.getLogger(Rewrite_ShoppingServiceImpl.class);
 
     private final Rewrite_ShoppingRepository rewrite_ShoppingRepository;
 

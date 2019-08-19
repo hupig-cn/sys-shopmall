@@ -5,6 +5,7 @@ import java.util.Objects;
 /**
  * A DTO for the Order entity.
  */
+@SuppressWarnings("serial")
 public class OrderDTO implements Serializable {
 
     private Long id;
