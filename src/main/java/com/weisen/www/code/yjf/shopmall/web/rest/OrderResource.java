@@ -1,6 +1,6 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,14 +13,14 @@ import com.weisen.www.code.yjf.shopmall.service.OrderService;
 @RequestMapping("/api")
 public class OrderResource {
 
-    private final Logger log = LoggerFactory.getLogger(OrderResource.class);
+//    private final Logger log = LoggerFactory.getLogger(OrderResource.class);
 
-    private static final String ENTITY_NAME = "shopmallOrder";
+//    private static final String ENTITY_NAME = "shopmallOrder";
 
-    private final OrderService orderService;
+//    private final OrderService orderService;
 
     public OrderResource(OrderService orderService) {
-        this.orderService = orderService;
+//        this.orderService = orderService;
     }
 
 //    /**
