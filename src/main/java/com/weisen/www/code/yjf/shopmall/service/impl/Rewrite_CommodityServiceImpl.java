@@ -94,7 +94,7 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
     // 商品上架
     @Override
     public Result CommodityGetUp(Long commodityId) {
-        Optional p = rewrite_CommodityRepository.findById(commodityId);
+        Optional<?> p = rewrite_CommodityRepository.findById(commodityId);
         if(!p.isPresent()){
             return Result.fail("商品不存在");
         }
@@ -107,7 +107,7 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
     // 商品下架
     @Override
     public Result CommodityGetDown(Long commodityId) {
-        Optional p = rewrite_CommodityRepository.findById(commodityId);
+        Optional<?> p = rewrite_CommodityRepository.findById(commodityId);
         if(!p.isPresent()){
             return Result.fail("商品不存在");
         }

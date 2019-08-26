@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data  repository for the Prodcutimage entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface ProdcutimageRepository extends JpaRepository<Prodcutimage, Long> {
 

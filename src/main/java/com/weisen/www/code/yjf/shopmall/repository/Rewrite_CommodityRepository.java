@@ -13,7 +13,6 @@ import java.util.Map;
 /**
  * Spring Data  repository for the Commodity entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Long> {
 

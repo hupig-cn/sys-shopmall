@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Spring Data  repository for the Order entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface Rewrite_OrderRepository extends JpaRepository<Order, Long> {
 

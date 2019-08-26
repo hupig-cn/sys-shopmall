@@ -113,7 +113,7 @@ public class CheckUtils {
      * @param list
      * @return
      */
-    public static Boolean checkList(List list){
+    public static Boolean checkList(List<?> list){
         if(null == list ||0 == list.size())
             return false;
         return true;

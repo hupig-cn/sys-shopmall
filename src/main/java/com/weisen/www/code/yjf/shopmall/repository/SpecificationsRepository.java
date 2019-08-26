@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data  repository for the Specifications entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface SpecificationsRepository extends JpaRepository<Specifications, Long> {
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data  repository for the Introduce entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface IntroduceRepository extends JpaRepository<Introduce, Long> {
 

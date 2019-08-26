@@ -28,13 +28,13 @@ public class Rewrite_ForNearShop {
     }
 
     private String name;
-    private List list;
+    private List<?> list;
 
-    public List getList() {
+    public List<?> getList() {
         return list;
     }
 
-    public void setList(List list) {
+    public void setList(List<?> list) {
         this.list = list;
     }
 

@@ -1,6 +1,4 @@
 package com.weisen.www.code.yjf.shopmall.web.rest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,14 +11,11 @@ import com.weisen.www.code.yjf.shopmall.service.ProdcutimageService;
 @RequestMapping("/api")
 public class ProdcutimageResource {
 
-    private final Logger log = LoggerFactory.getLogger(ProdcutimageResource.class);
 
-    private static final String ENTITY_NAME = "shopmallProdcutimage";
-
-    private final ProdcutimageService prodcutimageService;
+//    private final ProdcutimageService prodcutimageService;
 
     public ProdcutimageResource(ProdcutimageService prodcutimageService) {
-        this.prodcutimageService = prodcutimageService;
+//        this.prodcutimageService = prodcutimageService;
     }
 
 //    /**

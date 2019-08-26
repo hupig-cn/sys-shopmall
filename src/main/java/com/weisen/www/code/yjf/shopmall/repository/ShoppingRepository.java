@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data  repository for the Shopping entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface ShoppingRepository extends JpaRepository<Shopping, Long> {
 
