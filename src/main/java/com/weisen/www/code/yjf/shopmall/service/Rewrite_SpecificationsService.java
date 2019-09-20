@@ -2,10 +2,18 @@ package com.weisen.www.code.yjf.shopmall.service;
 
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_submitPaySumDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.submitdto.Rewrite_OrderDetailsPage;
+import com.weisen.www.code.yjf.shopmall.service.dto.submitdto.Rewrite_SpecificationsPage;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 
 public interface Rewrite_SpecificationsService {
 
+	// 商品列表
+	Result getSpecificationsList(Rewrite_SpecificationsPage rewrite_SpecificationsPage);
+	
+	// 获取订单详情
+	Result getOrderDetailsList(Rewrite_OrderDetailsPage rewrite_OrderDetailsPage);
+	
     // 创建商品规格
     Result createSpecifications(SpecificationsDTO specificationsDTO);
 

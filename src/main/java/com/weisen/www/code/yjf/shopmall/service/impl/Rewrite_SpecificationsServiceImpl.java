@@ -1,6 +1,7 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,14 +10,20 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.weisen.www.code.yjf.shopmall.domain.Order;
 import com.weisen.www.code.yjf.shopmall.domain.Product;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
+import com.weisen.www.code.yjf.shopmall.repository.Rewrite_OrderRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_ShoppingRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_SpecificationsRepository;
 import com.weisen.www.code.yjf.shopmall.service.Rewrite_SpecificationsService;
 import com.weisen.www.code.yjf.shopmall.service.dto.Rewrite_submitPaySumDTO;
 import com.weisen.www.code.yjf.shopmall.service.dto.SpecificationsDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.showdto.Rewrite_OrderDetailsDTO;
+import com.weisen.www.code.yjf.shopmall.service.dto.submitdto.Rewrite_OrderDetailsPage;
+import com.weisen.www.code.yjf.shopmall.service.dto.submitdto.Rewrite_SpecificationsPage;
+import com.weisen.www.code.yjf.shopmall.service.mapper.SpecificationsMapper;
 import com.weisen.www.code.yjf.shopmall.service.util.CheckUtils;
 import com.weisen.www.code.yjf.shopmall.service.util.Result;
 import com.weisen.www.code.yjf.shopmall.service.util.TimeUtil;
@@ -30,11 +37,66 @@ public class Rewrite_SpecificationsServiceImpl implements Rewrite_Specifications
     private final Rewrite_CommodityRepository rewrite_commodityRepository;
 
     private final Rewrite_ShoppingRepository rewrite_ShoppingRepository;
+    
+    private final Rewrite_OrderRepository rewrite_OrderRepository;
+    
+    private final SpecificationsMapper specificationsMapper;
 
-    public Rewrite_SpecificationsServiceImpl(Rewrite_SpecificationsRepository rewrite_SpecificationsRepository, Rewrite_CommodityRepository rewrite_commodityRepository, Rewrite_ShoppingRepository rewrite_ShoppingRepository) {
+    public Rewrite_SpecificationsServiceImpl(Rewrite_SpecificationsRepository rewrite_SpecificationsRepository,
+    		Rewrite_CommodityRepository rewrite_commodityRepository,
+    		Rewrite_ShoppingRepository rewrite_ShoppingRepository,
+    		Rewrite_OrderRepository rewrite_OrderRepository,
+    		SpecificationsMapper specificationsMapper) {
         this.rewrite_SpecificationsRepository = rewrite_SpecificationsRepository;
         this.rewrite_commodityRepository = rewrite_commodityRepository;
         this.rewrite_ShoppingRepository = rewrite_ShoppingRepository;
+        this.rewrite_OrderRepository = rewrite_OrderRepository;
+        this.specificationsMapper = specificationsMapper;
+    }
+    
+    // 获取商品列表（直接查询规格表）
+    @Override
+    public Result getSpecificationsList(Rewrite_SpecificationsPage rewrite_SpecificationsPage) {
+        List<Specifications> specificationsList = rewrite_SpecificationsRepository.getSpecificationsList(
+        		rewrite_SpecificationsPage.getGoodsid(),
+        		rewrite_SpecificationsPage.getPageNum() * rewrite_SpecificationsPage.getPageSize(),
+        		rewrite_SpecificationsPage.getPageSize());
+        int count = rewrite_SpecificationsRepository.getSpecificationsListCount(rewrite_SpecificationsPage.getGoodsid());
+        List<SpecificationsDTO> dtoList = specificationsMapper.toDto(specificationsList);
+        List<SpecificationsDTO> show = new ArrayList<>();
+        dtoList.forEach(x->{
+        	show.add(x);
+        });
+        return Result.suc("成功", show, count);
+    }
+    
+    // 获取订单详情
+    @Override
+    public Result getOrderDetailsList(Rewrite_OrderDetailsPage rewrite_OrderDetailsPage) {
+        List<Order> orderList = rewrite_OrderRepository.getOrderDetailsList(
+        		rewrite_OrderDetailsPage.getOrderid(),
+        		rewrite_OrderDetailsPage.getUserid(),
+        		rewrite_OrderDetailsPage.getPageNum() * rewrite_OrderDetailsPage.getPageSize(),
+        		rewrite_OrderDetailsPage.getPageSize());
+        int count = rewrite_OrderRepository.getOrderDetailsListCount(rewrite_OrderDetailsPage.getOrderid(),rewrite_OrderDetailsPage.getUserid());
+        List<Rewrite_OrderDetailsDTO> rewrite_OrderDetailsLists = new ArrayList<>();
+        for (Order order : orderList) {
+        	Rewrite_OrderDetailsDTO rewrite_OrderDetailsDTO = new Rewrite_OrderDetailsDTO();
+        	rewrite_OrderDetailsDTO.setOrderid(order.getBigorder());
+        	rewrite_OrderDetailsDTO.setUserid(order.getUserid());
+        	rewrite_OrderDetailsDTO.setSpecificationsid(order.getSpecificationsid());
+        	Specifications specifications = rewrite_SpecificationsRepository.getOne(Long.valueOf(order.getSpecificationsid()));
+        	if(specifications!=null) {
+        		rewrite_OrderDetailsDTO.setModel(specifications.getModel());
+        		rewrite_OrderDetailsDTO.setSpecifications(specifications.getSpecifications());
+        		rewrite_OrderDetailsDTO.setPrice(specifications.getPrice());
+        	}
+        	rewrite_OrderDetailsDTO.setConsignee(order.getConsignee());
+        	rewrite_OrderDetailsDTO.setMobile(order.getMobile());
+        	rewrite_OrderDetailsDTO.setAddress(order.getAddress());
+        	rewrite_OrderDetailsLists.add(rewrite_OrderDetailsDTO);
+		}
+        return Result.suc("成功", rewrite_OrderDetailsLists, count);
     }
 
     // 创建订单规格

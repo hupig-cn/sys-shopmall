@@ -42,6 +42,7 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .authorizeRequests()
+            .antMatchers("/**/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/weisen/commodity/getAllCommodity").permitAll()
             .antMatchers("/api/weisen/commodity/findCommodityInfo/**").permitAll()
             .antMatchers("/api/weisen/commodity/findAllByTime").permitAll()
