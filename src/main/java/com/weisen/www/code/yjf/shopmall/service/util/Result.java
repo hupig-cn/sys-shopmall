@@ -46,17 +46,27 @@ public class Result implements Serializable {
 		return fail("操作失败");
 	}
 	
+	public static Result fail(String message,Object data) {
+		return new Result(FAILURE, message, 0, data);
+	}
+
 	private Result(int code, String message, Integer totalElements, Object data) {
 		super();
 		this.code = code;
 		this.message = message;
 		this.totalElements = totalElements;
 		if (data == null) {
-			this.totalElements = null;
+			this.data = Arrays.asList();
+			this.totalElements = 0;
 		} else if (data != null && !(data instanceof List<?>)) {
-			this.data = Arrays.asList(data);
+			this.data = data;
 		} else {
-			if (!((List<?>) data).isEmpty()) this.data = data;
+			if (!((List<?>) data).isEmpty()) {
+				this.data = data;
+			} else {
+				this.data = Arrays.asList();
+				this.totalElements = 0;
+			}
 		}
 	}
 
