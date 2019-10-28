@@ -51,6 +51,6 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
         ", spe.integral as integral,spe.specifications as json from commodity c LEFT JOIN specifications spe on c.id = spe.commodityid where spe.id = ?1",nativeQuery = true)
     Map<String,Object> findProdcutDetailBySpecificationsId(Long speId);
     
-    @Query(value = "SELECT c.id as commodityid,c.name as name ,s.fileid as fileid,c.postage as postage,s.id as id,s.model as model,s.specifications as specifications ,s.price as price,c.salevalue as salevalue,s.discount as discount from commodity c LEFT JOIN specifications s ON s.commodityid = c.id where specifications like %3?% ORDER BY s.other DESC, c.createdate DESC LIMIT ?1,?2", nativeQuery = true)
+    @Query(value = "SELECT c.id as commodityid,c.name as name ,s.fileid as fileid,c.postage as postage,s.id as id,s.model as model,s.specifications as specifications ,s.price as price,c.salevalue as salevalue,s.discount as discount from commodity c LEFT JOIN specifications s ON s.commodityid = c.id where specifications like %?3% ORDER BY s.other DESC, c.createdate DESC LIMIT ?1,?2", nativeQuery = true)
     List<Map<String,Object>> findAllProductByconent(int pageNum, Integer pageSize,String content);
 }
