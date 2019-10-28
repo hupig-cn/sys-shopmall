@@ -53,6 +53,17 @@ public class Rewrite_CommodityResource {
         return ResponseEntity.ok(result);
 
     }
+    
+    
+    @PostMapping ("/findAllByContent")
+    @ApiOperation(value = "根据查询内容查询商品")
+    @Timed
+    public ResponseEntity<Result> findAllByContent(@RequestBody Rewrite_ForNearShop rewrite_ForNearShop) {
+        log.debug("findAllByContent : {}");
+        Result result = rewrite_CommodityService.findAllByContent(rewrite_ForNearShop);
+        return ResponseEntity.ok(result);
+
+    }
 
     @PostMapping("/createCommodity")
     @ApiOperation(value = "添加商品")

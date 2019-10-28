@@ -37,4 +37,7 @@ public interface Rewrite_CommodityService {
 
     // 根据最新时间查询商品
     Result findAllByTime(Rewrite_ForNearShop rewrite_ForNearShop);
+    
+    // 根据查询内容查询商品
+    Result findAllByContent(Rewrite_ForNearShop rewrite_ForNearShop);
 }
