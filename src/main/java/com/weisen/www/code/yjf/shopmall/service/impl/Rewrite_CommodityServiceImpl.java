@@ -158,7 +158,7 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
         else {
             List<Map<String, Object>> allProduct = rewrite_CommodityRepository.findAllProduct(rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize(),rewrite_ForNearShop.getPageSize());
             if(null ==  allProduct || 0 == allProduct.size())
-                return Result.fail("获取失败，查询不到数据");
+                return Result.suc("获取失败，查询不到数据");
             return Result.suc("获取成功",allProduct);
         }
 //        int fromIndex = rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize();
