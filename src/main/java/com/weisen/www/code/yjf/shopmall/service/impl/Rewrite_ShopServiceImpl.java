@@ -51,11 +51,14 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
 
     @Override
-    public Result ShoppingCartList(String userid) {
+    public Result ShoppingCartList(String userid,Integer pageNum,Integer pageSize) {
         List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUseridOrderByCreatedate(Long.valueOf(userid));
         List<ShopDTO> s = new ArrayList<>();
-        for (int i = 0; i < shoppingByUserid.size(); i++) {
-            Shopping shopping = shoppingByUserid.get(i);
+        for (int i = 1 + (pageSize * (pageNum)); i <= (pageNum+1) * (pageSize); i++) {
+            if (i > shoppingByUserid.size()) {
+                return Result.suc("查询成功", s, s.size());
+            }
+            Shopping shopping = shoppingByUserid.get(i-1);
             String specificationsid = shopping.getSpecificationsid();
             String commodityid = shopping.getCommodityid();
 

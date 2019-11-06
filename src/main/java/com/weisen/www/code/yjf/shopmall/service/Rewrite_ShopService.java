@@ -9,7 +9,7 @@ import com.weisen.www.code.yjf.shopmall.service.util.Result;
  * @Date: 2019/10/29 11:30
  */
 public interface Rewrite_ShopService {
-    Result ShoppingCartList(String userid);
+    Result ShoppingCartList(String userid,Integer pageNum,Integer pageSize);
 
     Result AddShoppingCart(Long userid,String commodityid,String num);
 

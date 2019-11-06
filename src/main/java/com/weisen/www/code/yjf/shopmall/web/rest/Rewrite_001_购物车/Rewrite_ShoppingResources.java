@@ -34,8 +34,10 @@ public class Rewrite_ShoppingResources {
 
     @PostMapping("/ShoppingCartList")
     @ApiOperation("购物车列表")
-    public ResponseEntity<?> ShoppingCartList(@RequestParam(required = false) String userid){
-        Result result = rewrite_shopService.ShoppingCartList(userid);
+    public ResponseEntity<?> ShoppingCartList(@RequestParam(required = false) String userid,
+                                              @RequestParam(required = false) Integer pageNum,
+                                              @RequestParam(required = false) Integer pageSize){
+        Result result = rewrite_shopService.ShoppingCartList(userid,pageNum,pageSize);
         log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/ShoppingCartList", "传入值:"+userid, result);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
 
