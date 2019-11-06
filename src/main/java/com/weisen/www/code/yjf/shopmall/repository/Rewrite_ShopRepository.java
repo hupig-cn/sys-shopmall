@@ -17,9 +17,11 @@ public interface Rewrite_ShopRepository extends JpaRepository<Shopping, Long> {
 
     List<Shopping> findShoppingByUserid(Long userid);
 
-    Shopping findShoppingByCommodityid(String Commodityid);
+    Shopping findShoppingByCommodityidAndUserid(String Commodityid,Long userid);
 
     Shopping findShoppingById(Long id);
 
     int deleteShoppingByUserid(Long userid);
+
+    int deleteShoppingById(Long id);
 }

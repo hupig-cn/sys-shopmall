@@ -11,9 +11,9 @@ import com.weisen.www.code.yjf.shopmall.service.util.Result;
 public interface Rewrite_ShopService {
     Result ShoppingCartList(String userid);
 
-    Result AddShoppingCart(Shop shop);
+    Result AddShoppingCart(Long userid,String commodityid,String num);
 
-    Long createShopping(Shop shop);
+    Long createShopping(Long userid,String commodityid,String num);
 
     Result ChangeInValue(String userid, String shoppingid, Integer num);
 

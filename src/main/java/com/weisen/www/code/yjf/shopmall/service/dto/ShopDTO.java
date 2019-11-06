@@ -9,6 +9,8 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ShopDTO implements Serializable {
 
+    private String id;
+
     private String url;
 
     private String commodityid;
@@ -23,6 +25,13 @@ public class ShopDTO implements Serializable {
 
     private String num;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUrl() {
         return url;

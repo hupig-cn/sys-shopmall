@@ -43,9 +43,11 @@ public class Rewrite_ShoppingResources {
 
     @PostMapping("/AddShoppingCart")
     @ApiOperation("加入购物车")
-    public ResponseEntity<?> AddShoppingCart(@RequestBody Shop shop){
-        Result result = rewrite_shopService.AddShoppingCart(shop);
-        log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/AddShoppingCart", "传入值:"+shop, result);
+    public ResponseEntity<?> AddShoppingCart(@RequestParam(required = false) Long userid,
+                                             @RequestParam(required = false)String commodityid,
+                                             @RequestParam(required = false)String num){
+        Result result = rewrite_shopService.AddShoppingCart(userid,commodityid,num);
+        log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/AddShoppingCart", "传入值:"+userid+","+commodityid+","+num, result);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
 
     }
@@ -88,7 +90,7 @@ public class Rewrite_ShoppingResources {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
     @PostMapping("/createOrder")
-    @ApiOperation("选中价格总价")
+    @ApiOperation("创建订单")
     public ResponseEntity<?> createOrder(@RequestBody Rewrite_CommitOrderDTO shoppingid){
         Result result = rewrite_shopService.createOrder(shoppingid);
         log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/createOrder", "传入值:"+shoppingid.toString(), result);

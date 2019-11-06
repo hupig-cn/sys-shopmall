@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +65,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
             }
             Specifications specifications = c.get(0);
             ShopDTO shopDTO = new ShopDTO();
+            shopDTO.setId(shopping.getId()+"");
             shopDTO.setUrl(imagesPath + specifications.getFileid());
             shopDTO.setCommodityid(commodityid);
             shopDTO.setSpecificationsid(specificationsid);
@@ -77,9 +79,8 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
     }
 
     @Override
-    public Result AddShoppingCart(Shop shop) {
-        String commodityid = shop.getCommodityid();
-        String num = shop.getNum();
+    public Result AddShoppingCart(Long userid,String commodityid,String num) {
+
         if (Long.valueOf(num) > 99) {
             return Result.fail("购买数量过多");
         }
@@ -93,16 +94,15 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         if ((kucun - Long.valueOf(num)) < 0) {
             return Result.fail("购买数量超过数量");
         }
-        Long userid = shop.getUserid();
         Long shopping;
         //判断用户买过这个商家的东西没有
         List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUserid(userid);
         if (shoppingByUserid == null || shoppingByUserid.size() == 0) {
-            shopping = createShopping(shop);
+            shopping = createShopping(userid, commodityid, num);
         } else {
-            Shopping shoppingByCommodityid = rewrite_shopRepository.findShoppingByCommodityid(commodityid);
+            Shopping shoppingByCommodityid = rewrite_shopRepository.findShoppingByCommodityidAndUserid(commodityid,userid);
             if (shoppingByCommodityid == null) {
-                shopping = createShopping(shop);
+                shopping = createShopping(userid, commodityid, num);
             } else {
                 Integer num1 = shoppingByCommodityid.getNum();
                 if ((kucun - Long.valueOf(num) - num1) < 0 || num1 + Long.valueOf(num) > 99) {
@@ -121,12 +121,8 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
     }
 
     @Override
-    public Long createShopping(Shop shop) {
-        String commodityid = shop.getCommodityid();
-        String num = shop.getNum();
-        String specificationsid = shop.getSpecificationsid();
-        Long userid = shop.getUserid();
-
+    public Long createShopping(Long userid,String commodityid,String num) {
+        String specificationsid = commodityid;
         Shopping shopping = new Shopping();
         shopping.setUserid(userid);
         shopping.setCommodityid(commodityid);
@@ -145,6 +141,9 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
     @Override
     public Result ChangeInValue(String userid, String shoppingid, Integer num) {
+        if (num < 0){
+            return Result.fail("输入参数有误！");
+        }
         Shopping shoppingById = rewrite_shopRepository.findShoppingById(Long.valueOf(shoppingid));
         Integer num1 = shoppingById.getNum();
         List<Specifications> aa = rewrite_specificationsRepository.findAllByCommodityid(shoppingById.getCommodityid());
@@ -162,7 +161,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         specifications.setNum(kucun);
         //判断之前的num跟现在的num对比
         rewrite_specificationsRepository.save(specifications);
-        return Result.suc("修改成功", save);
+        return Result.suc("修改成功");
     }
 
     @Override
@@ -193,7 +192,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
     @Override
     public Result sum(String[] shoppingid) {
-        Integer sum = 0;
+        Double sum = 0.0;
         Integer numm = 0;
         for (int i = 0; i < shoppingid.length; i++) {
             Shopping shoppingById = rewrite_shopRepository.findShoppingById(Long.valueOf(shoppingid[i]));
@@ -202,7 +201,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
             List<Specifications> allByCommodityid = rewrite_specificationsRepository.findAllByCommodityid(commodityid);
             Specifications specifications = allByCommodityid.get(0);
             String price = specifications.getPrice();
-            sum = Integer.valueOf(price) * num + sum;
+            sum = Double.valueOf(price) * num + sum;
             numm = numm + num;
         }
         return Result.suc("查询成功", sum, numm);
@@ -224,6 +223,13 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         String[] commodityids = shoppingid.getCommodityids();
         String[] nums = shoppingid.getNums();
         String[] bigorder = shoppingid.getBigorder();
+        String[] ids = shoppingid.getIds();
+        for (int i = 0; i < ids.length; i++) {
+            Shopping shoppingById = rewrite_shopRepository.findShoppingById(Long.valueOf(ids[i]));
+            if (shoppingById == null){
+                return Result.fail("该商品已被操作！");
+            }
+        }
         for (int i = 0; i < commodityids.length; i++) {
             Order order = new Order();
             order.setBigorder(bigorder[i]);
@@ -241,7 +247,9 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
             order.setCreator(shoppingid.getUserid());
             order.setCreatedate(TimeUtil.getDate());
             rewrite_orderRepository.save(order);
+            rewrite_shopRepository.deleteShoppingById(Long.valueOf(ids[i]));
         }
+
         return Result.suc("生成成功");
     }
 

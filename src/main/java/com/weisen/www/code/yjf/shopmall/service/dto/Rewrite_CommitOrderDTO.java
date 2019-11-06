@@ -9,6 +9,8 @@ import java.util.Arrays;
  */
 public class Rewrite_CommitOrderDTO implements Serializable {
 
+    private String[] ids;
+
     private String[] bigorder;
 
     private String state;
@@ -24,6 +26,14 @@ public class Rewrite_CommitOrderDTO implements Serializable {
     private String address;
 
     private String[] nums;
+
+    public String[] getIds() {
+        return ids;
+    }
+
+    public void setIds(String[] ids) {
+        this.ids = ids;
+    }
 
     public String[] getBigorder() {
         return bigorder;
