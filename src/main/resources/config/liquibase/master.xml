@@ -23,6 +23,7 @@
     <include file="config/liquibase/changelog/20191107071730_added_entity_V2PublishAttrvalue.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191107071731_added_entity_V2PublishAttr.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191107071732_added_entity_V2OrderExtends.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107081042_added_entity_CommodityAttr.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
