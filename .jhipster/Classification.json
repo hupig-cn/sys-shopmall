@@ -38,6 +38,14 @@
             "fieldType": "Boolean"
         },
         {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apphomeShow",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "other",
             "fieldType": "String"
         }

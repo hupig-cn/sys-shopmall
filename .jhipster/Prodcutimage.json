@@ -42,6 +42,14 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "viewplace",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "path",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "logicdelete",
             "fieldType": "Boolean"
         }
