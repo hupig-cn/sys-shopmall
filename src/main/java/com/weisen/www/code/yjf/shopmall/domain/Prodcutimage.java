@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Prodcutimage implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -52,6 +52,12 @@ public class Prodcutimage implements Serializable {
 
     @Column(name = "modifiernum")
     private Long modifiernum;
+
+    @Column(name = "viewplace")
+    private String viewplace;
+
+    @Column(name = "path")
+    private String path;
 
     @Column(name = "logicdelete")
     private Boolean logicdelete;
@@ -195,6 +201,32 @@ public class Prodcutimage implements Serializable {
         this.modifiernum = modifiernum;
     }
 
+    public String getViewplace() {
+        return viewplace;
+    }
+
+    public Prodcutimage viewplace(String viewplace) {
+        this.viewplace = viewplace;
+        return this;
+    }
+
+    public void setViewplace(String viewplace) {
+        this.viewplace = viewplace;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public Prodcutimage path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     public Boolean isLogicdelete() {
         return logicdelete;
     }
@@ -214,19 +246,15 @@ public class Prodcutimage implements Serializable {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Prodcutimage)) {
             return false;
         }
-        Prodcutimage prodcutimage = (Prodcutimage) o;
-        if (prodcutimage.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), prodcutimage.getId());
+        return id != null && id.equals(((Prodcutimage) o).id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return 31;
     }
 
     @Override
@@ -243,6 +271,8 @@ public class Prodcutimage implements Serializable {
             ", modifier='" + getModifier() + "'" +
             ", modifierdate='" + getModifierdate() + "'" +
             ", modifiernum=" + getModifiernum() +
+            ", viewplace='" + getViewplace() + "'" +
+            ", path='" + getPath() + "'" +
             ", logicdelete='" + isLogicdelete() + "'" +
             "}";
     }

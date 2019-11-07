@@ -1,17 +1,13 @@
 package com.weisen.www.code.yjf.shopmall.domain;
 
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A Classification.
@@ -53,6 +49,12 @@ public class Classification implements Serializable {
 
     @Column(name = "logicdelete")
     private Boolean logicdelete;
+
+    @Column(name = "state")
+    private String state;
+
+    @Column(name = "apphome_show")
+    private String apphomeShow;
 
     @Column(name = "other")
     private String other;
@@ -183,6 +185,32 @@ public class Classification implements Serializable {
         this.logicdelete = logicdelete;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public Classification state(String state) {
+        this.state = state;
+        return this;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getApphomeShow() {
+        return apphomeShow;
+    }
+
+    public Classification apphomeShow(String apphomeShow) {
+        this.apphomeShow = apphomeShow;
+        return this;
+    }
+
+    public void setApphomeShow(String apphomeShow) {
+        this.apphomeShow = apphomeShow;
+    }
+
     public String getOther() {
         return other;
     }
@@ -226,6 +254,8 @@ public class Classification implements Serializable {
             ", modifierdate='" + getModifierdate() + "'" +
             ", modifiernum=" + getModifiernum() +
             ", logicdelete='" + isLogicdelete() + "'" +
+            ", state='" + getState() + "'" +
+            ", apphomeShow='" + getApphomeShow() + "'" +
             ", other='" + getOther() + "'" +
             "}";
     }

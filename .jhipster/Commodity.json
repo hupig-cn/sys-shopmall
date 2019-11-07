@@ -6,6 +6,18 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "sub_title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storeAlert",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quota",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "brandid",
             "fieldType": "String"
         },
@@ -27,6 +39,26 @@
         },
         {
             "fieldName": "weight",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "weight2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "weight3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "feature",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "services",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remark",
             "fieldType": "String"
         },
         {
