@@ -52,14 +52,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="state" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="apphome_show" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="other" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -93,8 +85,6 @@
             <column name="modifierdate" type="string"/>
             <column name="modifiernum" type="numeric"/>
             <column name="logicdelete" type="boolean"/>
-            <column name="state" type="string"/>
-            <column name="apphome_show" type="string"/>
             <column name="other" type="string"/>
         </loadData>
     </changeSet>
@@ -103,4 +93,12 @@
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    
+    <changeSet id="20191107163500_add_column" author="jhipster">
+        <addColumn tableName="classification">
+            <column name="state" type="varchar(255)"/>
+            <column name="apphome_show" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    
 </databaseChangeLog>

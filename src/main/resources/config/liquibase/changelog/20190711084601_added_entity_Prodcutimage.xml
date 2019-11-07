@@ -56,14 +56,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="viewplace" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="path" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="logicdelete" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -98,8 +90,6 @@
             <column name="modifier" type="string"/>
             <column name="modifierdate" type="string"/>
             <column name="modifiernum" type="numeric"/>
-            <column name="viewplace" type="string"/>
-            <column name="path" type="string"/>
             <column name="logicdelete" type="boolean"/>
         </loadData>
     </changeSet>
@@ -108,4 +98,11 @@
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    
+    <changeSet id="20191107163600_add_column" author="jhipster">
+        <addColumn tableName="prodcutimage">
+            <column name="viewplace" type="varchar(255)"/>
+            <column name="path" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
