@@ -198,7 +198,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
     public Result sum(String[] shoppingid) {
         Double sum = 0.00;
         Integer numm = 0;
-        if (shoppingid.length ==0){
+        if (shoppingid[0].equals("0")){
             return Result.suc("查询成功",sum,numm);
         }
         for (int i = 0; i < shoppingid.length; i++) {
