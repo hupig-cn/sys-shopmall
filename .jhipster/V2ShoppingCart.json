@@ -1,0 +1,40 @@
+{
+    "name": "V2ShoppingCart",
+    "fields": [
+        {
+            "fieldName": "userid",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "goodsId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "skuPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "skuContent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "ctime",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191107071729",
+    "entityTableName": "v_2_shopping_cart",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}

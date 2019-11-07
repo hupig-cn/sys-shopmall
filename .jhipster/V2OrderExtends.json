@@ -1,0 +1,52 @@
+{
+    "name": "V2OrderExtends",
+    "fields": [
+        {
+            "fieldName": "oid",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "paidAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "paidMethod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "paidTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expressState",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expressTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expressCompany",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expressNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expressRemark",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191107071732",
+    "entityTableName": "v_2_order_extends",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}

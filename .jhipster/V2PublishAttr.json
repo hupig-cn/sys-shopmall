@@ -1,0 +1,36 @@
+{
+    "name": "V2PublishAttr",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "formRequired",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "widgetType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "widgetName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ctime",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191107071731",
+    "entityTableName": "v_2_publish_attr",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}
