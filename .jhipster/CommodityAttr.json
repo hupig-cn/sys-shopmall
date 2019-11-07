@@ -1,0 +1,42 @@
+{
+    "name": "CommodityAttr",
+    "fields": [
+        {
+            "fieldName": "goodsId",
+            "javadoc": "The firstname attribute.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "spu",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sku",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ctime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "spuLastuptime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "skuLastuptime",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191107081042",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "commodity_attr",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}
