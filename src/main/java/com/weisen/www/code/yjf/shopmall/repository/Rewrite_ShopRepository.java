@@ -24,4 +24,6 @@ public interface Rewrite_ShopRepository extends JpaRepository<Shopping, Long> {
     int deleteShoppingByUserid(Long userid);
 
     int deleteShoppingById(Long id);
+
+    Shopping findShoppingByIdAndUserid(Long Id,Long userid);
 }

@@ -99,4 +99,12 @@ public class Rewrite_ShoppingResources {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
 
+    @PostMapping("/Selected")
+    @ApiOperation("选中")
+    public ResponseEntity<?> Selected(@RequestParam String[] shoppingid,
+                                      @RequestParam String userid){
+        Result result = rewrite_shopService.Selected(shoppingid,userid);
+        log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/createOrder", "传入值:"+shoppingid.toString(), result);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
 }

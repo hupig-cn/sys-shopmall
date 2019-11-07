@@ -76,6 +76,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
             shopDTO.setModel(specifications.getModel());
             shopDTO.setPrice(specifications.getPrice());
             shopDTO.setNum(shopping.getNum() + "");
+            shopDTO.setStart(shopping.isLogicdelete());
             s.add(shopDTO);
         }
         return Result.suc("查询成功", s, s.size());
@@ -254,6 +255,29 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         }
 
         return Result.suc("生成成功");
+    }
+
+    @Override
+    public Result Selected(String[] shoppingid,String userid) {
+        List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUserid(Long.valueOf(userid));
+        if (shoppingByUserid.size() == 0 ){
+            return Result.fail("没有购物车，不能选中");
+        }
+        for (int i = 0; i < shoppingid.length; i++) {
+            String s = shoppingid[i];
+            Shopping shopping = rewrite_shopRepository.findShoppingByIdAndUserid(Long.valueOf(s), Long.valueOf(userid));
+            if (shopping == null){
+                return Result.fail("无该商品");
+            }
+            if (shopping.isLogicdelete().equals(false)){
+                shopping.setLogicdelete(true);
+            }else {
+                shopping.setLogicdelete(false);
+            }
+            shopping.setId(shopping.getId());
+            rewrite_shopRepository.save(shopping);
+        }
+        return Result.suc("ok");
     }
 
 

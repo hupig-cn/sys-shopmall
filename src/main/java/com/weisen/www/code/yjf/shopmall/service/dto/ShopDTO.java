@@ -25,6 +25,16 @@ public class ShopDTO implements Serializable {
 
     private String num;
 
+    private Boolean start;
+
+    public Boolean getStart() {
+        return start;
+    }
+
+    public void setStart(Boolean start) {
+        this.start = start;
+    }
+
     public String getId() {
         return id;
     }

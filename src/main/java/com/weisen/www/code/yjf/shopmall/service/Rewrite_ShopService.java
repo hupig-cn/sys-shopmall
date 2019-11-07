@@ -24,5 +24,7 @@ public interface Rewrite_ShopService {
     Result sum(String[] shoppingid);
 
     Result createOrder(Rewrite_CommitOrderDTO shoppingid);
+
+    Result Selected(String[] shoppingid,String userid);
 }
 
