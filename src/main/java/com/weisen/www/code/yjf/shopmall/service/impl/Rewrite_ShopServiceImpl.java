@@ -52,7 +52,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
     @Override
     public Result ShoppingCartList(String userid,Integer pageNum,Integer pageSize) {
-        List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUseridOrderByCreatedate(Long.valueOf(userid));
+        List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUseridOrderByCreatedateDesc(Long.valueOf(userid));
         List<ShopDTO> s = new ArrayList<>();
         for (int i = 1 + (pageSize * (pageNum)); i <= (pageNum+1) * (pageSize); i++) {
             if (i > shoppingByUserid.size()) {

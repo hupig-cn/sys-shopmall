@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface Rewrite_ShopRepository extends JpaRepository<Shopping, Long> {
 
-    List<Shopping> findShoppingByUseridOrderByCreatedate(Long userid);
+    List<Shopping> findShoppingByUseridOrderByCreatedateDesc(Long userid);
 
     List<Shopping> findShoppingByUserid(Long userid);
 
