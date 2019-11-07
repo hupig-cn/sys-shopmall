@@ -52,10 +52,6 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
     @Override
     public Result ShoppingCartList(String userid,Integer pageNum,Integer pageSize) {
-        if (pageNum == null || pageSize == null ){
-            pageNum = 0;
-            pageSize = 10;
-        }
         List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUseridOrderByCreatedate(Long.valueOf(userid));
         List<ShopDTO> s = new ArrayList<>();
         for (int i = 1 + (pageSize * (pageNum)); i <= (pageNum+1) * (pageSize); i++) {
@@ -80,7 +76,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
             shopDTO.setModel(specifications.getModel());
             shopDTO.setPrice(specifications.getPrice());
             shopDTO.setNum(shopping.getNum() + "");
-            shopDTO.setStart(shopping.isLogicdelete());
+
             s.add(shopDTO);
         }
         return Result.suc("查询成功", s, s.size());
@@ -200,8 +196,11 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
     @Override
     public Result sum(String[] shoppingid) {
-        Double sum = 0.0;
+        Double sum = 0.00;
         Integer numm = 0;
+        if (shoppingid.length ==0){
+            return Result.suc("查询成功",sum,numm);
+        }
         for (int i = 0; i < shoppingid.length; i++) {
             Shopping shoppingById = rewrite_shopRepository.findShoppingById(Long.valueOf(shoppingid[i]));
             Integer num = shoppingById.getNum();
