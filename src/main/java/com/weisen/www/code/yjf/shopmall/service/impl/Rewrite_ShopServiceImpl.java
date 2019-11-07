@@ -154,18 +154,15 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         Specifications specifications = aa.get(0);
         Integer kucun = specifications.getNum();
         shoppingById.setNum(num);
-        if ((kucun - Long.valueOf(num) - num1) < 0 || num1 + Long.valueOf(num) > 99) {
+        if (Long.valueOf(num) < 0 || Long.valueOf(num) > 99) {
             return Result.fail("购买数量超过数量");
+        }else {
+            kucun = kucun - num + num1;
+            specifications.setNum(kucun);
+            //判断之前的num跟现在的num对比
+            rewrite_specificationsRepository.save(specifications);
+            return Result.suc("修改成功");
         }
-        if ((kucun - Long.valueOf(num)) < 0) {
-            return Result.fail("购买数量超过数量");
-        }
-        Shopping save = rewrite_shopRepository.save(shoppingById);
-        kucun = kucun - num + num1;
-        specifications.setNum(kucun);
-        //判断之前的num跟现在的num对比
-        rewrite_specificationsRepository.save(specifications);
-        return Result.suc("修改成功");
     }
 
     @Override
