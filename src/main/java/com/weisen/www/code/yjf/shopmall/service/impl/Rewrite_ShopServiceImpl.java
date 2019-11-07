@@ -56,7 +56,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         List<ShopDTO> s = new ArrayList<>();
         for (int i = 1 + (pageSize * (pageNum)); i <= (pageNum+1) * (pageSize); i++) {
             if (i > shoppingByUserid.size()) {
-                return Result.suc("查询成功", s, s.size());
+                return Result.suc("查询成功", s, shoppingByUserid.size());
             }
             Shopping shopping = shoppingByUserid.get(i-1);
             String specificationsid = shopping.getSpecificationsid();
@@ -79,7 +79,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
             s.add(shopDTO);
         }
-        return Result.suc("查询成功", s, s.size());
+        return Result.suc("查询成功", s, shoppingByUserid.size());
     }
 
     @Override
