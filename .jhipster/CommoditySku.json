@@ -1,0 +1,50 @@
+{
+    "name": "CommoditySku",
+    "fields": [
+        {
+            "fieldName": "goodsId",
+            "javadoc": "The firstname ClassificationAttr.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "skuid",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "skuContent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "stock",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "stocks",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191108015421",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "commodity_sku",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}
