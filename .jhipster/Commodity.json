@@ -1,104 +1,72 @@
 {
-    "name": "Commodity",
-    "fields": [
-        {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "sub_title",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "storeAlert",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "quota",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "brandid",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "classificationid",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "commoditystate",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "postage",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "salevalue",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "weight",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "weight2",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "weight3",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "feature",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "services",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "remark",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "creator",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdate",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "modifier",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "modifierdate",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "modifiernum",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "logicdelete",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "other",
-            "fieldType": "String"
-        }
-    ],
-    "relationships": [],
-    "changelogDate": "20190609231510",
-    "entityTableName": "commodity",
-    "dto": "mapstruct",
-    "pagination": "infinite-scroll",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "fluentMethods": true,
-    "clientRootFolder": "shopmall",
-    "applications": "*",
-    "microserviceName": "shopmall"
+  "name": "Commodity",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "brandid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "classificationid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commoditystate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salevalue",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creator",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifierdate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiernum",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "logicdelete",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "other",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20190609231510",
+  "entityTableName": "commodity",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "clientRootFolder": "shopmall",
+  "applications": "*",
+  "microserviceName": "shopmall"
 }
