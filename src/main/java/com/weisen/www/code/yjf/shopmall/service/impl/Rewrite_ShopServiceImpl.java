@@ -281,5 +281,35 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
         return Result.suc("ok");
     }
 
+    @Override
+    public Result ShoppingCartOrder(String[] shoppingid,String userid) {
+        List<ShopDTO> s = new ArrayList<>();
+        for (int i = 0; i < shoppingid.length; i++) {
+            Shopping shopping = rewrite_shopRepository.findShoppingByIdAndUserid(Long.valueOf(shoppingid[i]),Long.valueOf(userid));
+            if (shopping == null){
+                return Result.fail("查询出错");
+            }
+            String specificationsid = shopping.getSpecificationsid();
+            String commodityid = shopping.getCommodityid();
+
+            List<Specifications> c = rewrite_specificationsRepository.findAllByCommodityid(commodityid);
+            if (c.size() == 0) {
+                return Result.fail("输入参数有误");
+            }
+            Specifications specifications = c.get(0);
+            ShopDTO shopDTO = new ShopDTO();
+            shopDTO.setId(shopping.getId()+"");
+            shopDTO.setUrl(imagesPath + specifications.getFileid());
+            shopDTO.setCommodityid(commodityid);
+            shopDTO.setSpecificationsid(specificationsid);
+            shopDTO.setSpecificationstitle(specifications.getSpecifications());
+            shopDTO.setModel(specifications.getModel());
+            shopDTO.setPrice(specifications.getPrice());
+            shopDTO.setNum(shopping.getNum() + "");
+            s.add(shopDTO);
+        }
+
+        return Result.suc("查询成功", s, s.size());
+    }
 
 }

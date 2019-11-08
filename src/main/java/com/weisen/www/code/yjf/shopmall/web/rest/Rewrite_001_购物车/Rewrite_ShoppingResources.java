@@ -107,4 +107,14 @@ public class Rewrite_ShoppingResources {
         log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/createOrder", "传入值:"+shoppingid.toString(), result);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
+
+    @PostMapping("/ShoppingCartOrder")
+    @ApiOperation("购物车详情")
+    public ResponseEntity<?> ShoppingCartOrder(@RequestParam(required = false) String[] shoppingid,
+                                               @RequestParam(required = false) String userid){
+        Result result = rewrite_shopService.ShoppingCartOrder(shoppingid,userid);
+        log.debug("访问地址: {},传入值: {},返回值: {}","/api/weisen/shoppings/ShoppingCartList", "传入值:"+shoppingid, result);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+
+    }
 }

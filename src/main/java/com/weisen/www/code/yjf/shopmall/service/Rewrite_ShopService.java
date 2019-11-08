@@ -26,5 +26,7 @@ public interface Rewrite_ShopService {
     Result createOrder(Rewrite_CommitOrderDTO shoppingid);
 
     Result Selected(String[] shoppingid,String userid);
+
+    Result ShoppingCartOrder(String[] shoppingid,String userid);
 }
 
