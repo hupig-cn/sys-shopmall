@@ -52,7 +52,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
 
     @Override
     public Result ShoppingCartList(String userid,Integer pageNum,Integer pageSize) {
-        List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUseridOrderByCreatedateDesc(Long.valueOf(userid));
+        List<Shopping> shoppingByUserid = rewrite_shopRepository.findShoppingByUseridOrderByModifierdateDesc(Long.valueOf(userid));
         List<ShopDTO> s = new ArrayList<>();
         for (int i = 1 + (pageSize * (pageNum)); i <= (pageNum+1) * (pageSize); i++) {
             if (i > shoppingByUserid.size()) {
@@ -113,6 +113,7 @@ public class Rewrite_ShopServiceImpl implements Rewrite_ShopService {
                     return Result.fail("购买数量超过数量");
                 } else {
                     shoppingByCommodityid.setNum((int) (num1 + Long.valueOf(num)));
+                    shoppingByCommodityid.setModifierdate(TimeUtil.getDate());
                     Shopping save = rewrite_shopRepository.save(shoppingByCommodityid);
                     shopping = save.getId();
                 }

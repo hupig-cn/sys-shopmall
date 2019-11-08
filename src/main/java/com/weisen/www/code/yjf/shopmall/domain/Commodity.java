@@ -26,15 +26,6 @@ public class Commodity implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "sub_title")
-    private String sub_title;
-
-    @Column(name = "store_alert")
-    private String storeAlert;
-
-    @Column(name = "jhi_quota")
-    private Integer quota;
-
     @Column(name = "brandid")
     private String brandid;
 
@@ -52,21 +43,6 @@ public class Commodity implements Serializable {
 
     @Column(name = "weight")
     private String weight;
-
-    @Column(name = "weight_2")
-    private String weight2;
-
-    @Column(name = "weight_3")
-    private String weight3;
-
-    @Column(name = "feature")
-    private String feature;
-
-    @Column(name = "services")
-    private String services;
-
-    @Column(name = "remark")
-    private String remark;
 
     @Column(name = "creator")
     private String creator;
@@ -109,45 +85,6 @@ public class Commodity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSub_title() {
-        return sub_title;
-    }
-
-    public Commodity sub_title(String sub_title) {
-        this.sub_title = sub_title;
-        return this;
-    }
-
-    public void setSub_title(String sub_title) {
-        this.sub_title = sub_title;
-    }
-
-    public String getStoreAlert() {
-        return storeAlert;
-    }
-
-    public Commodity storeAlert(String storeAlert) {
-        this.storeAlert = storeAlert;
-        return this;
-    }
-
-    public void setStoreAlert(String storeAlert) {
-        this.storeAlert = storeAlert;
-    }
-
-    public Integer getQuota() {
-        return quota;
-    }
-
-    public Commodity quota(Integer quota) {
-        this.quota = quota;
-        return this;
-    }
-
-    public void setQuota(Integer quota) {
-        this.quota = quota;
     }
 
     public String getBrandid() {
@@ -226,71 +163,6 @@ public class Commodity implements Serializable {
 
     public void setWeight(String weight) {
         this.weight = weight;
-    }
-
-    public String getWeight2() {
-        return weight2;
-    }
-
-    public Commodity weight2(String weight2) {
-        this.weight2 = weight2;
-        return this;
-    }
-
-    public void setWeight2(String weight2) {
-        this.weight2 = weight2;
-    }
-
-    public String getWeight3() {
-        return weight3;
-    }
-
-    public Commodity weight3(String weight3) {
-        this.weight3 = weight3;
-        return this;
-    }
-
-    public void setWeight3(String weight3) {
-        this.weight3 = weight3;
-    }
-
-    public String getFeature() {
-        return feature;
-    }
-
-    public Commodity feature(String feature) {
-        this.feature = feature;
-        return this;
-    }
-
-    public void setFeature(String feature) {
-        this.feature = feature;
-    }
-
-    public String getServices() {
-        return services;
-    }
-
-    public Commodity services(String services) {
-        this.services = services;
-        return this;
-    }
-
-    public void setServices(String services) {
-        this.services = services;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public Commodity remark(String remark) {
-        this.remark = remark;
-        return this;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 
     public String getCreator() {
@@ -390,15 +262,19 @@ public class Commodity implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Commodity)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Commodity) o).id);
+        Commodity commodity = (Commodity) o;
+        if (commodity.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), commodity.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
@@ -406,20 +282,12 @@ public class Commodity implements Serializable {
         return "Commodity{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", sub_title='" + getSub_title() + "'" +
-            ", storeAlert='" + getStoreAlert() + "'" +
-            ", quota=" + getQuota() +
             ", brandid='" + getBrandid() + "'" +
             ", classificationid='" + getClassificationid() + "'" +
             ", commoditystate='" + getCommoditystate() + "'" +
             ", postage='" + getPostage() + "'" +
             ", salevalue='" + getSalevalue() + "'" +
             ", weight='" + getWeight() + "'" +
-            ", weight2='" + getWeight2() + "'" +
-            ", weight3='" + getWeight3() + "'" +
-            ", feature='" + getFeature() + "'" +
-            ", services='" + getServices() + "'" +
-            ", remark='" + getRemark() + "'" +
             ", creator='" + getCreator() + "'" +
             ", createdate='" + getCreatedate() + "'" +
             ", modifier='" + getModifier() + "'" +
