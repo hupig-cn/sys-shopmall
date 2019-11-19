@@ -1,0 +1,30 @@
+{
+    "name": "ClassificationAttr",
+    "fields": [
+        {
+            "fieldName": "cid",
+            "javadoc": "The firstname ClassificationAttr.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "aid",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "avid",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191108011703",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "classification_attr",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "shopmall",
+    "applications": "*",
+    "microserviceName": "shopmall"
+}

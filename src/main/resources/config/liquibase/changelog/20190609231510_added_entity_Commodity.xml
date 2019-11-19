@@ -7,7 +7,7 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <property name="now" value="now()" dbms="h2"/>
-    
+
     <property name="now" value="now()" dbms="mysql"/>
     <property name="autoIncrement" value="true"/>
 
@@ -80,7 +80,20 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
+    </changeSet>
+
+    <changeSet id="20191107172200-add_column" author="shuishui">
+        <addColumn tableName="commodity">
+            <column name="sub_title" type="varchar(255)"/>
+            <column name="store_alert" type="char(1)"/>
+            <column name="quota" type="int(10)"/>
+            <column name="weight2" type="boolean"/>
+            <column name="weight3" type="boolean"/>
+            <column name="feature" type="varchar(120)"/>
+            <column name="services" type="varchar(120)"/>
+            <column name="remark" type="text"/>
+        </addColumn>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

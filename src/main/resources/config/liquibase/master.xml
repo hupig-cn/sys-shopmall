@@ -19,6 +19,13 @@
     <include file="config/liquibase/changelog/20190609231514_added_entity_Order.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190703112115_added_entity_Brand.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190711084601_added_entity_Prodcutimage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107071729_added_entity_V2ShoppingCart.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107071730_added_entity_V2PublishAttrvalue.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107071731_added_entity_V2PublishAttr.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107071732_added_entity_V2OrderExtends.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107081042_added_entity_CommodityAttr.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191108011703_added_entity_ClassificationAttr.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191108015421_added_entity_CommoditySku.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,29 @@
+package com.weisen.www.code.yjf.shopmall.repository;
+
+import com.weisen.www.code.yjf.shopmall.domain.Shopping;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+/**
+ * @Author: 阮铭辉
+ * @Date: 2019/10/29 11:32
+ */
+@Repository
+public interface Rewrite_ShopRepository extends JpaRepository<Shopping, Long> {
+
+    List<Shopping> findShoppingByUseridOrderByModifierdateDesc(Long userid);
+
+    List<Shopping> findShoppingByUserid(Long userid);
+
+    Shopping findShoppingByCommodityidAndUserid(String Commodityid,Long userid);
+
+    Shopping findShoppingById(Long id);
+
+    int deleteShoppingByUserid(Long userid);
+
+    int deleteShoppingById(Long id);
+
+    Shopping findShoppingByIdAndUserid(Long Id,Long userid);
+}
