@@ -172,7 +172,7 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
 //        }
 //        return Result.suc("成功",show);
     }
-
+    
     @Override
     public Result findAllByContent(Rewrite_ForNearShop rewrite_ForNearShop) {
         if(!CheckUtils.checkPageInfo(rewrite_ForNearShop.getPageNum(),rewrite_ForNearShop.getPageSize()))
@@ -180,7 +180,7 @@ public class Rewrite_CommodityServiceImpl implements Rewrite_CommodityService {
         else {
             List<Map<String, Object>> allProduct = rewrite_CommodityRepository.findAllProductByconent(rewrite_ForNearShop.getName(),rewrite_ForNearShop.getPageNum() * rewrite_ForNearShop.getPageSize(), rewrite_ForNearShop.getPageSize());
             if(null ==  allProduct || 0 == allProduct.size())
-                return Result.fail("网络繁忙请稍后重试");
+                return Result.suc("网络繁忙请稍后重试");
             return Result.suc("获取成功",allProduct);
         }
     }
