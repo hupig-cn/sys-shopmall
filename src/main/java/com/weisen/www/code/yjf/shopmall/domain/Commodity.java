@@ -65,6 +65,94 @@ public class Commodity implements Serializable {
     @Column(name = "other")
     private String other;
 
+    @Column(name = "sub_title")
+    private String subTitle;
+
+    @Column(name = "store_alert")
+    private String storeAlert;
+
+    @Column(name = "quota")
+    private Integer quota;
+
+    @Column(name = "weight2")
+    private Boolean weight2;
+
+    @Column(name = "weight3")
+    private Boolean weight3;
+
+    @Column(name = "feature")
+    private String feature;
+
+    @Column(name = "services")
+    private String services;
+
+    @Column(name = "remark")
+    private String remark;
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
+
+    public String getStoreAlert() {
+        return storeAlert;
+    }
+
+    public void setStoreAlert(String storeAlert) {
+        this.storeAlert = storeAlert;
+    }
+
+    public Integer getQuota() {
+        return quota;
+    }
+
+    public void setQuota(Integer quota) {
+        this.quota = quota;
+    }
+
+    public Boolean getWeight2() {
+        return weight2;
+    }
+
+    public void setWeight2(Boolean weight2) {
+        this.weight2 = weight2;
+    }
+
+    public Boolean getWeight3() {
+        return weight3;
+    }
+
+    public void setWeight3(Boolean weight3) {
+        this.weight3 = weight3;
+    }
+
+    public String getFeature() {
+        return feature;
+    }
+
+    public void setFeature(String feature) {
+        this.feature = feature;
+    }
+
+    public String getServices() {
+        return services;
+    }
+
+    public void setServices(String services) {
+        this.services = services;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;

@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -79,6 +79,90 @@ public class Order implements Serializable {
 
     @Column(name = "other")
     private String other;
+
+    @Column(name = "classification",columnDefinition = "",nullable = false)
+    private String classification;
+
+    @Column(name = "goods_title",columnDefinition = "",nullable = false)
+    private String goodsTitle;
+
+    @Column(name = "goods_img",columnDefinition = "",nullable = false)
+    private String goodsImg;
+
+    @Column(name = "sku_content",columnDefinition = "",nullable = false)
+    private String skuContent;
+
+    @Column(name = "unit_price",columnDefinition = "0.00",nullable = false)
+    private Double unitPrice;
+
+    @Column(name = "amount",columnDefinition = "0.00",nullable = false)
+    private Double amount;
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        if (classification == null){
+            classification = "";
+        }
+        this.classification = classification;
+    }
+
+    public String getGoodsTitle() {
+        return goodsTitle;
+    }
+
+    public void setGoodsTitle(String goodsTitle) {
+        if (goodsTitle == null){
+            goodsTitle = "";
+        }
+        this.goodsTitle = goodsTitle;
+    }
+
+    public String getGoodsImg() {
+        return goodsImg;
+    }
+
+    public void setGoodsImg(String goodsImg) {
+        if (goodsImg == null){
+            goodsImg = "";
+        }
+        this.goodsImg = goodsImg;
+    }
+
+    public String getSkuContent() {
+        return skuContent;
+    }
+
+    public void setSkuContent(String skuContent) {
+        if (skuContent == null){
+            skuContent = "";
+        }
+        this.skuContent = skuContent;
+    }
+
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Double unitPrice) {
+        if (unitPrice == null){
+            unitPrice = 0.00;
+        }
+        this.unitPrice = unitPrice;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        if (amount == null){
+            amount = 0.00;
+        }
+        this.amount = amount;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

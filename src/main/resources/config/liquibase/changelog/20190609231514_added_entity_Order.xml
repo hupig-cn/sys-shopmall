@@ -113,5 +113,34 @@
             <column name="amount" type="varchar(255)"/>
         </addColumn>
     </changeSet>
+    <changeSet id="20191122090201_add_column" author="shuishui">
+        <renameColumn tableName="jhi_order" oldColumnName="unit_price" newColumnName="unit_price" columnDataType="Double"/>
+        <renameColumn tableName="jhi_order" oldColumnName="amount" newColumnName="amount" columnDataType="Double" />
+    </changeSet>
+
+    <changeSet id="20191122160901-delete_column" author="hellxz">
+        <dropColumn tableName="jhi_order" columnName="classification2"/>
+    </changeSet>
+    <changeSet id="20191122161704-delete_column" author="Shuishui">
+        <dropColumn tableName="jhi_order" columnName="classification"/>
+        <dropColumn tableName="jhi_order" columnName="goods_title"/>
+        <dropColumn tableName="jhi_order" columnName="goods_img"/>
+        <dropColumn tableName="jhi_order" columnName="sku_content"/>
+        <dropColumn tableName="jhi_order" columnName="unit_price"/>
+        <dropColumn tableName="jhi_order" columnName="amount"/>
+    </changeSet>
+
+    <changeSet id="20191122161800-add_column" author="shuishui">
+        <addColumn tableName="jhi_order">
+            <column name="classification" type="varchar(66)" defaultValue=""/>
+            <column name="goods_title" type="varchar(255)" defaultValue=""/>
+            <column name="goods_img" type="varchar(255)" defaultValue=""/>
+            <column name="sku_content" type="varchar(255)" defaultValue=""/>
+            <column name="unit_price" type="Double(20,3)" defaultValue="0.00"/>
+            <column name="amount" type="Double(20,3)" defaultValue="0.00"/>
+        </addColumn>
+    </changeSet>
+
+
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>
