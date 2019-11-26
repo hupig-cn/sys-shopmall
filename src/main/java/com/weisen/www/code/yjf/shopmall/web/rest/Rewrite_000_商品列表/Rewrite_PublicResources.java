@@ -38,8 +38,9 @@ public class Rewrite_PublicResources {
     public ResponseEntity<?> myfilesList(@RequestParam Integer pageSize,
                                          @RequestParam Integer pageNum,
                                          @RequestParam Integer type,
-                                         @RequestParam Integer condition){
-        Result result = rewrite_commityGoodService.myfilesList(pageSize,pageNum,type,condition);
+                                         @RequestParam Integer condition,
+                                         @RequestParam String name){
+        Result result = rewrite_commityGoodService.myfilesList(pageSize,pageNum,type,condition,name);
         log.debug("访问地址: {},传入值: {},返回值: {}","/api/commodity/findAllByTime2", "传入值:"+pageSize+";"+pageNum, result);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
