@@ -55,4 +55,7 @@ public interface Rewrite_CommodityRepository extends JpaRepository<Commodity, Lo
     List<Map<String,Object>> findAllProductByconent(String content,Integer pageNum, Integer pageSize);
 
     Commodity findCommodityById(Long id);
+
+    @Query(value = "select id from commodity Where Brandid = ?1",nativeQuery = true)
+    List<Long> findCommodityByBrandid(String brandid);
 }
