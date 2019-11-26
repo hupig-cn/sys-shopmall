@@ -2,6 +2,7 @@ package com.weisen.www.code.yjf.shopmall.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -74,6 +75,7 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 		if (classificationsList.isEmpty()) {
 			return Result.fail("没有该分类!");
 		} else {
+			Integer type = rewrite_ClassificationRepository.findById2(pid);
 			List<Rewrite_CommodityClassificationDTO2> rewrite_CommodityClassificationDTOs = new ArrayList<Rewrite_CommodityClassificationDTO2>();
 			for (Classification classification : classificationsList) {
 				Rewrite_CommodityClassificationDTO2 commodityClassificationDTO = new Rewrite_CommodityClassificationDTO2();
@@ -84,6 +86,8 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 				commodityClassificationDTO.setHeight(432);
 				commodityClassificationDTO.setWidth(432);
 				commodityClassificationDTO.setPid(pid);
+				
+				commodityClassificationDTO.setType(type);
 				commodityClassificationDTO.setOther(classification.getName());
 				rewrite_CommodityClassificationDTOs.add(commodityClassificationDTO);
 			}
