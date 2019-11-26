@@ -61,21 +61,21 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
     public Result myfilesList(Integer pageSize, Integer pageNum,Integer type,Integer condition,String name) {
             List<Rewrite_Commity2DTO> bbc = new ArrayList<>();//最后返回值
             int a = pageNum * pageSize;  //分页
-        if (name.equals("")) { //如果没有搜索关键字，则走下面
+        if (name == null || name.equals("")) { //如果没有搜索关键字，则走下面
             List<Specifications> specificationsByOrdrerBys = new ArrayList<>();
-            //String ccc = "";
+            String ccc = "";
             if (type == 0) { //type = 0 全部商品  type = 1 积分精选，2 美食, 3 数码 ，4 居家
                 specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerBys(a, pageSize);
             } else {
-//                if (type == 2) {
-//                    ccc = "13";
-//                } else if (type == 3) {
-//                    ccc = "15";
-//                } else if (type == 4) {
-//                    ccc = "14";
-//                }
-                Long ccc = rewrite_classificationRepository.findClassificationByType(type);//查询分类表的id
-                List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByBrandid(ccc+"");//用分类表的id去查商品
+                if (type == 2) {
+                    ccc = "13";
+                } else if (type == 3) {
+                    ccc = "15";
+                } else if (type == 4) {
+                    ccc = "14";
+                }
+                //Long ccc = rewrite_classificationRepository.findClassificationByType(type);//查询分类表的id
+                List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByBrandid(ccc);//用分类表的id去查商品
                 for (int i = 0; i < commodityByBrandid.size(); i++) {//然后查出来的商品加入到list里面
                     Long asd = commodityByBrandid.get(i);
                     Specifications s = rewrite_specificationsRepository.findSpecificationsByCommodityid(asd + "");
