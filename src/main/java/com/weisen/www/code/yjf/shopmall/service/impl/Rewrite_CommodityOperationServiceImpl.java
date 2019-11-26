@@ -73,7 +73,7 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 	public Result getCommoditySecondaryClassification(Long pid) {
 		List<Classification> classificationsList = rewrite_ClassificationRepository.findByPid(pid);
 		if (classificationsList.isEmpty()) {
-			return Result.fail("没有该分类!");
+			return Result.suc("没有该分类!");
 		} else {
 			Integer type = rewrite_ClassificationRepository.findById2(pid);
 			List<Rewrite_CommodityClassificationDTO2> rewrite_CommodityClassificationDTOs = new ArrayList<Rewrite_CommodityClassificationDTO2>();
