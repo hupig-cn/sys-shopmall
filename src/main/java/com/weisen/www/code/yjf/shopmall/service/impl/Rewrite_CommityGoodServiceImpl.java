@@ -75,7 +75,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
                     ccc = "14";
                 }
                 //Long ccc = rewrite_classificationRepository.findClassificationByType(type);//查询分类表的id
-                List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByBrandid(ccc);//用分类表的id去查商品
+                List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByClassificationid(ccc);//用分类表的id去查商品
                 for (int i = 0; i < commodityByBrandid.size(); i++) {//然后查出来的商品加入到list里面
                     Long asd = commodityByBrandid.get(i);
                     Specifications s = rewrite_specificationsRepository.findSpecificationsByCommodityid(asd + "");
@@ -130,7 +130,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         if (clist.size()>0) {
             for (int i = 0; i < clist.size(); i++) {
                 Integer c = clist.get(i);
-                List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByBrandid(c+"");//用分类id去查询对应的商品
+                List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByClassificationid(c+"");//用分类id去查询对应的商品
                 for (int j = 0; j < commodityByBrandid.size(); j++) {
                     shangpin.add(commodityByBrandid.get(j));//将id放进Set集合中
                 }
