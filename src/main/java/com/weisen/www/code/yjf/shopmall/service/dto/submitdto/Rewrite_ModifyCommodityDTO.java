@@ -7,11 +7,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @SuppressWarnings("serial")
-@ApiModel(value = "商品上架DTO")
-public class Rewrite_CommodityOperationDTO implements Serializable {
-
-	@ApiModelProperty(value = "商品分类id", example = "")
-	private Long brandid;
+@ApiModel(value = "商品修改DTO")
+public class Rewrite_ModifyCommodityDTO implements Serializable {
 
 	@ApiModelProperty(value = "商品文件id")
 	private Long fileid;
@@ -37,21 +34,8 @@ public class Rewrite_CommodityOperationDTO implements Serializable {
 	@ApiModelProperty(value = "商家id", example = "51")
 	private String userId;
 
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public Long getBrandid() {
-		return brandid;
-	}
-
-	public void setBrandid(Long brandid) {
-		this.brandid = brandid;
-	}
+	@ApiModelProperty(value = "商品ID", example = "101184")
+	private String commodityId;
 
 	public Long getFileid() {
 		return fileid;
@@ -109,4 +93,19 @@ public class Rewrite_CommodityOperationDTO implements Serializable {
 		this.other = other;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getCommodityId() {
+		return commodityId;
+	}
+
+	public void setCommodityId(String commodityId) {
+		this.commodityId = commodityId;
+	}
 }

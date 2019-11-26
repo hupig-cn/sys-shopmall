@@ -7,16 +7,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @SuppressWarnings("serial")
-@ApiModel(value = "商品上架DTO")
-public class Rewrite_CommodityOperationDTO implements Serializable {
+@ApiModel(value = "查询商家所有商品DTO")
+public class Rewrite_GetAllCommodityOperationDTO implements Serializable {
 
-	@ApiModelProperty(value = "商品分类id", example = "")
+	@ApiModelProperty(value = "商品分类id")
 	private Long brandid;
 
 	@ApiModelProperty(value = "商品文件id")
 	private Long fileid;
 
-	@ApiModelProperty(value = "商品规格", example = "飞利浦(Philips)电动牙刷HX6511/51")
+	@ApiModelProperty(value = "商品规格")
 	private String specifications;
 
 	@ApiModelProperty(value = "商品积分")
@@ -25,7 +25,7 @@ public class Rewrite_CommodityOperationDTO implements Serializable {
 	@ApiModelProperty(value = "商品库存")
 	private Integer num;
 
-	@ApiModelProperty(value = "商品价格", example = "199.99")
+	@ApiModelProperty(value = "商品价格")
 	private String price;
 
 	@ApiModelProperty(value = "商品折扣")
@@ -34,8 +34,30 @@ public class Rewrite_CommodityOperationDTO implements Serializable {
 	@ApiModelProperty(value = "商品备注")
 	private String other;
 
-	@ApiModelProperty(value = "商家id", example = "51")
+	@ApiModelProperty(value = "商家id")
 	private String userId;
+
+	@ApiModelProperty(value = "商品id")
+	private String commodityId;
+
+	@ApiModelProperty(value = "商品分类名称")
+	private String model;
+
+	public String getCommodityId() {
+		return commodityId;
+	}
+
+	public void setCommodityId(String commodityId) {
+		this.commodityId = commodityId;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
 
 	public String getUserId() {
 		return userId;
