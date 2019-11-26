@@ -84,7 +84,7 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 				commodityClassificationDTO.setHeight(432);
 				commodityClassificationDTO.setWidth(432);
 				commodityClassificationDTO.setPid(pid);
-				commodityClassificationDTO.setOther(classification.getOther());
+				commodityClassificationDTO.setOther(classification.getName());
 				rewrite_CommodityClassificationDTOs.add(commodityClassificationDTO);
 			}
 			return Result.suc("查询成功!", rewrite_CommodityClassificationDTOs, rewrite_CommodityClassificationDTOs.size());
