@@ -117,10 +117,7 @@
         <renameColumn tableName="jhi_order" oldColumnName="unit_price" newColumnName="unit_price" columnDataType="Double"/>
         <renameColumn tableName="jhi_order" oldColumnName="amount" newColumnName="amount" columnDataType="Double" />
     </changeSet>
-
-    <changeSet id="20191122160901-delete_column" author="hellxz">
-        <dropColumn tableName="jhi_order" columnName="classification2"/>
-    </changeSet>
+    
     <changeSet id="20191122161704-delete_column" author="Shuishui">
         <dropColumn tableName="jhi_order" columnName="classification"/>
         <dropColumn tableName="jhi_order" columnName="goods_title"/>

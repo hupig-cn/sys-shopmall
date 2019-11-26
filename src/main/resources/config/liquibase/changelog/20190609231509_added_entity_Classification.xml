@@ -94,7 +94,7 @@
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
-    <changeSet id="20191107163501_add_column" author="jhipster">
+    <changeSet id="20191107163500_add_column" author="jhipster">
         <addColumn tableName="classification">
             <column name="state" type="varchar(255)"/>
             <column name="apphome_show" type="varchar(255)"/>
