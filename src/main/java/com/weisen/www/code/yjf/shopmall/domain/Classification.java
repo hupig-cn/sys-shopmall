@@ -1,6 +1,5 @@
 package com.weisen.www.code.yjf.shopmall.domain;
 
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -17,246 +16,271 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Classification implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "superior")
-    private String superior;
+	@Column(name = "superior")
+	private String superior;
 
-    @Column(name = "jhi_order")
-    private String order;
+	@Column(name = "jhi_order")
+	private String order;
 
-    @Column(name = "creator")
-    private String creator;
+	@Column(name = "creator")
+	private String creator;
 
-    @Column(name = "createdate")
-    private String createdate;
+	@Column(name = "createdate")
+	private String createdate;
 
-    @Column(name = "modifier")
-    private String modifier;
+	@Column(name = "modifier")
+	private String modifier;
 
-    @Column(name = "modifierdate")
-    private String modifierdate;
+	@Column(name = "modifierdate")
+	private String modifierdate;
 
-    @Column(name = "modifiernum")
-    private Long modifiernum;
+	@Column(name = "modifiernum")
+	private Long modifiernum;
 
-    @Column(name = "logicdelete")
-    private Boolean logicdelete;
+	@Column(name = "logicdelete")
+	private Boolean logicdelete;
 
-    @Column(name = "state")
-    private String state;
+	@Column(name = "state")
+	private String state;
 
-    @Column(name = "apphome_show")
-    private String apphomeShow;
+	@Column(name = "apphome_show")
+	private String apphomeShow;
 
-    @Column(name = "other")
-    private String other;
+	@Column(name = "other")
+	private String other;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
+	@Column(name = "pid")
+	private Long pid;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Column(name = "icon")
+	private String icon;
 
-    public String getName() {
-        return name;
-    }
+	@Column(name = "type")
+	private Integer type;
 
-    public Classification name(String name) {
-        this.name = name;
-        return this;
-    }
+	// jhipster-needle-entity-add-field - JHipster will add fields here, do not
+	// remove
+	public Long getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getSuperior() {
-        return superior;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Classification superior(String superior) {
-        this.superior = superior;
-        return this;
-    }
+	public Classification name(String name) {
+		this.name = name;
+		return this;
+	}
 
-    public void setSuperior(String superior) {
-        this.superior = superior;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getOrder() {
-        return order;
-    }
+	public String getSuperior() {
+		return superior;
+	}
 
-    public Classification order(String order) {
-        this.order = order;
-        return this;
-    }
+	public Classification superior(String superior) {
+		this.superior = superior;
+		return this;
+	}
 
-    public void setOrder(String order) {
-        this.order = order;
-    }
+	public void setSuperior(String superior) {
+		this.superior = superior;
+	}
 
-    public String getCreator() {
-        return creator;
-    }
+	public String getOrder() {
+		return order;
+	}
 
-    public Classification creator(String creator) {
-        this.creator = creator;
-        return this;
-    }
+	public Classification order(String order) {
+		this.order = order;
+		return this;
+	}
 
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
+	public void setOrder(String order) {
+		this.order = order;
+	}
 
-    public String getCreatedate() {
-        return createdate;
-    }
+	public String getCreator() {
+		return creator;
+	}
 
-    public Classification createdate(String createdate) {
-        this.createdate = createdate;
-        return this;
-    }
+	public Classification creator(String creator) {
+		this.creator = creator;
+		return this;
+	}
 
-    public void setCreatedate(String createdate) {
-        this.createdate = createdate;
-    }
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
 
-    public String getModifier() {
-        return modifier;
-    }
+	public String getCreatedate() {
+		return createdate;
+	}
 
-    public Classification modifier(String modifier) {
-        this.modifier = modifier;
-        return this;
-    }
+	public Classification createdate(String createdate) {
+		this.createdate = createdate;
+		return this;
+	}
 
-    public void setModifier(String modifier) {
-        this.modifier = modifier;
-    }
+	public void setCreatedate(String createdate) {
+		this.createdate = createdate;
+	}
 
-    public String getModifierdate() {
-        return modifierdate;
-    }
+	public String getModifier() {
+		return modifier;
+	}
 
-    public Classification modifierdate(String modifierdate) {
-        this.modifierdate = modifierdate;
-        return this;
-    }
+	public Classification modifier(String modifier) {
+		this.modifier = modifier;
+		return this;
+	}
 
-    public void setModifierdate(String modifierdate) {
-        this.modifierdate = modifierdate;
-    }
+	public void setModifier(String modifier) {
+		this.modifier = modifier;
+	}
 
-    public Long getModifiernum() {
-        return modifiernum;
-    }
+	public String getModifierdate() {
+		return modifierdate;
+	}
 
-    public Classification modifiernum(Long modifiernum) {
-        this.modifiernum = modifiernum;
-        return this;
-    }
+	public Classification modifierdate(String modifierdate) {
+		this.modifierdate = modifierdate;
+		return this;
+	}
 
-    public void setModifiernum(Long modifiernum) {
-        this.modifiernum = modifiernum;
-    }
+	public void setModifierdate(String modifierdate) {
+		this.modifierdate = modifierdate;
+	}
 
-    public Boolean isLogicdelete() {
-        return logicdelete;
-    }
+	public Long getModifiernum() {
+		return modifiernum;
+	}
 
-    public Classification logicdelete(Boolean logicdelete) {
-        this.logicdelete = logicdelete;
-        return this;
-    }
+	public Classification modifiernum(Long modifiernum) {
+		this.modifiernum = modifiernum;
+		return this;
+	}
 
-    public void setLogicdelete(Boolean logicdelete) {
-        this.logicdelete = logicdelete;
-    }
+	public void setModifiernum(Long modifiernum) {
+		this.modifiernum = modifiernum;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public Boolean isLogicdelete() {
+		return logicdelete;
+	}
 
-    public Classification state(String state) {
-        this.state = state;
-        return this;
-    }
+	public Classification logicdelete(Boolean logicdelete) {
+		this.logicdelete = logicdelete;
+		return this;
+	}
 
-    public void setState(String state) {
-        this.state = state;
-    }
+	public void setLogicdelete(Boolean logicdelete) {
+		this.logicdelete = logicdelete;
+	}
 
-    public String getApphomeShow() {
-        return apphomeShow;
-    }
+	public String getState() {
+		return state;
+	}
 
-    public Classification apphomeShow(String apphomeShow) {
-        this.apphomeShow = apphomeShow;
-        return this;
-    }
+	public Classification state(String state) {
+		this.state = state;
+		return this;
+	}
 
-    public void setApphomeShow(String apphomeShow) {
-        this.apphomeShow = apphomeShow;
-    }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-    public String getOther() {
-        return other;
-    }
+	public String getApphomeShow() {
+		return apphomeShow;
+	}
 
-    public Classification other(String other) {
-        this.other = other;
-        return this;
-    }
+	public Classification apphomeShow(String apphomeShow) {
+		this.apphomeShow = apphomeShow;
+		return this;
+	}
 
-    public void setOther(String other) {
-        this.other = other;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+	public void setApphomeShow(String apphomeShow) {
+		this.apphomeShow = apphomeShow;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Classification)) {
-            return false;
-        }
-        return id != null && id.equals(((Classification) o).id);
-    }
+	public String getOther() {
+		return other;
+	}
 
-    @Override
-    public int hashCode() {
-        return 31;
-    }
+	public Classification other(String other) {
+		this.other = other;
+		return this;
+	}
 
-    @Override
-    public String toString() {
-        return "Classification{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", superior='" + getSuperior() + "'" +
-            ", order='" + getOrder() + "'" +
-            ", creator='" + getCreator() + "'" +
-            ", createdate='" + getCreatedate() + "'" +
-            ", modifier='" + getModifier() + "'" +
-            ", modifierdate='" + getModifierdate() + "'" +
-            ", modifiernum=" + getModifiernum() +
-            ", logicdelete='" + isLogicdelete() + "'" +
-            ", state='" + getState() + "'" +
-            ", apphomeShow='" + getApphomeShow() + "'" +
-            ", other='" + getOther() + "'" +
-            "}";
-    }
+	public void setOther(String other) {
+		this.other = other;
+	}
+	// jhipster-needle-entity-add-getters-setters - JHipster will add getters and
+	// setters here, do not remove
+
+	public Long getPid() {
+		return pid;
+	}
+
+	public void setPid(Long pid) {
+		this.pid = pid;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof Classification)) {
+			return false;
+		}
+		return id != null && id.equals(((Classification) o).id);
+	}
+
+	@Override
+	public int hashCode() {
+		return 31;
+	}
+
+	@Override
+	public String toString() {
+		return "Classification{" + "id=" + getId() + ", name='" + getName() + "'" + ", superior='" + getSuperior() + "'"
+				+ ", order='" + getOrder() + "'" + ", creator='" + getCreator() + "'" + ", createdate='"
+				+ getCreatedate() + "'" + ", modifier='" + getModifier() + "'" + ", modifierdate='" + getModifierdate()
+				+ "'" + ", modifiernum=" + getModifiernum() + ", logicdelete='" + isLogicdelete() + "'" + ", state='"
+				+ getState() + "'" + ", apphomeShow='" + getApphomeShow() + "'" + ", other='" + getOther() + "'" + "}";
+	}
 }
