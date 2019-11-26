@@ -39,4 +39,18 @@ public interface Rewrite_SpecificationsRepository extends JpaRepository<Specific
 	// 查询商家所有商品
 	@Query(value = "select * from specifications where creator = ?1 ORDER BY price desc LIMIT ?2,?3", nativeQuery = true)
 	List<Specifications> findBySpecifications(String userId, Integer pageNum, Integer pageSize);
+
+
+    @Query(value = "select * from specifications where commodityid = ?1 ",nativeQuery = true)
+    Specifications findSpecificationsByCommodityid(String commodityid);
+
+    @Query(value = "select * from specifications Order by other Desc Limit ?1,?2",nativeQuery = true)
+    List<Specifications> findSpecificationsByOrdrerBys(Integer pageNum,Integer pageSize);
+    //hui
+    @Query(value = "select commodityid from specifications where model like ?1 ",nativeQuery = true)
+    List<Integer> findSpecificationsByModels(String name);
+    //hui
+    @Query(value = "select commodityid from specifications where specifications like ?1 ",nativeQuery = true)
+    List<Integer> findSpecificationsBySpecificationss(String name);
+
 }
