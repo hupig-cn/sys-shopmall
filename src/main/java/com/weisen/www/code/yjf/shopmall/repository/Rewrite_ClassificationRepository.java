@@ -12,4 +12,7 @@ public interface Rewrite_ClassificationRepository extends JpaRepository<Classifi
 
 	// 查询商品所有分类 LuoJinShui
 	List<Classification> findByPid(Long pid);
+
+	// 查询是否有该分类
+	Classification findClassificationByIdAndPid(Long brandid, Long pid);
 }
