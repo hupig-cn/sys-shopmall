@@ -57,7 +57,7 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20191107071730-1-data" author="jhipster" context="faker">
+    <!-- <changeSet id="20191107071730-1-data" author="jhipster" context="faker">
         <loadData
                   file="config/liquibase/data/v_2_publish_attrvalue.csv"
                   separator=";"
@@ -72,7 +72,7 @@
             <column name="state" type="numeric"/>
             <column name="ctime" type="string"/>
         </loadData>
-    </changeSet>
+    </changeSet> -->
 
     <changeSet id="20191107071730-1-relations" author="jhipster">
 
