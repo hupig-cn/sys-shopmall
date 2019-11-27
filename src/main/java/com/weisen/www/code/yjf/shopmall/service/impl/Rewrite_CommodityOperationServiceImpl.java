@@ -1,17 +1,16 @@
 package com.weisen.www.code.yjf.shopmall.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
-
 import com.weisen.www.code.yjf.shopmall.domain.Classification;
 import com.weisen.www.code.yjf.shopmall.domain.Commodity;
+import com.weisen.www.code.yjf.shopmall.domain.Files;
 import com.weisen.www.code.yjf.shopmall.domain.Merchant;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
+import com.weisen.www.code.yjf.shopmall.repository.FilesRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_ClassificationRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_MerchantRepository;
@@ -41,25 +40,35 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 
 	private final Rewrite_ClassificationRepository rewrite_ClassificationRepository;
 
+	private final FilesRepository filesRepository;
+
 	private final Rewrite_CommodityRepository rewrite_CommodityRepository;
 
 	public Rewrite_CommodityOperationServiceImpl(Rewrite_MerchantRepository rewrite_MerchantRepository,
 			Rewrite_SpecificationsRepository rewrite_SpecificationsRepository,
-			Rewrite_ClassificationRepository rewrite_ClassificationRepository,
+			Rewrite_ClassificationRepository rewrite_ClassificationRepository, FilesRepository filesRepository,
 			Rewrite_CommodityRepository rewrite_CommodityRepository) {
 		this.rewrite_MerchantRepository = rewrite_MerchantRepository;
 		this.rewrite_SpecificationsRepository = rewrite_SpecificationsRepository;
 		this.rewrite_ClassificationRepository = rewrite_ClassificationRepository;
+		this.filesRepository = filesRepository;
 		this.rewrite_CommodityRepository = rewrite_CommodityRepository;
 	}
 
 	// 查询商品分类
 	@Override
 	public Result getCommodityClassification() {
-		List<Classification> classificationsList = rewrite_ClassificationRepository.findByPid(0L);
+		Long zero = 0L;
+		List<Classification> classificationList = rewrite_ClassificationRepository.findByPidNot(zero);
 		List<Rewrite_CommodityClassificationDTO> rewrite_CommodityClassificationDTOs = new ArrayList<Rewrite_CommodityClassificationDTO>();
-		for (Classification classification : classificationsList) {
+		HashSet<String> setData = new HashSet<>();
+		for (Classification classification : classificationList) {
+			Long pid = classification.getPid();
+			setData.add("" + pid);
+		}
+		for (String id : setData) {
 			Rewrite_CommodityClassificationDTO commodityClassificationDTO = new Rewrite_CommodityClassificationDTO();
+			Classification classification = rewrite_ClassificationRepository.findClassificationById(Long.parseLong(id));
 			commodityClassificationDTO.setId(classification.getId());
 			commodityClassificationDTO.setCommodityName(classification.getName());
 			commodityClassificationDTO.setType(classification.getType());
@@ -75,7 +84,8 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 		if (classificationsList.isEmpty()) {
 			return Result.suc("没有该分类!");
 		} else {
-			Integer type = rewrite_ClassificationRepository.findById2(pid);
+			Classification classificationData = rewrite_ClassificationRepository.findClassificationById(pid);
+			Integer type = classificationData.getType();
 			List<Rewrite_CommodityClassificationDTO2> rewrite_CommodityClassificationDTOs = new ArrayList<Rewrite_CommodityClassificationDTO2>();
 			for (Classification classification : classificationsList) {
 				Rewrite_CommodityClassificationDTO2 commodityClassificationDTO = new Rewrite_CommodityClassificationDTO2();
@@ -83,10 +93,16 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 				commodityClassificationDTO.setCommodityName(classification.getName());
 				commodityClassificationDTO
 						.setIcon("http://app.yuanscore.com:8083/services/basic/api/public/getFiles/17");
+				// Files files =
+				// filesRepository.findByIds(Long.parseLong(classification.getIcon()));
+				// if (files != null) {
+				// files.getHeight();
+				// files.getWidth();
+				// files.getUrl();
+				// }
 				commodityClassificationDTO.setHeight(432);
 				commodityClassificationDTO.setWidth(432);
 				commodityClassificationDTO.setPid(pid);
-				
 				commodityClassificationDTO.setType(type);
 				commodityClassificationDTO.setOther(classification.getName());
 				rewrite_CommodityClassificationDTOs.add(commodityClassificationDTO);

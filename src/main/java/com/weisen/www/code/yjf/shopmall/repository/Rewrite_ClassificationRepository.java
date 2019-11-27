@@ -23,9 +23,11 @@ public interface Rewrite_ClassificationRepository extends JpaRepository<Classifi
 	// hui
 	@Query(value = "select id from classification where type = ?1 ", nativeQuery = true)
 	Long findClassificationByType(Integer type);
-	
-	// 根据id查找type
-	@Query(value = "select type from classification where id = ?1 ", nativeQuery = true)
-	Integer findById2(Long id);
+
+	// 根据pid不等于0查找pid
+	List<Classification> findByPidNot(Long pid);
+
+	// 查询父级分类ID
+	Classification findClassificationById(Long id);
 
 }
