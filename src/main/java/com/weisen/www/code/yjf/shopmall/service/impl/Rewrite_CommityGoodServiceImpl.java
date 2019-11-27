@@ -61,8 +61,8 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
     public Result myfilesList(Integer pageSize, Integer pageNum,Integer type,Integer condition,String name) {
             List<Rewrite_Commity2DTO> bbc = new ArrayList<>();//最后返回值
             int a = pageNum * pageSize;  //分页
-        if (name == null || name.equals("")) { //如果没有搜索关键字，则走下面
             List<Specifications> specificationsByOrdrerBys = new ArrayList<>();
+        if (name == null || name.equals("")) { //如果没有搜索关键字，则走下面
             String ccc = "";
             if (type == 0) { //type = 0 全部商品  type = 1 积分精选，2 美食, 3 数码 ，4 居家
                 specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerBys(a, pageSize);
@@ -88,6 +88,10 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         }else {
             //搜索 --name搜索分类，
             bbc = like(pageSize,pageNum,name);//有关键字查询就上他
+            if (name.equals("积分精选")){
+                specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerBys(a, pageSize);
+                bbc = specificationslist(specificationsByOrdrerBys);//能一步到胃
+            }
             if (bbc.size()<= 0){
                 return Result.suc("客官！后面没数据了");
             }
