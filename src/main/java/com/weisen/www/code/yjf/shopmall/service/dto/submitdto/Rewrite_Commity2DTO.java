@@ -16,6 +16,16 @@ public class Rewrite_Commity2DTO implements Serializable {
 
    private Integer height;
 
+   private Integer sales;
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
+    }
+
     public Long getCommodityId() {
         return commodityId;
     }

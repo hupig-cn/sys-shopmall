@@ -31,13 +31,13 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
     private String imagesPath;
 
 
-    private Long hWidth = 0L;
+    private Long hWidth = 0L;//全部横图的总宽度
 
-    private Long hHeigh = 0L;
+    private Long hHeigh = 0L;//全部横图的总高度
 
-    private Long sWidth = 0L;
+    private Long sWidth = 0L;//全部竖图的总宽度
 
-    private Long sHeigh = 0L;
+    private Long sHeigh = 0L;//全部竖图的总高度
 
     private final Rewrite_SpecificationsRepository rewrite_specificationsRepository;
 
@@ -57,28 +57,36 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         this.rewrite_classificationRepository = rewrite_classificationRepository;
     }
 
+    /**
+     * hui
+     * @param pageSize
+     * @param pageNum
+     * @param type
+     * @param condition
+     * @param name
+     * @return
+     */
     @Override
     public Result myfilesList(Integer pageSize, Integer pageNum,Integer type,Integer condition,String name) {
             List<Rewrite_Commity2DTO> bbc = new ArrayList<>();//最后返回值
             int a = pageNum * pageSize;  //分页
             List<Specifications> specificationsByOrdrerBys = new ArrayList<>();
         if (name == null || name.equals("")) { //如果没有搜索关键字，则走下面
-            String ccc = "";
-            if (type == 0) { //type = 0 全部商品  type = 1 积分精选，2 美食, 3 数码 ，4 居家
+            String ccc = "";//type = 0 全部商品  type = 1 积分精选，2 美食, 3 数码 ，4 居家
+            if (type == 0 && condition == 0) {  //condition-0 全部
                 specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerBys(a, pageSize);
-            } else {
-                if (type == 2) {
-                    ccc = "13";
-                } else if (type == 3) {
-                    ccc = "15";
-                } else if (type == 4) {
-                    ccc = "14";
-                }
+            }else if (type == 0 && condition == 1) { //condition-1 新品发布
+                specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerByc(a, pageSize);
+            }else if (type == 0 && condition == 2) { //condition-2 便宜好货
+                specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerByp(a, pageSize);
+            }else if (type == 0 && condition == 3) { //condition-3 热卖
+                specificationsByOrdrerBys = rewrite_specificationsRepository.findSpecificationsByOrdrerBysc(a, pageSize);
+            } else {//上面的是根据页数跟每页大小查询全部商家
                 //Long ccc = rewrite_classificationRepository.findClassificationByType(type);//查询分类表的id
                 List<Long> commodityByBrandid = rewrite_commodityRepository.findCommodityByClassificationid(ccc);//用分类表的id去查商品
                 for (int i = 0; i < commodityByBrandid.size(); i++) {//然后查出来的商品加入到list里面
-                    Long asd = commodityByBrandid.get(i);
-                    Specifications s = rewrite_specificationsRepository.findSpecificationsByCommodityid(asd + "");
+                    Long asd = commodityByBrandid.get(i);//查出商品id
+                    Specifications s = rewrite_specificationsRepository.findSpecificationsByCommodityid(asd + "");//根据id查询对应的规格id
                     specificationsByOrdrerBys.add(s);
                 }
 
@@ -99,16 +107,22 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         }
     }
 
+    /**
+     * 传入list的规格 然后就返回商品列表
+     * @param specificationsByOrdrerBys
+     * @return
+     */
     private List<Rewrite_Commity2DTO> specificationslist(List<Specifications> specificationsByOrdrerBys ){
         List<Rewrite_Commity2DTO> abc = new ArrayList<>();
         for (int i = 0; i < specificationsByOrdrerBys.size(); i++) {
-            Rewrite_Commity2DTO rewrite_commity2DTO = new Rewrite_Commity2DTO();
+            Rewrite_Commity2DTO rewrite_commity2DTO = new Rewrite_Commity2DTO();//一个商品列表的内容
 
-            Specifications s = specificationsByOrdrerBys.get(i);
+            Specifications s = specificationsByOrdrerBys.get(i);//获取必要的信息
             String price = s.getPrice();
             Long fileid = s.getFileid();
             String commodityid = s.getCommodityid();
             String specifications = s.getSpecifications();
+            Integer sales = s.getSales();
             Files files = filesRepository.findByIds(fileid);//根据id查询图片的宽高
             Integer height = files.getHeight();
             Integer width = files.getWidth();
@@ -119,17 +133,25 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
             rewrite_commity2DTO.setUrl(imagesPath + fileid);//图片路径
             rewrite_commity2DTO.setWidth(width);//宽
             rewrite_commity2DTO.setHeight(height);//高
+            rewrite_commity2DTO.setSales(sales);
             abc.add(rewrite_commity2DTO);
         }
         return abc;
     }
 
-    private List<Rewrite_Commity2DTO> like(Integer pageSize, Integer pageNum, String name) {
-        List<Rewrite_Commity2DTO> abc = new ArrayList<>();
-        Set<Long> shangpin = new HashSet<>();
+    /**
+     * 关键字查询的
+     * @param pageSize
+     * @param pageNum
+     * @param name
+     * @return
+     */
+    private List<Rewrite_Commity2DTO> like(Integer pageSize, Integer pageNum, String name) {//用于关键字查询的
+        List<Rewrite_Commity2DTO> abc = new ArrayList<>();//返回的值
+        Set<Long> shangpin = new HashSet<>();//为了确保id的唯一性
         List<Specifications> id = new ArrayList<>();
         //先查分类
-        String name2 = "%"+name+"%";
+        String name2 = "%"+name+"%";//做个处理
         List<Integer> clist = rewrite_classificationRepository.findClassificationBynameLike(name2);//查询分类
         if (clist.size()>0) {
             for (int i = 0; i < clist.size(); i++) {
@@ -163,7 +185,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
             Specifications bb = rewrite_specificationsRepository.findByCommodityid(aLong + "");//将id转为商品实体类
             id.add(bb);
         }
-        List<Rewrite_Commity2DTO> list = specificationslist(id);
+        List<Rewrite_Commity2DTO> list = specificationslist(id);//物理分页
         for (int i = 1 + (pageSize * (pageNum)); i <= (pageNum+1) * (pageSize); i++) {
             if (i > list.size()) {
                 return abc;
@@ -173,14 +195,21 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         }
         return abc;
     }
+
+    /**
+     * hui
+     * @param commityid
+     * @return
+     */
     @Override
     public Result findCommodityInfo2(String commityid) {
         //商品详情
         Rewrite_GoodsCommity2DTO r = new Rewrite_GoodsCommity2DTO();
 
-        Specifications a = rewrite_specificationsRepository.findSpecificationsByCommodityid(commityid);
+        Specifications a = rewrite_specificationsRepository.findSpecificationsByCommodityid(commityid);//根据id去查规格
         String specifications = a.getCommodityid();
         String title = a.getSpecifications();
+        Integer sales = a.getSales();
         String price = a.getPrice();
         String model = a.getModel();
         Long fileid = a.getFileid();
@@ -188,11 +217,11 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         List<Rewrite_GoodsCommityDTO> hplist = new ArrayList<>();
         List<Rewrite_GoodsCommityDTO> splist = new ArrayList<>();
         List<Long> Sp = new ArrayList<>();
-        List<Prodcutimage> slist = reweite_prodcutimageRepository.findAllBySpecificationsid(Long.valueOf(commityid));
+        List<Prodcutimage> slist = reweite_prodcutimageRepository.findAllBySpecificationsid(Long.valueOf(commityid));//根据id查prodcutimage的图片
         for (int i = 0; i < slist.size(); i++) {
             Prodcutimage prodcutimage = slist.get(i);
             String type = prodcutimage.getType();
-            if (type.equals("1")){
+            if (type.equals("1")){//做分类，分为横图和竖图
                 Hp.add(Long.valueOf(prodcutimage.getFileid()));
             }else {
                 Sp.add(Long.valueOf(prodcutimage.getFileid()));
@@ -200,6 +229,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         }
         hplist = aab(Hp,0);
         splist = aab(Sp,1);
+        r.setSales(sales);
         r.setSmallUrl(imagesPath+fileid);
         r.sethWidth(hWidth);
         r.sethHeigh(hHeigh);
@@ -214,10 +244,16 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         return Result.suc("查询成功",r);
     }
 
+    /**
+     * 商品详情的图片处理
+     * @param Sp
+     * @param a
+     * @return
+     */
     public List<Rewrite_GoodsCommityDTO> aab (List<Long> Sp,Integer a){
         List<Rewrite_GoodsCommityDTO> splist = new ArrayList<>();
         if (a == 1){
-            Sp.add(3315L);
+            Sp.add(3315L);//如果是竖图就再最后加一个保证图
         }
         for (int i = 0; i < Sp.size(); i++) {
             Long aa = Sp.get(i);
