@@ -123,6 +123,10 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
             String commodityid = s.getCommodityid();
             String specifications = s.getSpecifications();
             Integer sales = s.getSales();
+            Integer num = s.getNum();
+            if (num == null){
+                num = 9999;
+            }
             Files files = filesRepository.findByIds(fileid);//根据id查询图片的宽高
             Integer height = files.getHeight();
             Integer width = files.getWidth();
@@ -134,6 +138,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
             rewrite_commity2DTO.setWidth(width);//宽
             rewrite_commity2DTO.setHeight(height);//高
             rewrite_commity2DTO.setSales(sales);
+            rewrite_commity2DTO.setNum(num);
             abc.add(rewrite_commity2DTO);
         }
         return abc;
