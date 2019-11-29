@@ -18,6 +18,8 @@ public class Rewrite_GoodsCommity2DTO implements Serializable {
 
     private Integer sales;
 
+    private Integer num;
+
     private String commodityId;
 
     private String title;
@@ -30,6 +32,13 @@ public class Rewrite_GoodsCommity2DTO implements Serializable {
 
     private List<Rewrite_GoodsCommityDTO> splist;
 
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
     public Integer getSales() {
         return sales;
