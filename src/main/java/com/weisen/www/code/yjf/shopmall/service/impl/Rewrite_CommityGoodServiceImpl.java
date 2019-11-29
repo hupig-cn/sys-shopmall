@@ -232,6 +232,10 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
                 Sp.add(Long.valueOf(prodcutimage.getFileid()));
             }
         }
+        sHeigh = 0L;
+        sWidth = 0L;
+        hHeigh = 0L;
+        hWidth = 0L;
         hplist = aab(Hp,0);
         splist = aab(Sp,1);
         r.setSales(sales);
@@ -256,6 +260,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
      * @return
      */
     public List<Rewrite_GoodsCommityDTO> aab (List<Long> Sp,Integer a){
+
         List<Rewrite_GoodsCommityDTO> splist = new ArrayList<>();
         if (a == 1){
             Sp.add(3315L);//如果是竖图就再最后加一个保证图
