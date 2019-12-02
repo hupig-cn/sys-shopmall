@@ -124,9 +124,9 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
             Integer height = files.getHeight();
             Integer width = files.getWidth();
             Integer num = s.getNum();
-            if (num == null){
-                num = 9999;
-            }
+//            if (num == null||num == 0){
+//                num = 9999;
+//            }
 
             rewrite_commity2DTO.setCommodityId(Long.valueOf(commodityid));//商品id
             rewrite_commity2DTO.setText(specifications);//描述
@@ -135,7 +135,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
             rewrite_commity2DTO.setWidth(width);//宽
             rewrite_commity2DTO.setHeight(height);//高
             rewrite_commity2DTO.setSales(sales);
-            rewrite_commity2DTO.setNum(num);
+            rewrite_commity2DTO.setNum(999);
             abc.add(rewrite_commity2DTO);
         }
         return abc;
@@ -216,9 +216,9 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         String model = a.getModel();
         Long fileid = a.getFileid();
         Integer num = a.getNum();
-        if (num == null){
-            num = 9999;
-        }
+//        if (num == null||num == 0){
+//            num = 9999;
+//        }
         List<Long> Hp = new ArrayList<>();
         List<Rewrite_GoodsCommityDTO> hplist = new ArrayList<>();
         List<Rewrite_GoodsCommityDTO> splist = new ArrayList<>();
@@ -251,7 +251,7 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         r.setHplist(hplist);
         r.setSplist(splist);
         r.setModel(model);
-        r.setNum(num);
+        r.setNum(999);
         return Result.suc("查询成功",r);
     }
 
