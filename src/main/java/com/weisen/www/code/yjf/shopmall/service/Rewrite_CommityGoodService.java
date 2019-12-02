@@ -8,4 +8,6 @@ public interface Rewrite_CommityGoodService {
     Result myfilesList(Integer pageSize, Integer pageNum, Integer type, Integer condition,String name);
     //hui
     Result findCommodityInfo2(String commityid);
+
+    Result findCommodityInfo3();
 }
