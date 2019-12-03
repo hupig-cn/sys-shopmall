@@ -27,18 +27,6 @@ public class Rewrite_CommitOrderDTO implements Serializable {
 
     private String[] nums;
 
-    public Rewrite_CommitOrderDTO(String[] ids, String[] bigorder, String state, String userid, String[] commodityids, String consignee, String mobile, String address, String[] nums) {
-        this.ids = ids;
-        this.bigorder = bigorder;
-        this.state = state;
-        this.userid = userid;
-        this.commodityids = commodityids;
-        this.consignee = consignee;
-        this.mobile = mobile;
-        this.address = address;
-        this.nums = nums;
-    }
-
     public String[] getIds() {
         return ids;
     }

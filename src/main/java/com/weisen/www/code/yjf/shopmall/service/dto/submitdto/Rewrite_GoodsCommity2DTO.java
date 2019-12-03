@@ -16,6 +16,10 @@ public class Rewrite_GoodsCommity2DTO implements Serializable {
 
     private Long sHeigh;
 
+    private Integer sales;
+
+    private Integer num;
+
     private String commodityId;
 
     private String title;
@@ -27,6 +31,22 @@ public class Rewrite_GoodsCommity2DTO implements Serializable {
     private List<Rewrite_GoodsCommityDTO> hplist;
 
     private List<Rewrite_GoodsCommityDTO> splist;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
+    }
 
     public String getSmallUrl() {
         return smallUrl;

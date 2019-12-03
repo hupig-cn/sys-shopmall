@@ -16,6 +16,46 @@ public class Rewrite_Commity2DTO implements Serializable {
 
    private Integer height;
 
+   private Integer sales;
+
+   private String specification = "标准";
+
+   private Integer num;
+
+   private String dispath = "广州";
+
+    public String getSpecification() {
+        return specification;
+    }
+
+    public void setSpecification(String specification) {
+        this.specification = specification;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public String getDispath() {
+        return dispath;
+    }
+
+    public void setDispath(String dispath) {
+        this.dispath = dispath;
+    }
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
+    }
+
     public Long getCommodityId() {
         return commodityId;
     }

@@ -32,7 +32,15 @@ public class Rewrite_PublicResources {
         this.rewrite_commityGoodService = rewrite_commityGoodService;
     }
 
-
+    /**
+     * hui
+     * @param pageSize
+     * @param pageNum
+     * @param type
+     * @param condition
+     * @param name
+     * @return
+     */
     @PostMapping("/findAllByTime2")
     @ApiOperation("商品列表")
     public ResponseEntity<?> myfilesList(@RequestParam Integer pageSize,
@@ -44,6 +52,11 @@ public class Rewrite_PublicResources {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
 
+    /**
+     * hui
+     * @param commodityId
+     * @return
+     */
     @PostMapping("/findCommodityInfo2")
     @ApiOperation("商品详情")
     public ResponseEntity<?> findCommodityInfo2(@RequestParam String commodityId){
@@ -51,5 +64,14 @@ public class Rewrite_PublicResources {
         log.debug("访问地址: {},传入值: {},返回值: {}","/api/commodity/findCommodityInfo2", "传入值:"+commodityId, result);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
+
+    @PostMapping("/findCommodityInfo3")
+    @ApiOperation("商品详情")
+    public ResponseEntity<?> findCommodityInfo3(){
+        Result result = rewrite_commityGoodService.findCommodityInfo3();
+        log.debug("访问地址: {},传入值: {},返回值: {}","/api/commodity/findCommodityInfo2", "传入值:", result);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
+
 
 }

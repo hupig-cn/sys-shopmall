@@ -96,4 +96,10 @@
         </addColumn>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    
+    <changeSet id="20191127182930-update_column" author="JHipster">
+        <modifyDataType tableName="commodity" columnName="weight2" newDataType="double(10,2)"/>
+        <modifyDataType tableName="commodity" columnName="weight3" newDataType="double(10,2)"/>
+    </changeSet>
+    
 </databaseChangeLog>

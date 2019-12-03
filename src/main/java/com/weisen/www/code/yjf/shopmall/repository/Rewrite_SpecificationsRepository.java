@@ -43,7 +43,7 @@ public interface Rewrite_SpecificationsRepository extends JpaRepository<Specific
 
     @Query(value = "select * from specifications where commodityid = ?1 ",nativeQuery = true)
     Specifications findSpecificationsByCommodityid(String commodityid);
-
+    //hui
     @Query(value = "select * from specifications Order by other Desc Limit ?1,?2",nativeQuery = true)
     List<Specifications> findSpecificationsByOrdrerBys(Integer pageNum,Integer pageSize);
     //hui
@@ -52,5 +52,13 @@ public interface Rewrite_SpecificationsRepository extends JpaRepository<Specific
     //hui
     @Query(value = "select commodityid from specifications where specifications like ?1 ",nativeQuery = true)
     List<Integer> findSpecificationsBySpecificationss(String name);
-
+    //hui
+    @Query(value = "SELECT * FROM specifications ORDER BY CONVERT(price,DECIMAL(10,2)) Limit ?1,?2",nativeQuery = true)
+    List<Specifications> findSpecificationsByOrdrerByp(Integer pageNum,Integer pageSize);
+    //hui
+    @Query(value = "SELECT * FROM specifications ORDER BY createdate DESC LIMIT ?1,?2",nativeQuery = true)
+    List<Specifications> findSpecificationsByOrdrerByc(Integer pageNum,Integer pageSize);
+    //hui
+    @Query(value = "SELECT * FROM specifications ORDER BY sales DESC LIMIT ?1,?2",nativeQuery = true)
+    List<Specifications> findSpecificationsByOrdrerBysc(Integer pageNum,Integer pageSize);
 }

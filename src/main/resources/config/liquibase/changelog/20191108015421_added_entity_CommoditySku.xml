@@ -61,7 +61,7 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20191108015421-1-data" author="jhipster" context="faker">
+    <!-- <changeSet id="20191108015421-1-data" author="jhipster" context="faker">
         <loadData
                   file="config/liquibase/data/commodity_sku.csv"
                   separator=";"
@@ -77,7 +77,7 @@
             <column name="code" type="string"/>
             <column name="icon" type="string"/>
         </loadData>
-    </changeSet>
+    </changeSet> -->
 
     <changeSet id="20191108015421-1-relations" author="jhipster">
 
