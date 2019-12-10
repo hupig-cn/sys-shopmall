@@ -58,8 +58,7 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 	// 查询商品分类
 	@Override
 	public Result getCommodityClassification() {
-		Long zero = 0L;
-		List<Classification> classificationList = rewrite_ClassificationRepository.findByPidNot(zero);
+		List<Classification> classificationList = rewrite_ClassificationRepository.findByPidNot(0L);
 		List<Rewrite_CommodityClassificationDTO> rewrite_CommodityClassificationDTOs = new ArrayList<Rewrite_CommodityClassificationDTO>();
 		HashSet<String> setData = new HashSet<>();
 		for (Classification classification : classificationList) {
