@@ -255,22 +255,22 @@ public class Rewrite_CommityGoodServiceImpl implements Rewrite_CommityGoodServic
         return Result.suc("查询成功",r);
     }
 
-    @Override
-    public Result findCommodityInfo3() {
-        List<Specifications> all = rewrite_specificationsRepository.findAll();
-        Random random = new Random();
-        for (int i = 0; i < all.size(); i++) {
-            int a = random.nextInt(100);
-            int b = random.nextInt(100);
-            Specifications specifications = all.get(i);
-            Long id = specifications.getId();
-            specifications.setId(id);
-            specifications.setOther(a+"");
-            specifications.setSales(b);
-            rewrite_specificationsRepository.save(specifications);
-        }
-        return null;
-    }
+//    @Override
+//    public Result findCommodityInfo3() {
+//        List<Specifications> all = rewrite_specificationsRepository.findAll();
+//        Random random = new Random();
+//        for (int i = 0; i < all.size(); i++) {
+//            int a = random.nextInt(100);
+//            int b = random.nextInt(100);
+//            Specifications specifications = all.get(i);
+//            Long id = specifications.getId();
+//            specifications.setId(id);
+//            specifications.setOther(a+"");
+//            specifications.setSales(b);
+//            rewrite_specificationsRepository.save(specifications);
+//        }
+//        return null;
+//    }
 
     /**
      * 商品详情的图片处理

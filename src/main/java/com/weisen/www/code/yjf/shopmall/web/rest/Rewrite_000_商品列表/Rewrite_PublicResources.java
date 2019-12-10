@@ -65,13 +65,13 @@ public class Rewrite_PublicResources {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
 
-    @PostMapping("/findCommodityInfo3")
-    @ApiOperation("商品详情")
-    public ResponseEntity<?> findCommodityInfo3(){
-        Result result = rewrite_commityGoodService.findCommodityInfo3();
-        log.debug("访问地址: {},传入值: {},返回值: {}","/api/commodity/findCommodityInfo2", "传入值:", result);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
-    }
+//    @PostMapping("/findCommodityInfo3")
+//    @ApiOperation("商品详情")
+//    public ResponseEntity<?> findCommodityInfo3(){
+//        Result result = rewrite_commityGoodService.findCommodityInfo3();
+//        log.debug("访问地址: {},传入值: {},返回值: {}","/api/commodity/findCommodityInfo2", "传入值:", result);
+//        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+//    }
 
 
 }

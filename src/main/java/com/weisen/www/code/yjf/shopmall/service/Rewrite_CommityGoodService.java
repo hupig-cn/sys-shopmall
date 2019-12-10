@@ -9,5 +9,5 @@ public interface Rewrite_CommityGoodService {
     //hui
     Result findCommodityInfo2(String commityid);
 
-    Result findCommodityInfo3();
+//    Result findCommodityInfo3();
 }
