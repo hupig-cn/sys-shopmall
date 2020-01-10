@@ -7,10 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import com.weisen.www.code.yjf.shopmall.domain.Classification;
 import com.weisen.www.code.yjf.shopmall.domain.Commodity;
-import com.weisen.www.code.yjf.shopmall.domain.Files;
 import com.weisen.www.code.yjf.shopmall.domain.Merchant;
 import com.weisen.www.code.yjf.shopmall.domain.Specifications;
-import com.weisen.www.code.yjf.shopmall.repository.FilesRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_ClassificationRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_CommodityRepository;
 import com.weisen.www.code.yjf.shopmall.repository.Rewrite_MerchantRepository;
@@ -40,18 +38,15 @@ public class Rewrite_CommodityOperationServiceImpl implements Rewrite_CommodityO
 
 	private final Rewrite_ClassificationRepository rewrite_ClassificationRepository;
 
-	private final FilesRepository filesRepository;
-
 	private final Rewrite_CommodityRepository rewrite_CommodityRepository;
 
 	public Rewrite_CommodityOperationServiceImpl(Rewrite_MerchantRepository rewrite_MerchantRepository,
 			Rewrite_SpecificationsRepository rewrite_SpecificationsRepository,
-			Rewrite_ClassificationRepository rewrite_ClassificationRepository, FilesRepository filesRepository,
+			Rewrite_ClassificationRepository rewrite_ClassificationRepository,
 			Rewrite_CommodityRepository rewrite_CommodityRepository) {
 		this.rewrite_MerchantRepository = rewrite_MerchantRepository;
 		this.rewrite_SpecificationsRepository = rewrite_SpecificationsRepository;
 		this.rewrite_ClassificationRepository = rewrite_ClassificationRepository;
-		this.filesRepository = filesRepository;
 		this.rewrite_CommodityRepository = rewrite_CommodityRepository;
 	}
 
